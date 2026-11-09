@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MÉTRICA - Fase 2: Recopilación de Datos</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <style>
+    .quiz-container {
+      background-color: var(--color-fondo);
+      border: 2px solid var(--color-complementario);
+      padding: 25px;
+      border-radius: 10px;
+      margin: 30px 0;
+    }
+    .pregunta-box {
+      margin-bottom: 20px;
+    }
+    .pregunta-box p {
+      font-weight: 600;
+      color: var(--color-texto);
+    }
+    .opciones-list {
+      list-style: none;
+      margin-top: 8px;
+    }
+    .opciones-list li {
+      margin-bottom: 6px;
+    }
+    #resultadoQuiz {
+      font-weight: bold;
+      font-size: 1.1rem;
+      margin-top: 15px;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <nav>
+      <div class="brand-container">
+        <div class="brand-logos">
+          <img src="images/logo_usac.jpg" alt="USAC">
+          <img src="images/logo_cunori.png" alt="CUNORI">
+        </div>
+        <a href="index.html" class="logo">MÉTRICA</a>
+      </div>
+      <ul class="nav-links">
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="fase1.html" data-fase="1">Fase 1</a></li>
+        <li><a href="fase2.html" data-fase="2" class="active">Fase 2</a></li>
+        <li><a href="fase3.html" data-fase="3">Fase 3</a></li>
+        <li><a href="fase4.html" data-fase="4">Fase 4</a></li>
+        <li><a href="fase5.html" data-fase="5">Fase 5</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <h2>Fase 2: Recopilación de Datos</h2>
+    <p class="intro-text">
+      Bienvenido a la <strong>Fase 2 de la ruta de autoformación digital de MÉTRICA</strong>. Este módulo aborda el puente metodológico entre la teoría pedagógica y la obtención de evidencias empíricas necesarias para estructurar investigaciones estadísticas rigurosas en el ámbito socioeducativo.
+    </p>
+
+    <hr style="border: 0; border-top: 1px solid var(--color-complementario); margin: 25px 0;">
+
+    <!-- NIVEL 1 -->
+    <article class="nivel-container">
+      <h3 style="color: var(--color-institucional); font-size: 1.4rem;">
+        ▸ Nivel 1: Investigación Científica y Recolección
+      </h3>
+
+      <section style="margin-top: 15px;">
+        <h4>1. Conceptualización de la Investigación Científica en las Ciencias de la Educación</h4>
+        <p>
+          La investigación científica en pedagogía y administración educativa se conceptualiza como un proceso sistemático, crítico y empírico orientado a comprender, explicar y transformar la realidad socioeducativa. A diferencia de las ciencias exactas, las ciencias de la educación abordan fenómenos humanos complejos y dinámicos, donde la cuantificación estadística cumple la función de dotar de objetividad y soporte métrico a las variables pedagógicas (rendimiento escolar, clima organizacional, competencias digitales).
+        </p>
+      </section>
+
+      <section style="margin-top: 20px;">
+        <h4>2. Formulación de Preguntas Guía y Estrategias para Recolectar Datos Primarios</h4>
+        <p>
+          Para que un proceso de recolección de datos primarios (información obtenida directamente de los sujetos de estudio mediante trabajo de campo) sea exitoso, requiere una planificación estructurada:
+        </p>
+        <ul style="margin-left: 25px; margin-bottom: 15px;">
+          <li style="margin-bottom: 8px;">
+            <strong>Preguntas Guía:</strong> Son interrogantes directrices que delimitan el alcance del instrumento de medición, asegurando que cada reactivo responda directamente a los objetivos específicos de la investigación educativa.
+          </li>
+          <li>
+            <strong>Estrategias de Campo:</strong> Integran herramientas tecnológicas de gestión de información como <em>Google Forms</em>, entrevistas estructuradas y registros de observación directa aplicados en entornos escolares o universitarios (como el CUNORI).
+          </li>
+        </ul>
+      </section>
+    </article>
+
+    <hr style="border: 0; border-top: 1px solid var(--color-complementario); margin: 30px 0;">
+
+    <!-- NIVEL 2 -->
+    <article class="nivel-container">
+      <h3 style="color: var(--color-institucional); font-size: 1.4rem;">
+        ▸ Nivel 2: Métodos de Muestreo
+      </h3>
+
+      <section style="margin-top: 15px;">
+        <h4>1. Diferenciación de los Métodos de Muestreo Probabilístico</h4>
+        <p>
+          El muestreo probabilístico garantiza que cada miembro de la población objetivo tenga una probabilidad conocida y distinta de cero de ser seleccionado, lo que permite extrapolar los resultados estadísticos hacia la población total con un margen de error cuantificable:
+        </p>
+        <ul style="margin-left: 25px; margin-bottom: 15px;">
+          <li style="margin-bottom: 6px;"><strong>Aleatorio Simple:</strong> Cada individuo se selecciona mediante azar puro (ej. sorteo o generador digital).</li>
+          <li style="margin-bottom: 6px;"><strong>Sistemático:</strong> Se elige un punto de arranque aleatorio y luego se selecciona a cada enésimo elemento de la lista.</li>
+          <li style="margin-bottom: 6px;"><strong>Estratificado:</strong> La población se divide en subgrupos homogéneos (estratos) y se extraen muestras proporcionales de cada uno.</li>
+          <li style="margin-bottom: 6px;"><strong>Por Conglomerados:</strong> Se seleccionan grupos naturales (conglomerados geográficos o institucionales) en lugar de individuos aislados.</li>
+        </ul>
+      </section>
+
+      <section style="margin-top: 20px;">
+        <h4>2. Selección y Aplicación de Métodos de Muestreo No Probabilístico en Estudios Educativos</h4>
+        <p>
+          En la práctica educativa y administrativa cotidiana, las restricciones de tiempo, recursos o accesibilidad institucional obligan frecuentemente a utilizar métodos no probabilísticos, donde la selección de la muestra depende de criterios del investigador:
+        </p>
+        <ul style="margin-left: 25px; margin-bottom: 15px;">
+          <li style="margin-bottom: 6px;"><strong>Muestreo por Conveniencia:</strong> Selección de sujetos accesibles y disponibles de inmediato (ej. estudiantes de un semestre específico asignados a un curso).</li>
+          <li style="margin-bottom: 6px;"><strong>Muestreo Intencional o de Juicio:</strong> Elección deliberada de casos que poseen características particulares o experticia relevante para el estudio.</li>
+          <li style="margin-bottom: 6px;"><strong>Muestreo por Cuotas:</strong> Establecimiento previa de proporciones de participantes según categorías específicas (género, sección, edad).</li>
+        </ul>
+      </section>
+    </article>
+
+    <hr style="border: 0; border-top: 1px solid var(--color-complementario); margin: 30px 0;">
+
+    <!-- QUIZ AUTOCALIFICABLE DE LA FASE 2 -->
+    <section class="quiz-container">
+      <h3 style="color: var(--color-institucional); margin-bottom: 15px;">Autoevaluación de la Fase 2</h3>
+      <p>Comprueba tus conocimientos respondiendo las siguientes 5 preguntas antes de avanzar al siguiente módulo:</p>
+
+      <form id="quizForm" style="margin-top: 20px;">
+        <!-- Pregunta 1 -->
+        <div class="pregunta-box">
+          <p>1. ¿Cómo se conceptualiza la investigación científica en el campo de las ciencias de la educación?</p>
+          <ul class="opciones-list">
+            <li><label><input type="radio" name="p1" value="a"> a) Un proceso estático enfocado exclusivamente en cálculos matemáticos abstractos.</label></li>
+            <li><label><input type="radio" name="p1" value="b"> b) Un proceso sistemático, crítico y empírico para comprender y transformar la realidad socioeducativa.</label></li>
+            <li><label><input type="radio" name="p1" value="c"> c) Una recolección de opiniones personales sin sustento metodológico.</label></li>
+          </ul>
+        </div>
+
+        <!-- Pregunta 2 -->
+        <div class="pregunta-box">
+          <p>2. ¿Qué son las preguntas guía dentro de la estrategia de recolección de datos primarios?</p>
+          <ul class="opciones-list">
+            <li><label><input type="radio" name="p2" value="a"> a) Interrogantes directrices que delimitan el alcance del instrumento para responder a los objetivos.</label></li>
+            <li><label><input type="radio" name="p2" value="b"> b) Preguntas abiertas sin relación directa con las variables de estudio.</label></li>
+            <li><label><input type="radio" name="p2" value="c"> c) Normas de control interno aplicadas únicamente por la administración universitaria.</label></li>
+          </ul>
+        </div>
+
+        <!-- Pregunta 3 -->
+        <div class="pregunta-box">
+          <p>3. ¿Qué característica principal define a los métodos de muestreo probabilístico?</p>
+          <ul class="opciones-list">
+            <li><label><input type="radio" name="p3" value="a"> b) La selección de sujetos depende enteramente de la conveniencia del investigador.</label></li>
+            <li><label><input type="radio" name="p3" value="b"> a) Cada miembro de la población tiene una probabilidad conocida y distinta de cero de ser elegido.</label></li>
+            <li><label><input type="radio" name="p3" value="c"> c) Se excluyen por completo los cálculos de error estándar y inferencia.</label></li>
+          </ul>
+        </div>
+
+        <!-- Pregunta 4 -->
+        <div class="pregunta-box">
+          <p>4. ¿En qué consiste el método de muestreo estratificado?</p>
+          <ul class="opciones-list">
+            <li><label><input type="radio" name="p4" value="a"> a) Dividir la población en subgrupos homogéneos y extraer muestras proporcionales de cada uno.</label></li>
+            <li><label><input type="radio" name="p4" value="b"> b) Seleccionar al azar únicamente al primer estudiante de una lista oficial.</label></li>
+            <li><label><input type="radio" name="p4" value="c"> c) Elegir conglomerados geográficos sin importar las características internas.</label></li>
+          </ul>
+        </div>
+
+        <!-- Pregunta 5 -->
+        <div class="pregunta-box">
+          <p>5. ¿Cuál es un motivo frecuente para utilizar el muestreo por conveniencia en contextos educativos?</p>
+          <ul class="opciones-list">
+            <li><label><input type="radio" name="p5" value="a"> a) La imposibilidad absoluta de aplicar cualquier tipo de estadística descriptiva.</label></li>
+            <li><label><input type="radio" name="p5" value="b"> b) Restricciones de tiempo, recursos o accesibilidad directa a grupos institucionales específicos.</label></li>
+            <li><label><input type="radio" name="p5" value="c"> c) La necesidad de eliminar el uso de herramientas digitales como Google Forms.</label></li>
+          </ul>
+        </div>
+
+        <button type="button" class="btn-descargar" onclick="calificarQuiz()" style="background-color: var(--color-institucional); margin-top: 10px;">Calificar Autoevaluación</button>
+      </form>
+
+      <div id="resultadoQuiz"></div>
+    </section>
+
+    <!-- SECCIÓN DE CIERRE Y ACCIONES -->
+    <section class="footer-section">
+      <button class="btn-descargar" onclick="descargarRecursos('Fase 2 - Recopilación de Datos')">Descargar Recursos de la Fase 2</button>
+      <br><br>
+      <button class="btn-completar" onclick="completarFase(2)">Completar Módulo y Desbloquear Fase 3</button>
+    </section>
+  </main>
+
+  <script src="js/main.js"></script>
+  <script>
+    function calificarQuiz() {
+      const respuestasCorrectas = {
+        p1: "b",
+        p2: "a",
+        p3: "b",
+        p4: "a",
+        p5: "b"
+      };
+
+      let aciertos = 0;
+      let totalPreguntas = 5;
+      let respondidasTodas = true;
+
+      for (let i = 1; i <= totalPreguntas; i++) {
+        const seleccionada = document.querySelector(`input[name="p${i}"]:checked`);
+        if (!seleccionada) {
+          respondidasTodas = false;
+          break;
+        }
+        if (seleccionada.value === respuestasCorrectas[`p${i}`]) {
+          aciertos++;
+        }
+      }
+
+      const contenedorResultado = document.getElementById("resultadoQuiz");
+
+      if (!respondidasTodas) {
+        contenedorResultado.style.color = "#FEB501";
+        contenedorResultado.innerHTML = "Por favor, responde todas las preguntas antes de calificar.";
+        return;
+      }
+
+      if (aciertos >= 4) {
+        contenedorResultado.style.color = "#0E25FF";
+        contenedorResultado.innerHTML = `¡Excelente trabajo! Has obtenido ${aciertos} de ${5} aciertos. Has dominado los conceptos de muestreo y recopilación.`;
+      } else {
+        contenedorResultado.style.color = "#173B59";
+        contenedorResultado.innerHTML = `Has obtenido ${aciertos} de ${5} aciertos. Te sugerimos repasar brevemente los apartados teóricos de arriba antes de continuar.`;
+      }
+    }
+  </script>
+</body>
+</html>

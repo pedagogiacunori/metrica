@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MÉTRICA - Inicio | Estadística Descriptiva</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <style>
+    .welcome-banner {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      margin-top: 20px;
+    }
+    .welcome-image-container {
+      width: 100%;
+      max-height: 380px;
+      overflow: hidden;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+    .welcome-image-container img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .welcome-text-box {
+      background-color: var(--color-fondo);
+      border-left: 5px solid var(--color-institucional);
+      padding: 20px;
+      border-radius: 0 10px 10px 0;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <nav>
+      <div class="brand-container">
+        <div class="brand-logos">
+          <img src="images/logo_usac.jpg" alt="USAC">
+          <img src="images/logo_cunori.png" alt="CUNORI">
+        </div>
+        <a href="index.html" class="logo">MÉTRICA</a>
+      </div>
+      <ul class="nav-links">
+        <li><a href="index.html" class="active">Inicio</a></li>
+        <li><a href="fase1.html" data-fase="1">Fase 1</a></li>
+        <li><a href="fase2.html" data-fase="2">Fase 2</a></li>
+        <li><a href="fase3.html" data-fase="3">Fase 3</a></li>
+        <li><a href="fase4.html" data-fase="4">Fase 4</a></li>
+        <li><a href="fase5.html" data-fase="5">Fase 5</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <h1>Módulos de Autoformación Digital - Estadística Descriptiva -</h1>
+    <h3 style="color: var(--color-texto); font-weight: 500; margin-bottom: 20px;">Carrera de Pedagogía y Administración Educativa "CUNORI"</h3>
+
+    <div class="welcome-banner">
+      <!-- Imagen ilustrativa de estudiantes universitarios -->
+      <div class="welcome-image-container">
+        <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=1200&q=80" alt="Estudiantes universitarios trabajando en equipo">
+      </div>
+
+      <div class="welcome-text-box">
+        <h2 style="color: var(--color-institucional); font-size: 1.3rem; margin-bottom: 10px;">¡Bienvenidos a este espacio virtual de aprendizaje!</h2>
+        <p>
+          Este sitio ha sido diseñado para acompañarte en el desarrollo del curso de Estadística Descriptiva, mediante una estructura organizada de recursos educativos digitales que favorecen el aprendizaje autónomo, la participación activa y la aplicación práctica de los conocimientos estadísticos.
+        </p>
+        <p style="margin-top: 10px;">
+          En este espacio encontrarás la guía programática del curso, contenidos educativos en formato PDF, docs, excel, videos explicativos, unidades temáticas, guías de estudio, ejercicios prácticos, laboratorios estadísticos y actividades de autoevaluación. Asimismo, podrás consultar el calendario de actividades y las fechas de entrega de trabajos, acceder a los espacios habilitados para presentar tus tareas y mantener comunicación con el docente para resolver dudas y recibir orientación académica.
+        </p>
+        <p style="margin-top: 10px;">
+          Los materiales y actividades están organizados de manera secuencial para facilitar la comprensión de los conceptos, la organización y el procesamiento de datos, la elaboración de tablas y gráficos, el cálculo de medidas estadísticas y la interpretación de resultados en situaciones contextualizadas.
+        </p>
+      </div>
+    </div>
+
+    <div style="text-align: center; margin-top: 35px;">
+      <a href="fase1.html" class="btn-completar">Comenzar Ruta de Aprendizaje (Fase 1)</a>
+    </div>
+  </main>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

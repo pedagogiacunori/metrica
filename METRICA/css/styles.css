@@ -1,0 +1,253 @@
+:root {
+  --color-principal: #BDF1FF;      /* 45% */
+  --color-fondo: #EAFBFF;          /* 20% */
+  --color-institucional: #0E25FF;  /* 15% */
+  --color-complementario: #75D7F5; /* 10% */
+  --color-acento: #FCE609;         /* 5% */
+  --color-naranja: #FEB501;        /* 5% */
+  --color-texto: #173B59;          /* Uso complementario */
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+  background-color: var(--color-fondo);
+  color: var(--color-texto);
+  line-height: 1.6;
+  padding-top: 100px; /* Espacio para el header fijo */
+}
+
+/* Encabezado Fijo con Logotipos */
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: var(--color-principal);
+  border-bottom: 3px solid var(--color-institucional);
+  z-index: 1000;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 10px 20px;
+}
+
+.brand-container {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.brand-logos {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.brand-logos img {
+  height: 45px;
+  width: 45px;
+  object-fit: contain;
+  border-radius: 50%;
+  background: #fff;
+  padding: 2px;
+  border: 1px solid var(--color-institucional);
+}
+
+.logo {
+  font-weight: 800;
+  font-size: 1.5rem;
+  color: var(--color-institucional);
+  text-decoration: none;
+  letter-spacing: 1px;
+}
+
+.nav-links {
+  display: flex;
+  list-style: none;
+  gap: 10px;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: var(--color-texto);
+  font-weight: 600;
+  padding: 8px 12px;
+  border-radius: 6px;
+  transition: all 0.3s ease;
+  font-size: 0.95rem;
+}
+
+.nav-links a:hover {
+  background-color: var(--color-complementario);
+  color: var(--color-institucional);
+}
+
+.nav-links a.active {
+  background-color: var(--color-institucional);
+  color: #ffffff;
+}
+
+.nav-links a.disabled {
+  opacity: 0.4;
+  pointer-events: none;
+  cursor: not-allowed;
+}
+
+/* Contenedor Principal */
+main {
+  max-width: 1000px;
+  margin: 20px auto;
+  padding: 30px;
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+}
+
+h1, h2, h3 {
+  color: var(--color-institucional);
+  margin-bottom: 15px;
+}
+
+p {
+  margin-bottom: 15px;
+}
+
+.btn-completar, .btn-descargar {
+  display: inline-block;
+  background-color: var(--color-naranja);
+  color: #ffffff;
+  border: none;
+  padding: 12px 24px;
+  font-size: 1rem;
+  font-weight: bold;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-top: 20px;
+  transition: background-color 0.3s ease;
+  text-decoration: none;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.btn-completar:hover, .btn-descargar:hover {
+  background-color: var(--color-acento);
+  color: var(--color-texto);
+}
+
+.footer-section {
+  text-align: center;
+  margin-top: 40px;
+  padding-top: 20px;
+  border-top: 2px dashed var(--color-complementario);
+}
+
+/* Estilo para el Diploma Oficial */
+.diploma-box {
+  border: 8px double var(--color-institucional);
+  padding: 40px;
+  text-align: center;
+  background: #fff;
+  border-radius: 12px;
+  margin-top: 25px;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+}
+
+.diploma-header-logos {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.diploma-header-logos img {
+  height: 70px;
+  object-fit: contain;
+}
+
+/* Responsivo para Celulares y Tablets */
+@media (max-width: 768px) {
+  nav {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .nav-links {
+    flex-wrap: wrap;
+    justify-content: center;
+    font-size: 0.85rem;
+  }
+
+  body {
+    padding-top: 140px;
+  }
+}
+
+/* --- CONFIGURACIÓN PARA IMPRESIÓN HORIZONTAL AUTOMÁTICA DEL DIPLOMA --- */
+@page {
+  size: landscape;
+  margin: 0;
+}
+
+@media print {
+  /* Ocultar elementos sobrantes */
+  header, 
+  main > h2, 
+  main > p, 
+  .diploma-form-container, 
+  .footer-section, 
+  .btn-completar {
+    display: none !important;
+  }
+
+  /* Resetear contenedores superiores */
+  html, body, main {
+    background: #ffffff !important;
+    box-shadow: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    height: 100% !important;
+  }
+
+  /* Estructura horizontal del diploma */
+  .diploma-box {
+    box-sizing: border-box !important;
+    border: 6px double #0E25FF !important;
+    width: 92vw !important;
+    height: 88vh !important;
+    margin: 4vh auto !important;
+    padding: 30px 40px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    background: #ffffff !important;
+    box-shadow: none !important;
+    page-break-after: avoid !important;
+    page-break-inside: avoid !important;
+  }
+
+  .diploma-header-logos {
+    width: 100% !important;
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+  }
+
+  .diploma-header-logos img {
+    height: 65px !important;
+    width: auto !important;
+  }
+}
