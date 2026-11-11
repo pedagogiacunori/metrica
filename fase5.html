@@ -3,13 +3,141 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Fase 5 - Evaluación y Constancia</title>
+  <title>MÉTRICA - Fase 5: Cierre del Proceso y Acreditación</title>
   <link rel="stylesheet" href="css/styles.css">
+  <style>
+    .diploma-form-container {
+      background: #f4f7fa;
+      border: 1px solid #75D7F5;
+      padding: 25px;
+      border-radius: 10px;
+      margin-top: 20px;
+    }
+    .diploma-form-container input {
+      width: 100%;
+      padding: 10px;
+      margin: 8px 0 15px 0;
+      border: 1px solid #75D7F5;
+      border-radius: 5px;
+      box-sizing: border-box;
+    }
+    
+    /* Estilos del Diploma en Orientación Horizontal Estricta */
+    .diploma-card {
+      width: 100%;
+      max-width: 950px;
+      aspect-ratio: 1.414 / 1;
+      background: #ffffff;
+      border: 10px solid #0E25FF;
+      padding: 40px;
+      margin: 30px auto;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+      border-radius: 12px;
+      box-sizing: border-box;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      text-align: center;
+      position: relative;
+    }
+
+    .diploma-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 2px solid #75D7F5;
+      padding-bottom: 15px;
+    }
+
+    .diploma-header img {
+      height: 55px;
+      object-fit: contain;
+    }
+
+    .diploma-nombre {
+      font-size: 1.8rem;
+      font-weight: bold;
+      color: #173B59;
+      margin: 15px 0;
+      border-bottom: 2px solid #FCE609;
+      display: inline-block;
+      padding-bottom: 5px;
+    }
+
+    .diploma-carne {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: #555555;
+      margin-bottom: 15px;
+    }
+
+    /* Espacios para Firmas Institucionales */
+    .diploma-firmas {
+      display: flex;
+      justify-content: space-around;
+      margin-top: 30px;
+      padding-top: 15px;
+    }
+
+    .firma-box {
+      width: 40%;
+      border-top: 2px solid #0E25FF;
+      text-align: center;
+      padding-top: 8px;
+    }
+
+    .firma-box p {
+      margin: 2px 0;
+      font-size: 0.9rem;
+      color: #333333;
+    }
+
+    .firma-box .cargo {
+      font-weight: bold;
+      color: #0E25FF;
+    }
+
+    /* CONFIGURACIÓN DE IMPRESIÓN LIMPIA Y HORIZONTAL */
+    @media print {
+      @page {
+        size: landscape; /* Fuerza la orientación horizontal en la impresora */
+        margin: 0;       /* Elimina los márgenes predeterminados para evitar textos extraños */
+      }
+      body * {
+        visibility: hidden;
+      }
+      #diplomaResultado, #diplomaResultado * {
+        visibility: visible;
+      }
+      #diplomaResultado {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100vw;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .diploma-card {
+        border: 8px solid #0E25FF !important;
+        box-shadow: none !important;
+        margin: 0 auto;
+        width: 100%;
+        max-width: 1000px;
+      }
+      /* Oculta el botón de imprimir dentro de la hoja impresa */
+      .no-print {
+        display: none !important;
+      }
+    }
+  </style>
 </head>
 <body>
 
   <header>
     <nav>
+      <button onclick="toggleDarkMode()" style="background: none; border: 1px solid var(--color-institucional); padding: 5px 10px; border-radius: 5px; cursor: pointer;" title="Cambiar Modo Oscuro/Claro">🌙/☀️</button>
       <div class="brand-container">
         <div class="brand-logos">
           <img src="images/logo_usac.jpg" alt="USAC">
@@ -30,27 +158,78 @@
 
   <main>
     <h2>Fase 5: Cierre del Proceso y Acreditación</h2>
-    <p>Has completado todas las etapas de la ruta de autoformación digital de Estadística Descriptiva. Ingresa tus datos para generar tu constancia institucional:</p>
+    <p>Has completado todas las etapas de la ruta de autoformación digital de Estadística Descriptiva. Ingresa tus datos para generar tu constancia institucional en formato horizontal:</p>
 
-    <!-- Contenedor del formulario separado -->
-    <div class="diploma-form-container" style="margin-top: 20px; background: #EAFBFF; padding: 20px; border-radius: 8px;">
+    <!-- Contenedor del formulario -->
+    <div class="diploma-form-container">
       <label for="nombreAlumno"><strong>Nombre Completo:</strong></label><br>
-      <input type="text" id="nombreAlumno" style="width: 100%; padding: 10px; margin: 8px 0 15px 0; border: 1px solid #75D7F5; border-radius: 5px;" placeholder="Ej. Jaqueline Vanessa Estrada Chegüén"><br>
+      <input type="text" id="nombreAlumno" placeholder="Ej. Jaqueline Vanessa Estrada Chegüén"><br>
       
       <label for="carneAlumno"><strong>Número de Carné Académico:</strong></label><br>
-      <input type="text" id="carneAlumno" style="width: 100%; padding: 10px; margin: 8px 0 15px 0; border: 1px solid #75D7F5; border-radius: 5px;" placeholder="Ej. 201844305">
+      <input type="text" id="carneAlumno" placeholder="Ej. 201844305"><br>
       
-      <button class="btn-completar" onclick="generarDiploma()">Generar Constancia Oficial</button>
+      <button class="btn-completar" onclick="generarDiplomaHorizontal()" style="background-color: #0E25FF; color: white; padding: 12px 25px; border: none; border-radius: 6px; font-weight: bold; cursor: pointer;">Generar Constancia Oficial</button>
     </div>
 
-    <!-- Aquí se inyecta únicamente el diploma -->
+    <!-- Contenedor donde se inyecta el diploma horizontal -->
     <div id="diplomaResultado"></div>
 
-    <section class="footer-section">
+    <section class="footer-section" style="text-align: center; margin-top: 40px;">
       <button class="btn-descargar" onclick="descargarRecursos('Fase 5 - Evaluación')">Descargar Recursos Globales</button>
     </section>
   </main>
 
   <script src="js/main.js"></script>
+  <script src="js/preloader.js"></script>
+
+  <script>
+    function generarDiplomaHorizontal() {
+      const nombre = document.getElementById("nombreAlumno").value.trim();
+      const carne = document.getElementById("carneAlumno").value.trim();
+      const resultado = document.getElementById("diplomaResultado");
+
+      if (nombre === "" || carne === "") {
+        alert("Por favor, ingresa tu nombre completo y número de carné académico.");
+        return;
+      }
+
+      resultado.innerHTML = `
+        <div class="diploma-card">
+          <div class="diploma-header">
+            <img src="images/logo_usac.jpg" alt="USAC">
+            <div>
+              <p style="margin: 0; font-weight: bold; font-size: 0.85rem; color: #173B59;">UNIVERSIDAD DE SAN CARLOS DE GUATEMALA</p>
+              <p style="margin: 0; font-size: 0.8rem; color: #555;">CENTRO UNIVERSITARIO DE ORIENTE - CUNORI</p>
+            </div>
+            <img src="images/logo_cunori.png" alt="CUNORI">
+          </div>
+
+          <div class="diploma-content">
+            <p style="font-size: 0.95rem; text-transform: uppercase; letter-spacing: 2px; color: #555; margin-top: 10px;">Otorga la presente constancia a:</p>
+            <div class="diploma-nombre">${nombre}</div>
+            <div class="diploma-carne">Carné Académico: ${carne}</div>
+            <p style="font-size: 0.95rem; max-width: 750px; margin: 0 auto; line-height: 1.5;">
+              Por haber completado satisfactoriamente los Módulos de Autoformación Digital del curso de <strong>Estadística Descriptiva</strong>, correspondientes a la carrera de Pedagogía y Administración Educativa, cumpliendo con los estándares analíticos y prácticos establecidos.
+            </p>
+          </div>
+
+          <div class="diploma-firmas">
+            <div class="firma-box">
+              <p class="cargo">Coordinador de Carrera</p>
+              <p>USAC - CUNORI</p>
+            </div>
+            <div class="firma-box">
+              <p class="cargo">Coordinador Académico</p>
+              <p>USAC - CUNORI</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="no-print" style="text-align: center; margin-top: 20px;">
+          <button onclick="window.print()" style="background-color: #173B59; color: white; padding: 12px 25px; border: none; border-radius: 6px; font-weight: bold; cursor: pointer;">Imprimir o Guardar Constancia en PDF</button>
+        </div>
+      `;
+    }
+  </script>
 </body>
 </html>

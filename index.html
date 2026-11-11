@@ -5,7 +5,72 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>MÉTRICA - Inicio | Estadística Descriptiva</title>
   <link rel="stylesheet" href="css/styles.css">
+  
   <style>
+    /* ----------------------------------------------
+       ESTILOS DE LA PANTALLA DE CARGA (PRELOADER)
+    ---------------------------------------------- */
+    #preloader {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100vh;
+      background-color: #ffffff;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      z-index: 99999; /* Asegura que se dibuje por encima de todo */
+      transition: opacity 0.6s ease, visibility 0.6s ease;
+    }
+
+    .preloader-content {
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+    }
+
+    /* Animación del logotipo */
+    .preloader-logo {
+      width: 150px;
+      height: auto;
+      animation: pulseLogo 1.8s infinite ease-in-out;
+    }
+
+    /* Anillo/Barra de carga giratorio en tus colores */
+    .spinner {
+      width: 42px;
+      height: 42px;
+      border: 4px solid #75D7F5; /* celeste académico */
+      border-top: 4px solid #0E25FF; /* azul institucional */
+      border-right: 4px solid #FCE609; /* amarillo dorado */
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+    }
+
+    /* Clase para ocultar el preloader suavemente */
+    #preloader.hidden {
+      opacity: 0;
+      visibility: hidden;
+    }
+
+    /* Keyframes para las animaciones */
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    @keyframes pulseLogo {
+      0%, 100% { transform: scale(1); opacity: 0.9; }
+      50% { transform: scale(1.05); opacity: 1; }
+    }
+
+    /* ----------------------------------------------
+       ESTILOS EXISTENTES DE TU INDEX
+    ---------------------------------------------- */
     .welcome-banner {
       display: flex;
       flex-direction: column;
@@ -34,8 +99,17 @@
 </head>
 <body>
 
+  <!-- PANTALLA DE CARGA (PRELOADER) -->
+  <div id="preloader">
+    <div class="preloader-content">
+      <img src="images/logo.png" alt="MÉTRICA Logo" class="preloader-logo">
+      <div class="spinner"></div>
+    </div>
+  </div>
+
   <header>
     <nav>
+      <button onclick="toggleDarkMode()" style="background: none; border: 1px solid var(--color-institucional); padding: 5px 10px; border-radius: 5px; cursor: pointer;" title="Cambiar Modo Oscuro/Claro">🌙/☀️</button>
       <div class="brand-container">
         <div class="brand-logos">
           <img src="images/logo_usac.jpg" alt="USAC">
@@ -59,7 +133,6 @@
     <h3 style="color: var(--color-texto); font-weight: 500; margin-bottom: 20px;">Carrera de Pedagogía y Administración Educativa "CUNORI"</h3>
 
     <div class="welcome-banner">
-      <!-- Imagen ilustrativa de estudiantes universitarios -->
       <div class="welcome-image-container">
         <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=1200&q=80" alt="Estudiantes universitarios trabajando en equipo">
       </div>
@@ -84,5 +157,14 @@
   </main>
 
   <script src="js/main.js"></script>
+
+  <!-- SCRIPT PARA OCULTAR EL PRELOADER -->
+  <script>
+    window.addEventListener('load', () => {
+      const preloader = document.getElementById('preloader');
+      // Oculta la pantalla cuando la página termine de cargar
+      preloader.classList.add('hidden');
+    });
+  </script>
 </body>
 </html>

@@ -3,13 +3,78 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Fase 1 - Exploración y Motivación</title>
+  <title>MÉTRICA - Fase 3: Procesamiento y Análisis</title>
   <link rel="stylesheet" href="css/styles.css">
+  <style>
+    .quiz-container {
+      background-color: var(--color-fondo);
+      border: 2px solid var(--color-complementario);
+      padding: 25px;
+      border-radius: 10px;
+      margin: 30px 0;
+    }
+    .pregunta-box {
+      margin-bottom: 20px;
+    }
+    .pregunta-box p {
+      font-weight: 600;
+      color: var(--color-texto);
+    }
+    .opciones-list {
+      list-style: none;
+      margin-top: 8px;
+    }
+    .opciones-list li {
+      margin-bottom: 6px;
+    }
+    #resultadoQuiz {
+      font-weight: bold;
+      font-size: 1.1rem;
+      margin-top: 15px;
+      text-align: center;
+    }
+    .tabla-academica {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 15px 0;
+    }
+    .tabla-academica th, .tabla-academica td {
+      border: 1px solid var(--color-complementario);
+      padding: 10px;
+      text-align: left;
+    }
+    .tabla-academica th {
+      background-color: var(--color-principal);
+      color: var(--color-institucional);
+    }
+    .resumen-ejecutivo {
+      background-color: var(--color-fondo);
+      border-left: 5px solid var(--color-institucional);
+      padding: 15px 20px;
+      border-radius: 0 8px 8px 0;
+      margin: 20px 0;
+    }
+    .calc-container {
+      background: var(--color-fondo);
+      border: 2px dashed var(--color-institucional);
+      padding: 25px;
+      border-radius: 10px;
+      margin: 30px 0;
+    }
+    .ejercicio-box {
+      background-color: var(--color-fondo);
+      border: 1px solid var(--color-complementario);
+      padding: 20px;
+      border-radius: 8px;
+      margin: 20px 0;
+    }
+  </style>
 </head>
 <body>
 
   <header>
     <nav>
+      <button onclick="toggleDarkMode()" style="background: none; border: 1px solid var(--color-institucional); padding: 5px 10px; border-radius: 5px; cursor: pointer;" title="Cambiar Modo Oscuro/Claro">🌙/☀️</button>
       <div class="brand-container">
         <div class="brand-logos">
           <img src="images/logo_usac.jpg" alt="USAC">
@@ -29,16 +94,428 @@
   </header>
 
   <main>
-    <h2>Fase 3: Exploración y Motivación</h2>
-    <p>En este primer módulo abordarás los fundamentos conceptuales de la estadística, su evolución histórica en la aritmética política y las características de la investigación descriptiva aplicada al campo educativo del CUNORI.</p>
+    <h2>Fase 3: Procesamiento y Análisis Estadístico</h2>
+    <p style="font-style: italic; color: var(--color-texto);">Tratamiento de Datos Simples, Agrupados en Intervalos, Medidas de Tendencia Central, Posición y Dispersión</p>
 
+    <div class="resumen-ejecutivo">
+      <h3 style="color: var(--color-institucional); font-size: 1.1rem; margin-bottom: 5px;">SÍNTESIS METODOLÓGICA</h3>
+      <p style="margin-bottom: 0;">
+        Este documento presenta la guía metodológica completa para la organización de datos cuantitativos en bruto[cite: 3], construcción de tablas de frecuencias simples e interválicas[cite: 3], fórmulas estadísticas desarrolladas[cite: 3], medidas de posición no central y de dispersión[cite: 3], aplicadas al ámbito educativo.
+      </p>
+    </div>
+
+    <!-- Barra de progreso -->
+    <div style="margin: 15px 0;">
+      <span id="progressText" style="font-size: 0.85rem; font-weight: 600;"></span>
+      <div class="progress-container">
+        <div id="progressFill" class="progress-bar-fill"></div>
+      </div>
+    </div>
+
+    <hr style="border: 0; border-top: 1px solid var(--color-complementario); margin: 25px 0;">
+
+    <!-- NIVEL 1 -->
+    <article class="nivel-container">
+      <h3 style="color: var(--color-institucional); font-size: 1.4rem;">
+        ▸ Nivel 1: Distribución de Frecuencias y Medidas de Tendencia Central
+      </h3>
+
+      <section style="margin-top: 15px;">
+        <h4>1. Ordenamiento de Datos Cuantitativos en Bruto</h4>
+        <p>
+          Los datos cuantitativos en bruto representan el conjunto de observaciones directas recopiladas en el campo sin ningún tipo de procesamiento o clasificación previa[cite: 3]. El primer paso analítico consiste en su ordenamiento ascendente o descendente para identificar el valor mínimo ($X_{min}$), el valor máximo ($X_{max}$) y la amplitud total de la variable[cite: 3].
+        </p>
+      </section>
+
+      <section style="margin-top: 20px;">
+        <h4>2. Construcción de Tablas de Frecuencias para Datos Simples</h4>
+        <p>Cuando la variable es discreta o presenta un número reducido de valores distintos, se construye una distribución de frecuencias simples[cite: 3]:</p>
+        <ul style="margin-left: 25px; margin-bottom: 15px;">
+          <li><strong>Frecuencia Absoluta ($f_i$):</strong> Número de veces que se repite el valor $x_i$ en la muestra[cite: 3].</li>
+          <li><strong>Frecuencia Relativa ($h_i$):</strong> Proporción de observaciones correspondientes al valor $x_i$ respecto al total $N$ ($h_i = f_i / N$)[cite: 3]. En porcentaje: $\%_i = h_i \times 100$[cite: 3].</li>
+          <li><strong>Frecuencia Acumulada ($F_i$):</strong> Suma acumulada progresiva de las frecuencias absolutas hasta la $i$-ésima categoría ($F_i = \sum f_k$)[cite: 3].</li>
+        </ul>
+      </section>
+
+      <section style="margin-top: 20px;">
+        <h4>3. Agrupación de Datos en Intervalos de Amplitud Constante</h4>
+        <p>Cuando la variable es continua o la muestra abarca un amplio rango numérico, se agrupan los datos en $K$ intervalos de clase $[L_{inf}, L_{sup})$ de amplitud constante ($A$)[cite: 3]:</p>
+        <ol style="margin-left: 25px; margin-bottom: 15px;">
+          <li><strong>Paso 1:</strong> Determinar el Rango Total ($R = X_{max} - X_{min}$)[cite: 3].</li>
+          <li><strong>Paso 2:</strong> Calcular el Número de Intervalos ($K$) [Regla de Sturges: $K = 1 + 3.322 \cdot \log_{10}(N)$][cite: 3].</li>
+          <li><strong>Paso 3:</strong> Calcular el Ancho de Clase / Amplitud Constante ($A = R / K$, redondeado al alza)[cite: 3].</li>
+          <li><strong>Paso 4:</strong> Determinar la Marca de Clase / Punto Medio ($X_i = (L_{inf} + L_{sup}) / 2$)[cite: 3].</li>
+        </ol>
+      </section>
+
+      <section style="margin-top: 20px;">
+        <h4>4. Cálculo e Interpretación de Medidas de Tendencia Central</h4>
+        <p>Las medidas de tendencia central resumen el centro o punto focal alrededor del cual se distribuye un conjunto de datos[cite: 3]:</p>
+        <table class="tabla-academica">
+          <thead>
+            <tr>
+              <th>Medida</th>
+              <th>Datos Simples (Sin Agrupar)</th>
+              <th>Datos Agrupados en Intervalos</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Media Aritmética ($\bar{X}$)</strong></td>
+              <td>$\bar{X} = \frac{\sum x_i}{N}$[cite: 3]</td>
+              <td>$\bar{X} = \frac{\sum f_i \cdot X_i}{N}$[cite: 3]</td>
+            </tr>
+            <tr>
+              <td><strong>Mediana ($Me$)</strong></td>
+              <td>Posición $\frac{N + 1}{2}$ en datos ordenados[cite: 3]</td>
+              <td>$Me = L_i + \left[ \frac{\frac{N}{2} - F_{i-1}}{f_i} \right] \cdot A$[cite: 3]</td>
+            </tr>
+            <tr>
+              <td><strong>Moda ($Mo$)</strong></td>
+              <td>Valor o valores con mayor $f_i$[cite: 3]</td>
+              <td>$Mo = L_i + \left[ \frac{d_1}{d_1 + d_2} \right] \cdot A$[cite: 3]</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <div class="ejercicio-box">
+        <h4 style="color: var(--color-institucional); margin-bottom: 8px;">✏️ Ejercicio Práctico Nivel 1</h4>
+        <p style="margin-bottom: 0;">
+          Con el siguiente conjunto de notas de 10 alumnos: <strong>[70, 85, 90, 70, 60, 75, 80, 90, 95, 80]</strong>[cite: 3], calcula la media aritmética, la mediana y la moda utilizando la calculadora interactiva de abajo o tu cuaderno de trabajo.
+        </p>
+      </div>
+    </article>
+
+    <hr style="border: 0; border-top: 1px solid var(--color-complementario); margin: 30px 0;">
+
+    <!-- NIVEL 2 -->
+    <article class="nivel-container">
+      <h3 style="color: var(--color-institucional); font-size: 1.4rem;">
+        ▸ Nivel 2: Medidas de Posición No Central y Dispersión Estadística
+      </h3>
+
+      <section style="margin-top: 15px;">
+        <h4>1. Medidas de Posición No Central (Cuantiles)</h4>
+        <p>
+          Dividen una serie de datos previamente ordenados en partes de igual frecuencia acumulada[cite: 3]:
+        </p>
+        <ul style="margin-left: 25px; margin-bottom: 15px;">
+          <li><strong>Cuartiles ($Q_k$):</strong> Dividen la distribución en 4 partes iguales (25%, 50% y 75%)[cite: 3]. $Q_2$ equivale exactamente a la Mediana[cite: 3].</li>
+          <li><strong>Deciles ($D_k$):</strong> Dividen la muestra en 10 partes iguales (intervalos del 10%)[cite: 3].</li>
+          <li><strong>Percentiles ($P_k$):</strong> Dividen el conjunto en 100 partes iguales (cada uno al 1% acumulado)[cite: 3].</li>
+        </ul>
+        <p><strong>Fórmulas de posición (Datos Simples):</strong></p>
+        <ul style="margin-left: 25px; margin-bottom: 15px;">
+          <li>Posición de $Q_k = \frac{k \cdot (N + 1)}{4}$[cite: 3]</li>
+          <li>Posición de $D_k = \frac{k \cdot (N + 1)}{10}$[cite: 3]</li>
+          <li>Posición de $P_k = \frac{k \cdot (N + 1)}{100}$[cite: 3]</li>
+        </ul>
+      </section>
+
+      <section style="margin-top: 20px;">
+        <h4>2. Medidas de Dispersión o Variabilidad</h4>
+        <p>Cuantifican el grado de alejamiento o concentración de los datos con respecto al promedio[cite: 3]:</p>
+        <table class="tabla-academica">
+          <thead>
+            <tr>
+              <th>Medida de Dispersión</th>
+              <th>Fórmula Muestral</th>
+              <th>Interpretación Analítica</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Desviación Media (DM)</strong></td>
+              <td>$DM = \frac{\sum |x_i - \bar{X}|}{N}$[cite: 3]</td>
+              <td>Promedio de las distancias absolutas de cada dato respecto a la media[cite: 3].</td>
+            </tr>
+            <tr>
+              <td><strong>Varianza Muestral ($S^2$)</strong></td>
+              <td>$S^2 = \frac{\sum (x_i - \bar{X})^2}{N - 1}$[cite: 3]</td>
+              <td>Promedio de las desviaciones al cuadrado[cite: 3].</td>
+            </tr>
+            <tr>
+              <td><strong>Desviación Estándar ($S$)</strong></td>
+              <td>$S = \sqrt{S^2}$[cite: 3]</td>
+              <td>Expresa la variabilidad en las mismas unidades originales[cite: 3].</td>
+            </tr>
+            <tr>
+              <td><strong>Coeficiente de Variación ($CV$)</strong></td>
+              <td>$CV = \left(\frac{S}{\bar{X}}\right) \cdot 100\%$[cite: 3]</td>
+              <td>Permite comparar grupos ($CV < 15\%$ homogéneo; $CV > 30\%$ heterogéneo)[cite: 3].</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+    </article>
+
+    <!-- CALCULADORA ESTADÍSTICA INTERACTIVA -->
+    <section class="calc-container">
+      <h3 style="color: var(--color-institucional); margin-bottom: 10px;">🧮 Calculadora Estadística Interactiva en Vivo</h3>
+      <p>Ingresa una serie de números separados por comas (ej. 70, 85, 90, 70, 60, 75, 80, 90, 95, 80) para verificar tus cálculos:</p>
+      
+      <div style="margin-top: 15px;">
+        <input type="text" id="datosEstadisticos" style="width: 100%; padding: 10px; border: 1px solid var(--color-complementario); border-radius: 5px;" placeholder="Ej. 70, 85, 90, 70, 60, 75, 80, 90, 95, 80">
+        <button class="btn-completar" onclick="calcularEstadisticasAvanzadas()" style="margin-top: 10px;">Calificar / Calcular Indicadores</button>
+      </div>
+
+      <div id="resultadosCalculadora"></div>
+    </section>
+
+    <!-- VIDEOS DE APOYO OFICIALES (UNAM) -->
+    <article class="nivel-container" style="background-color: var(--color-fondo); border: 1px solid var(--color-complementario); padding: 25px; border-radius: 10px; margin: 30px 0;">
+      <h3 style="color: var(--color-institucional); font-size: 1.3rem; margin-bottom: 15px;">
+        📺 Recursos Audiovisuales de Apoyo (Facultad de Ciencias, UNAM)
+      </h3>
+      <p style="margin-bottom: 20px;">
+        Visualiza las siguientes video-cápsulas académicas recomendadas para afianzar el cálculo de medidas de tendencia central y dispersión:
+      </p>
+
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 15px;">
+        <div style="border: 1px solid var(--color-complementario); padding: 15px; border-radius: 8px;">
+          <h4 style="color: var(--color-institucional); font-size: 1rem; margin-bottom: 6px;">Cálculo de la Media</h4>
+          <a href="https://www.youtube.com/watch?v=ywOC5OLT-sE" target="_blank" style="color: var(--color-institucional); font-weight: bold; text-decoration: underline;">Ver Video ▶</a>
+        </div>
+        <div style="border: 1px solid var(--color-complementario); padding: 15px; border-radius: 8px;">
+          <h4 style="color: var(--color-institucional); font-size: 1rem; margin-bottom: 6px;">Cálculo de la Mediana</h4>
+          <a href="https://www.youtube.com/watch?v=E9SUdlTnuYk" target="_blank" style="color: var(--color-institucional); font-weight: bold; text-decoration: underline;">Ver Video ▶</a>
+        </div>
+        <div style="border: 1px solid var(--color-complementario); padding: 15px; border-radius: 8px;">
+          <h4 style="color: var(--color-institucional); font-size: 1rem; margin-bottom: 6px;">Varianza Muestral</h4>
+          <a href="https://www.youtube.com/watch?v=JjZM6Yq5-n0" target="_blank" style="color: var(--color-institucional); font-weight: bold; text-decoration: underline;">Ver Video ▶</a>
+        </div>
+        <div style="border: 1px solid var(--color-complementario); padding: 15px; border-radius: 8px;">
+          <h4 style="color: var(--color-institucional); font-size: 1rem; margin-bottom: 6px;">Desviación Estándar</h4>
+          <a href="https://www.youtube.com/watch?v=78zrAozAx2w" target="_blank" style="color: var(--color-institucional); font-weight: bold; text-decoration: underline;">Ver Video ▶</a>
+        </div>
+      </div>
+    </article>
+
+    <hr style="border: 0; border-top: 1px solid var(--color-complementario); margin: 30px 0;">
+
+    <!-- QUIZ AUTOCALIFICABLE DE 10 PREGUNTAS (FASE 3) -->
+    <section class="quiz-container">
+      <h3 style="color: var(--color-institucional); margin-bottom: 15px;">Autoevaluación Integral de la Fase 3 (Nivel 1 y Nivel 2)</h3>
+      <p>Responde las siguientes 10 preguntas de opción múltiple:</p>
+
+      <form id="quizForm" style="margin-top: 20px;">
+        <!-- P1 -->
+        <div class="pregunta-box">
+          <p>1. Al construir una tabla de frecuencias para N = 40 casos, ¿cuál es el número aproximado de intervalos (K) con la Regla de Sturges?</p>
+          <ul class="opciones-list">
+            <li><label><input type="radio" name="p1" value="a"> a) 4 intervalos</label></li>
+            <li><label><input type="radio" name="p1" value="b"> b) 6 intervalos[cite: 3]</label></li>
+            <li><label><input type="radio" name="p1" value="c"> c) 10 intervalos</label></li>
+          </ul>
+        </div>
+
+        <!-- P2 -->
+        <div class="pregunta-box">
+          <p>2. ¿Qué nombre recibe el punto medio de un intervalo de clase $(L_{inf} + L_{sup}) / 2$?</p>
+          <ul class="opciones-list">
+            <li><label><input type="radio" name="p2" value="a"> a) Frecuencia relativa ($h_i$)</label></li>
+            <li><label><input type="radio" name="p2" value="b"> b) Marca de clase ($X_i$)[cite: 3]</label></li>
+            <li><label><input type="radio" name="p2" value="c"> c) Rango intercuartílico</label></li>
+          </ul>
+        </div>
+
+        <!-- P3 -->
+        <div class="pregunta-box">
+          <p>3. Si en un conjunto de datos se cumple que Media (78.75) &lt; Mediana (79.61) &lt; Moda (80.55), ¿qué sesgo presenta la distribución?</p>
+          <ul class="opciones-list">
+            <li><label><input type="radio" name="p3" value="a"> a) Asimetría positiva (sesgo a la derecha)</label></li>
+            <li><label><input type="radio" name="p3" value="b"> b) Asimetría negativa (sesgo a la izquierda)[cite: 3]</label></li>
+            <li><label><input type="radio" name="p3" value="c"> c) Distribución simétrica perfecta</label></li>
+          </ul>
+        </div>
+
+        <!-- P4 -->
+        <div class="pregunta-box">
+          <p>4. Para el conjunto de notas simples: [70, 85, 90, 70, 60, 75, 80, 90, 95, 80], ¿cuál es la media aritmética ($\bar{X}$)?</p>
+          <ul class="opciones-list">
+            <li><label><input type="radio" name="p4" value="a"> a) 75.0</label></li>
+            <li><label><input type="radio" name="p4" value="b"> b) 79.0[cite: 3]</label></li>
+            <li><label><input type="radio" name="p4" value="c"> c) 80.0</label></li>
+          </ul>
+        </div>
+
+        <!-- P5 -->
+        <div class="pregunta-box">
+          <p>5. ¿Cuál es la fórmula correcta para calcular la Mediana ($Me$) en datos agrupados en intervalos?</p>
+          <ul class="opciones-list">
+            <li><label><input type="radio" name="p5" value="a"> a) $Me = L_i + \left[ \frac{\frac{N}{2} - F_{i-1}}{f_i} \right] \cdot A$[cite: 3]</label></li>
+            <li><label><input type="radio" name="p5" value="b"> b) $Me = \frac{\sum f_i \cdot X_i}{N}$</label></li>
+            <li><label><input type="radio" name="p5" value="c"> c) $Me = L_i + \left[ \frac{d_1}{d_1 + d_2} \right] \cdot A$</label></li>
+          </ul>
+        </div>
+
+        <!-- P6 -->
+        <div class="pregunta-box">
+          <p>6. ¿Qué medida de posición no central equivale exactamente al valor de la Mediana (50% acumulado)?</p>
+          <ul class="opciones-list">
+            <li><label><input type="radio" name="p6" value="a"> a) Primer Cuartil ($Q_1$)</label></li>
+            <li><label><input type="radio" name="p6" value="b"> b) Decil 5 ($D_5$) o Cuartil 2 ($Q_2$) o Percentil 50 ($P_{50}$)[cite: 3]</label></li>
+            <li><label><input type="radio" name="p6" value="c"> c) Tercer Cuartil ($Q_3$)</label></li>
+          </ul>
+        </div>
+
+        <!-- P7 -->
+        <div class="pregunta-box">
+          <p>7. ¿Qué indica un Coeficiente de Variación ($CV$) inferior al 15% en un grupo de estudiantes?</p>
+          <ul class="opciones-list">
+            <li><label><input type="radio" name="p7" value="a"> a) Rendimiento altamente heterogéneo y disperso</label></li>
+            <li><label><input type="radio" name="p7" value="b"> b) Rendimiento homogéneo y compacto alrededor de la media[cite: 3]</label></li>
+            <li><label><input type="radio" name="p7" value="c"> c) Margen de error muestral inaceptable</label></li>
+          </ul>
+        </div>
+
+        <!-- P8 -->
+        <div class="pregunta-box">
+          <p>8. Si para $N = 10$ datos la suma de las desviaciones al cuadrado $\sum(x_i - \bar{X})^2 = 1072.50$, ¿cuál es la varianza muestral ($S^2$)?</p>
+          <ul class="opciones-list">
+            <li><label><input type="radio" name="p8" value="a"> a) 107.25 pts²</label></li>
+            <li><label><input type="radio" name="p8" value="b"> b) 119.17 pts²[cite: 3]</label></li>
+            <li><label><input type="radio" name="p8" value="c"> c) 10.92 pts²</label></li>
+          </ul>
+        </div>
+
+        <!-- P9 -->
+        <div class="pregunta-box">
+          <p>9. Al comparar dos grupos con igual promedio ($\bar{X}=70$), el Grupo A tiene $S=3.53$ ($CV=5.04\%$) y el Grupo B tiene $S=14.14$ ($CV=20.20\%$). ¿Qué conclusión es correcta?</p>
+          <ul class="opciones-list">
+            <li><label><input type="radio" name="p9" value="a"> a) El Grupo A es homogéneo y el Grupo B es heterogéneo[cite: 3]</label></li>
+            <li><label><input type="radio" name="p9" value="b"> b) El Grupo B es más uniforme que el Grupo A</label></li>
+            <li><label><input type="radio" name="p9" value="c"> c) Ambos grupos responden exactamente igual</label></li>
+          </ul>
+        </div>
+
+        <!-- P10 -->
+        <div class="pregunta-box">
+          <p>10. ¿Cuál es la principal ventaja de la Desviación Estándar ($S$) sobre la Varianza ($S^2$)?</p>
+          <ul class="opciones-list">
+            <li><label><input type="radio" name="p10" value="a"> a) Elimina la necesidad de calcular la media aritmética</label></li>
+            <li><label><input type="radio" name="p10" value="b"> b) Se expresa en las mismas unidades originales de la variable (puntos)[cite: 3]</label></li>
+            <li><label><input type="radio" name="p10" value="c"> c) No se ve afectada por valores extremos</label></li>
+          </ul>
+        </div>
+
+        <button type="button" class="btn-descargar" onclick="calificarQuizFase3()" style="background-color: var(--color-institucional); margin-top: 10px;">Calificar Autoevaluación</button>
+      </form>
+
+      <div id="resultadoQuiz"></div>
+    </section>
+
+    <!-- SECCIÓN DE CIERRE Y ACCIONES -->
     <section class="footer-section">
-      <button class="btn-descargar" onclick="descargarRecursos('Fase 3 - Exploración')">Descargar Recursos de la Fase</button>
+      <button class="btn-descargar" onclick="descargarRecursos('Fase 3 - Procesamiento y Análisis')">Descargar Recursos de la Fase 3</button>
       <br><br>
       <button class="btn-completar" onclick="completarFase(3)">Completar Módulo y Desbloquear Fase 4</button>
     </section>
   </main>
 
   <script src="js/main.js"></script>
+  <script>
+    function calificarQuizFase3() {
+      const respuestasCorrectas = { p1: "b", p2: "b", p3: "b", p4: "b", p5: "a", p6: "b", p7: "b", p8: "b", p9: "a", p10: "b" };
+      let aciertos = 0;
+      let totalPreguntas = 10;
+      let respondidasTodas = true;
+
+      for (let i = 1; i <= totalPreguntas; i++) {
+        const seleccionada = document.querySelector(`input[name="p${i}"]:checked`);
+        if (!seleccionada) {
+          respondidasTodas = false;
+          break;
+        }
+        if (seleccionada.value === respuestasCorrectas[`p${i}`]) {
+          aciertos++;
+        }
+      }
+
+      const contenedorResultado = document.getElementById("resultadoQuiz");
+
+      if (!respondidasTodas) {
+        contenedorResultado.style.color = "#FEB501";
+        contenedorResultado.innerHTML = "Por favor, responde todas las preguntas antes de calificar.";
+        return;
+      }
+
+      if (aciertos >= 8) {
+        contenedorResultado.style.color = "#0E25FF";
+        contenedorResultado.innerHTML = `¡Excelente trabajo! Has obtenido ${aciertos} de ${totalPreguntas} aciertos. Dominas el procesamiento estadístico y la dispersión.`;
+      } else {
+        contenedorResultado.style.color = "#173B59";
+        contenedorResultado.innerHTML = `Has obtenido ${aciertos} de ${totalPreguntas} aciertos. Te sugerimos revisar los conceptos teóricos y fórmulas antes de avanzar.`;
+      }
+    }
+
+    // Calculadora avanzada para Fase 3 (Media, Mediana, Moda, Varianza, Desviación Estándar y CV)
+    function calcularEstadisticasAvanzadas() {
+      const inputData = document.getElementById("datosEstadisticos").value;
+      const arrayNumeros = inputData
+        .split(",")
+        .map(num => parseFloat(num.trim()))
+        .filter(num => !isNaN(num));
+
+      const contenedorResultados = document.getElementById("resultadosCalculadora");
+
+      if (arrayNumeros.length === 0) {
+        contenedorResultados.style.color = "#FEB501";
+        contenedorResultados.innerHTML = "Ingresa números válidos separados por comas.";
+        return;
+      }
+
+      arrayNumeros.sort((a, b) => a - b);
+      const n = arrayNumeros.length;
+
+      // Media
+      const suma = arrayNumeros.reduce((acc, val) => acc + val, 0);
+      const media = suma / n;
+
+      // Mediana
+      let mediana;
+      const mitad = Math.floor(n / 2);
+      if (n % 2 === 0) {
+        mediana = (arrayNumeros[mitad - 1] + arrayNumeros[mitad]) / 2;
+      } else {
+        mediana = arrayNumeros[mitad];
+      }
+
+      // Moda
+      const frecuencia = {};
+      let maxFrec = 0;
+      arrayNumeros.forEach(num => {
+        frecuencia[num] = (frecuencia[num] || 0) + 1;
+        if (frecuencia[num] > maxFrec) maxFrec = frecuencia[num];
+      });
+      let modas = [];
+      for (const num in frecuencia) {
+        if (frecuencia[num] === maxFrec && maxFrec > 1) modas.push(num);
+      }
+      const textoModa = modas.length > 0 ? modas.join(", ") : "Sin moda (Amodal)";
+
+      // Varianza y Desviación Estándar Muestral
+      let sumaCuadrados = arrayNumeros.reduce((acc, val) => acc + Math.pow(val - media, 2), 0);
+      let varianza = n > 1 ? sumaCuadrados / (n - 1) : 0;
+      let desvEst = Math.sqrt(varianza);
+      let cv = media !== 0 ? (desvEst / media) * 100 : 0;
+
+      contenedorResultados.style.color = "var(--color-texto)";
+      contenedorResultados.innerHTML = `
+        <div style="background: var(--color-fondo); border: 2px solid var(--color-complementario); padding: 20px; border-radius: 8px; margin-top: 15px;">
+          <h4 style="color: var(--color-institucional); margin-bottom: 10px;">📊 Resultados Estadísticos Calculados:</h4>
+          <p><strong>Total de Datos (N):</strong> ${n}</p>
+          <p><strong>Media Aritmética (X̄):</strong> ${media.toFixed(2)}</p>
+          <p><strong>Mediana (Me):</strong> ${mediana.toFixed(2)}</p>
+          <p><strong>Moda (Mo):</strong> ${textoModa}</p>
+          <p><strong>Varianza Muestral (S²):</strong> ${varianza.toFixed(2)} pts²</p>
+          <p><strong>Desviación Estándar (S):</strong> ${desvEst.toFixed(2)} pts</p>
+          <p><strong>Coeficiente de Variación (CV):</strong> ${cv.toFixed(2)}% (${cv < 15 ? 'Homogéneo' : 'Heterogéneo'})</p>
+        </div>
+      `;
+    }
+  </script>
+  <script src="js/preloader.js"></script>
 </body>
 </html>

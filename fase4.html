@@ -3,13 +3,163 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Fase 1 - Exploración y Motivación</title>
+  <title>MÉTRICA - Fase 4: Visualización de Datos, Medidas de Forma y Distribución Normal</title>
   <link rel="stylesheet" href="css/styles.css">
+  <style>
+    /* Estilos base y contenedores */
+    .nivel-container {
+      background-color: var(--color-fondo, #ffffff);
+      border: 1px solid var(--color-complementario, #e0e0e0);
+      padding: 25px;
+      border-radius: 10px;
+      margin: 30px 0;
+    }
+    .resumen-ejecutivo {
+      background-color: var(--color-fondo, #f9fbfd);
+      border-left: 5px solid var(--color-institucional, #0E25FF);
+      padding: 15px 20px;
+      border-radius: 0 8px 8px 0;
+      margin: 20px 0;
+    }
+    .tabla-academica {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 15px 0;
+    }
+    .tabla-academica th, .tabla-academica td {
+      border: 1px solid var(--color-complementario, #cccccc);
+      padding: 10px;
+      text-align: left;
+    }
+    .tabla-academica th {
+      background-color: #0E25FF;
+      color: #ffffff;
+    }
+    .esquema-box {
+      background-color: #f4f7fa;
+      border: 2px dashed #0E25FF;
+      padding: 20px;
+      border-radius: 8px;
+      font-family: monospace;
+      white-space: pre-wrap;
+      overflow-x: auto;
+      margin: 20px 0;
+      color: #173B59;
+    }
+    .ejercicio-box {
+      background-color: #ffffff;
+      border: 1px solid #75D7F5;
+      padding: 20px;
+      border-radius: 8px;
+      margin: 20px 0;
+    }
+    .quiz-container {
+      background-color: var(--color-fondo, #ffffff);
+      border: 2px solid #0E25FF;
+      padding: 25px;
+      border-radius: 10px;
+      margin: 30px 0;
+    }
+    .pregunta-box {
+      margin-bottom: 25px;
+      padding-bottom: 15px;
+      border-bottom: 1px dashed #e0e0e0;
+    }
+    .pregunta-box p {
+      font-weight: 600;
+      color: var(--color-texto, #333333);
+    }
+    .opciones-list {
+      list-style: none;
+      margin-top: 8px;
+      padding-left: 10px;
+    }
+    .opciones-list li {
+      margin-bottom: 8px;
+    }
+    
+    /* Botones Destacados EN GRANDE */
+    .btn-guia-grande {
+      display: inline-block;
+      background: linear-gradient(135deg, #0E25FF 0%, #0012b3 100%);
+      color: #ffffff !important;
+      font-size: 1.2rem;
+      font-weight: bold;
+      padding: 18px 30px;
+      border-radius: 12px;
+      text-decoration: none;
+      text-align: center;
+      box-shadow: 0 6px 20px rgba(14, 37, 255, 0.35);
+      border: 3px solid #FCE609;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      cursor: pointer;
+      margin: 10px;
+    }
+    .btn-guia-grande:hover {
+      transform: translateY(-3px) scale(1.02);
+      box-shadow: 0 8px 25px rgba(14, 37, 255, 0.5);
+      background: linear-gradient(135deg, #0012b3 0%, #0E25FF 100%);
+    }
+
+    .btn-spss-grande {
+      display: inline-block;
+      background: linear-gradient(135deg, #173B59 0%, #0d2233 100%);
+      color: #ffffff !important;
+      font-size: 1.2rem;
+      font-weight: bold;
+      padding: 18px 30px;
+      border-radius: 12px;
+      text-decoration: none;
+      text-align: center;
+      box-shadow: 0 6px 20px rgba(23, 59, 89, 0.35);
+      border: 3px solid #75D7F5;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      cursor: pointer;
+      margin: 10px;
+    }
+    .btn-spss-grande:hover {
+      transform: translateY(-3px) scale(1.02);
+      box-shadow: 0 8px 25px rgba(23, 59, 89, 0.5);
+      background: linear-gradient(135deg, #0d2233 0%, #173B59 100%);
+    }
+
+    .guia-banner-container {
+      text-align: center;
+      margin: 35px 0;
+      padding: 30px;
+      background: #f0f8ff;
+      border-radius: 15px;
+      border: 2px solid #75D7F5;
+    }
+
+    /* Solucionario Toggle */
+    .solucionario-box {
+      display: none;
+      background-color: #eef9ff;
+      border: 2px solid #75D7F5;
+      padding: 20px;
+      border-radius: 8px;
+      margin-top: 20px;
+    }
+  </style>
+  <!-- Configuración explícita de MathJax para soportar $...$ en línea -->
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']]
+      },
+      svg: {
+        fontCache: 'global'
+      }
+    };
+  </script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 </head>
 <body>
 
   <header>
     <nav>
+      <button onclick="toggleDarkMode()" style="background: none; border: 1px solid var(--color-institucional); padding: 5px 10px; border-radius: 5px; cursor: pointer;" title="Cambiar Modo Oscuro/Claro">🌙/☀️</button>
       <div class="brand-container">
         <div class="brand-logos">
           <img src="images/logo_usac.jpg" alt="USAC">
@@ -22,23 +172,569 @@
         <li><a href="fase1.html" data-fase="1">Fase 1</a></li>
         <li><a href="fase2.html" data-fase="2">Fase 2</a></li>
         <li><a href="fase3.html" data-fase="3">Fase 3</a></li>
-        <li><a href="fase4.html" data-fase="4"class="active">Fase 4</a></li>
+        <li><a href="fase4.html" data-fase="4" class="active">Fase 4</a></li>
         <li><a href="fase5.html" data-fase="5">Fase 5</a></li>
       </ul>
     </nav>
   </header>
 
   <main>
-    <h2>Fase 4: Exploración y Motivación</h2>
-    <p>En este primer módulo abordarás los fundamentos conceptuales de la estadística, su evolución histórica en la aritmética política y las características de la investigación descriptiva aplicada al campo educativo del CUNORI.</p>
+    <h2>Fase 4: Visualización de Datos, Medidas de Forma y Distribución Normal</h2>
+    <p style="font-style: italic; color: var(--color-texto);">Gráficos Estadísticos, Asimetría, Curtosis, Distribución Normal Estándar (Tabla Z) e Introducción a IBM SPSS Statistics</p>
 
-    <section class="footer-section">
-      <button class="btn-descargar" onclick="descargarRecursos('Fase 4 - Exploración')">Descargar Recursos de la Fase</button>
+    <!-- BANNER CON BOTONES EN GRANDE PARA GUÍA Y SPSS -->
+    <div class="guia-banner-container">
+      <h3 style="color: #0E25FF; margin-bottom: 10px; font-size: 1.5rem;">Material Práctico y Software Descargable</h3>
+      <p style="margin-bottom: 20px; color: #333;">Haz clic en los siguientes botones para obtener la guía de trabajo práctico oficial y el instalador del software SPSS:</p>
+      
+      <div style="display: flex; justify-content: center; flex-wrap: wrap; gap: 15px;">
+        <a href="docs/Guia_Trabajo_Practico_Fase4.pdf" download="Guia_Trabajo_Practico_Fase4.pdf" class="btn-guia-grande">
+          GUÍA DE TRABAJO PRÁCTICO
+        </a>
+        <a href="downloads/spss_setup.exe" download="spss_setup.exe" class="btn-spss-grande">
+          DESCARGAR INSTALADOR SPSS
+        </a>
+      </div>
+    </div>
+
+    <div class="resumen-ejecutivo">
+      <h3 style="color: var(--color-institucional, #0E25FF); font-size: 1.1rem; margin-bottom: 5px;">SÍNTESIS METODOLÓGICA GENERAL</h3>
+      <p style="margin-bottom: 0;">
+        Esta unidad aborda los fundamentos metodológicos del Nivel 1 (representación gráfica de datos y análisis morfológico de distribuciones mediante Coeficientes de Asimetría y Curtosis) y del Nivel 2 (propiedades matemático-gráficas de la Distribución Normal Estándar, manejo de la Tabla Z e implementación automatizada en el software SPSS para la toma de decisiones pedagógicas).
+      </p>
+    </div>
+
+    <hr style="border: 0; border-top: 1px solid var(--color-complementario, #ccc); margin: 25px 0;">
+
+    <!-- ==================== NIVEL 1 ==================== -->
+    <article class="nivel-container">
+      <h3 style="color: #0E25FF; font-size: 1.4rem;">
+        Nivel 1: Gráficos Estadísticos y Medidas de Forma
+      </h3>
+      <p><em>Selección de Gráficas según el Tipo de Variable, Construcción Visual y Cálculo de Asimetría y Curtosis.</em></p>
+
+      <section style="margin-top: 20px;">
+        <h4>1. Selección del Gráfico Estadístico Según el Tipo de Variable</h4>
+        <p>
+          La elección idónea del gráfico estadístico depende directamente de la escala de medición y de la naturaleza cuantitativa o cualitativa de la variable estudiada. Una adecuada representación visual previene distorsiones interpretativas y facilita la comunicación científica de los datos.
+        </p>
+
+        <div class="esquema-box">
+【 ESQUEMA: CRITERIOS DE SELECCIÓN GRÁFICA POR TIPO DE VARIABLE 】
+
+                             ┌──────────────────────────────────────────────────────────┐
+                             │                  VARIABLE ESTADÍSTICA                    │
+                             └────────────────────────────┬─────────────────────────────┘
+                                                          │
+                                    ┌─────────────────────┴─────────────────────┐
+                                    ▼                                           ▼
+             ┌────────────────────────────┐       ┌────────────────────────────┐
+             │  CUALITATIVA / CATEGÓRICA  │       │  CUANTITATIVA (CONTINUA /  │
+             │  (Nominal u Ordinal)       │       │   DISCRETA AGRUPADA)       │
+             └──────────────┬─────────────┘       └──────────────┬─────────────┘
+                            │                                    │
+                     ┌──────┴──────┐                      ┌──────┴──────┐
+                     ▼             ▼                      ▼             ▼
+               ┌───────────┐ ┌───────────┐          ┌───────────┐ ┌───────────┐
+               │ Diagrama  │ │ Gráfico   │          │Histograma │ │ Polígono  │
+               │ de Barras │ │ Circular  │          │ de Clase  │ │ Frecuencias│
+               └───────────┘ └───────────┘          └───────────┘ └───────────┘
+        </div>
+
+        <table class="tabla-academica">
+          <thead>
+            <tr>
+              <th>Tipo de Gráfico</th>
+              <th>Tipo de Variable Ideal</th>
+              <th>Eje Horizontal (X) / Geometría</th>
+              <th>Propósito Principal</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Diagrama de Barras</strong></td>
+              <td>Cualitativa / Cuantitativa Discreta</td>
+              <td>Categorías separadas por espacios visuales.</td>
+              <td>Comparar frecuencias absolutas o relativas entre categorías discretas.</td>
+            </tr>
+            <tr>
+              <td><strong>Gráfico Circular (Sectores)</strong></td>
+              <td>Cualitativa Nominal / Ordinal ($\le 5$ cat.)</td>
+              <td>Ángulos proporcionales: $\alpha_i = \left(\frac{f_i}{N}\right) \cdot 360^\circ$</td>
+              <td>Mostrar la composición porcentual del total (100%).</td>
+            </tr>
+            <tr>
+              <td><strong>Histograma de Frecuencia</strong></td>
+              <td>Cuantitativa Continua (Intervalos)</td>
+              <td>Intervalos continuos sin separación entre barras.</td>
+              <td>Visualizar la forma, simetría y densidad de la distribución continua.</td>
+            </tr>
+            <tr>
+              <td><strong>Polígono de Frecuencias</strong></td>
+              <td>Cuantitativa Continua / Comparaciones</td>
+              <td>Unión de marcas de clase ($X_i$) por segmentos.</td>
+              <td>Comparar múltiples distribuciones sobre un mismo eje continuo.</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section style="margin-top: 20px;">
+        <h4>2. Construcción e Interpretación Visual de Representaciones Gráficas</h4>
+        <p><strong>A. Diagramas de Barras y Gráficos Circulares:</strong></p>
+        <ul>
+          <li><strong>Regla de Discreción:</strong> En los diagramas de barras, el espacio en blanco entre cada barra enfatiza la discontinuidad de la variable. En los gráficos circulares, la suma de las porciones debe equivaler exactamente al 100% (o $360^\circ$). Se recomienda utilizarlos únicamente cuando el número de categorías es reducido ($\le 5$) para evitar saturación visual.</li>
+        </ul>
+        <p><strong>B. Histogramas y Polígonos de Frecuencia:</strong></p>
+        <ul>
+          <li><strong>Regla de Continuidad:</strong> La base de cada barra en el histograma coincide exactamente con los límites reales del intervalo $[L_{inf}, L_{sup})$, por lo que las barras están totalmente adosadas. El polígono de frecuencias se obtiene uniendo los puntos medios (marcas de clase $X_i$) correspondientes a las cúspides de cada barra del histograma, extendiéndose hasta tocar el eje horizontal en el punto medio del intervalo anterior y posterior.</li>
+        </ul>
+      </section>
+
+      <section style="margin-top: 20px;">
+        <h4>3. Obtención e Interpretación de las Medidas de Forma</h4>
+        <p>
+          Las medidas de forma caracterizan la estructura geométrica de la distribución de frecuencias sin necesidad de recurrir a la representación gráfica. Evalúan el grado de simetría respecto a la media y el grado de concentración o apuntamiento alrededor del centro.
+        </p>
+
+        <div class="esquema-box">
+【 ESQUEMA: CLASIFICACIÓN MORFOLÓGICA DE ASIMETRÍA Y CURTOSIS 】
+
+                                        MEDIDAS DE FORMA
+                                               │
+                        ┌──────────────────────┴──────────────────────┐
+                        ▼                                             ▼
+             ASIMETRÍA / SESGO (As)                    CURTOSIS / APUNTAMIENTO (g2)
+        (Inclinación respecto al centro)             (Concentración en la campana)
+                        │                                             │
+         ┌─────────────┼─────────────┐               ┌─────────────┼─────────────┐
+         ▼             ▼             ▼               ▼             ▼             ▼
+     Sesgo Neg.    Simétrica     Sesgo Pos.     Leptocúrtica  Mesocúrtica   Platicúrtica
+      (As < 0)      (As = 0)      (As > 0)        (g2 > 0)      (g2 = 0)      (g2 < 0)
+    X̄ < Me < Mo   X̄ = Me = Mo   Mo < Me < X̄        Picuda     Normal/Gauss    Aplanada
+        </div>
+
+        <p><strong>A. Coeficiente de Asimetría (Sesgo):</strong></p>
+        <p>El Coeficiente de Asimetría de Pearson se calcula mediante la fórmula:</p>
+        <p>$$As = \frac{3 \cdot (\bar{X} - Me)}{S} \quad \text{o mediante el tercer momento central:} \quad A_s = \frac{\sum (x_i - \bar{X})^3}{N \cdot S^3}$$</p>
+        <ul>
+          <li>$As = 0$: <strong>Distribución Simétrica</strong> (La Media, Mediana y Moda coinciden: $\bar{X} = Me = Mo$).</li>
+          <li>$As > 0$: <strong>Asimetría Positiva / Sesgo a la Derecha</strong> (La cola se extiende a valores altos: $\bar{X} > Me > Mo$).</li>
+          <li>$As < 0$: <strong>Asimetría Negativa / Sesgo a la Izquierda</strong> (La cola se extiende a valores bajos: $\bar{X} < Me < Mo$).</li>
+        </ul>
+
+        <p><strong>B. Coeficiente de Curtosis (Apuntamiento):</strong></p>
+        <p>Mide la concentración de frecuencias en la zona central de la distribución mediante el cuarto momento central:</p>
+        <p>$$g_2 = \left[ \frac{\sum (x_i - \bar{X})^4}{N \cdot S^4} \right] - 3$$</p>
+        <ul>
+          <li>$g_2 = 0$: <strong>Mesocúrtica</strong> (Presenta una concentración normal equivalente a la campana de Gauss).</li>
+          <li>$g_2 > 0$: <strong>Leptocúrtica</strong> (Elevada concentración central, campana alada/picuda).</li>
+          <li>$g_2 < 0$: <strong>Platicúrtica</strong> (Baja concentración central, forma aplanada o extendida).</li>
+        </ul>
+      </section>
+
+      <!-- CASO PRÁCTICO RESUELTO NIVEL 1 -->
+      <div class="ejercicio-box">
+        <h4 style="color: #0E25FF; margin-bottom: 8px;">Caso Práctico Resuelto: Análisis de Forma del Rendimiento Escolar</h4>
+        <p>A partir del grupo de 10 notas cuantitativas analizadas anteriormente: <strong>[60, 70, 70, 75, 80, 80, 85, 90, 90, 95]</strong></p>
+        <p>Indicadores calculados previamente: $\bar{X} = 79.50 \quad|\quad Me = 80.00 \quad|\quad S = 10.92$</p>
+        
+        <p><strong>A. Cálculo de la Asimetría de Pearson:</strong></p>
+        <p>$$As = \frac{3 \cdot (79.50 - 80.00)}{10.92} = \frac{3 \cdot (-0.50)}{10.92} = \frac{-1.50}{10.92} = -0.137$$</p>
+        <p><em>Interpretación:</em> Como $As = -0.137$ ($As < 0$), la distribución presenta una <strong>Asimetría Negativa o Sesgo Ligero a la Izquierda</strong>. Esto indica que la gran mayoría de los alumnos obtuvo calificaciones elevadas (superiores a 75 puntos), con unos pocos datos más bajos que arrastran levemente el promedio hacia la izquierda.</p>
+
+        <p><strong>B. Interpretación de la Curtosis:</strong></p>
+        <p>Al calcular el coeficiente de curtosis estandarizado para esta serie ($g_2 \approx -0.85$), se observa un valor negativo ($g_2 < 0$), clasificando la distribución como <strong>Platicúrtica</strong>. Esto refleja una dispersión moderada de las calificaciones sin un pico de concentración extremo en la media.</p>
+
+        <div style="background-color: #f0f4f8; padding: 12px; border-left: 4px solid #0E25FF; margin-top: 10px;">
+          <strong>Síntesis Diagnóstica de Forma:</strong> La combinación de una ligera Asimetría Negativa ($As = -0.137$) con una forma Platicúrtica ($g_2 < 0$) confirma que el grupo escolar evaluado posee un rendimiento mayoritariamente satisfactorio, concentrado en la zona media-alta de la escala (entre 70 y 90 puntos), sin presentar un sesgo marcado ni datos anómalos o extremos.
+        </div>
+      </div>
+
+      <!-- EJERCICIOS A Y B -->
+      <section style="margin-top: 25px;">
+        <h4 style="color: #0E25FF;">Ejercicios Aplicados Nivel 1</h4>
+        <p><strong>Competencia:</strong> Elabora e interpreta representaciones gráficas de datos estadísticos, utilizando herramientas tecnológicas, para analizar información relacionada con el contexto educativo y facilitar la toma de decisiones pedagógicas.</p>
+        
+        <div class="ejercicio-box">
+          <h5>Parte A. Gráfica de Barras y Gráfica de Sectores</h5>
+          <p>En el CUNORI, se consultó a 40 estudiantes sobre el recurso didáctico que consideran más útil para su aprendizaje:</p>
+          <table class="tabla-academica">
+            <thead>
+              <tr><th>Recurso Didáctico</th><th>Frecuencia ($f_i$)</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Videos educativos</td><td>14</td></tr>
+              <tr><td>Presentaciones digitales</td><td>10</td></tr>
+              <tr><td>Libros y documentos</td><td>8</td></tr>
+              <tr><td>Plataformas virtuales</td><td>5</td></tr>
+              <tr><td>Juegos educativos</td><td>3</td></tr>
+              <tr><td><strong>Total</strong></td><td><strong>40</strong></td></tr>
+            </tbody>
+          </table>
+          <p><strong>Actividades a realizar:</strong></p>
+          <ol>
+            <li>Elaborar la tabla de frecuencias completa ($f_i$, $h_i$, $\%$).</li>
+            <li>Construir gráfica de barras y gráfica circular.</li>
+            <li>Interpretar los resultados y redactar tres conclusiones para la práctica docente.</li>
+          </ol>
+        </div>
+
+        <div class="ejercicio-box">
+          <h5>Parte B. Histograma y Polígono de Frecuencias</h5>
+          <p>Resultados de la evaluación diagnóstica sobre 100 puntos aplicada a los mismos 40 estudiantes:</p>
+          <table class="tabla-academica">
+            <thead>
+              <tr><th>Intervalo de Calificaciones</th><th>Frecuencia ($f_i$)</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>50 – 59</td><td>4</td></tr>
+              <tr><td>60 – 69</td><td>7</td></tr>
+              <tr><td>70 – 79</td><td>12</td></tr>
+              <tr><td>80 – 89</td><td>10</td></tr>
+              <tr><td>90 – 99</td><td>7</td></tr>
+              <tr><td><strong>Total</strong></td><td><strong>40</strong></td></tr>
+            </tbody>
+          </table>
+          <p><strong>Actividades a realizar:</strong></p>
+          <ol>
+            <li>Completar la tabla: Intervalos, $f_i$, Marca de clase ($X_i$), Frecuencia Acumulada ($F_i$), $h_i$ y $\%$.</li>
+            <li>Elaborar el histograma y polígono de frecuencias.</li>
+            <li>Identificar el intervalo modal e interpretar el rendimiento académico con tres conclusiones pedagógicas.</li>
+          </ol>
+        </div>
+
+        <!-- VIDEOS NIVEL 1 -->
+        <div style="margin-top: 15px;">
+          <h5 style="color: #0E25FF;">Video-Clases de Apoyo Nivel 1:</h5>
+          <ul>
+            <li><a href="https://www.youtube.com/watch?v=0rI-wQeFiOo" target="_blank">Construcción de Tablas y Gráficos Estadísticos</a></li>
+            <li><a href="https://www.youtube.com/watch?v=MTDc1UsFOQk" target="_blank">Histograma y Polígono de Frecuencia Explicado</a></li>
+          </ul>
+        </div>
+      </section>
+    </article>
+
+    <hr style="border: 0; border-top: 1px solid var(--color-complementario, #ccc); margin: 30px 0;">
+
+    <!-- ==================== NIVEL 2 ==================== -->
+    <article class="nivel-container">
+      <h3 style="color: #0E25FF; font-size: 1.4rem;">
+        Nivel 2: Distribución Normal Estándar y Manejo de IBM SPSS Statistics
+      </h3>
+      <p><em>Propiedades, Tabla Z y Procesamiento de Datos Educativos en Software Especializado.</em></p>
+
+      <section style="margin-top: 20px;">
+        <h4>1. Propiedades Matemáticas y Gráficas de la Distribución Normal Estándar (Campana de Gauss)</h4>
+        <p>
+          La distribución normal es la función de densidad de probabilidad continua más relevante en la teoría de la probabilidad y la inferencia estadística. Formulada por Carl Friedrich Gauss y consolidada por Pierre-Simon Laplace, describe con precisión el comportamiento de multitud de fenómenos naturales, sociodemográficos y educativos.
+        </p>
+
+        <p><strong>1.1 Estandarización y la Variable Z:</strong></p>
+        <p>Una variable aleatoria continua $X$ con media $\mu$ y desviación estándar $\sigma$ se distribuye normalmente: $X \sim N(\mu, \sigma^2)$. Para homogeneizar y comparar diferentes distribuciones, se aplica la transformación Z, la cual convierte la variable $X$ en una distribución normal estándar $Z \sim N(0, 1)$:</p>
+        <p>$$Z = \frac{X - \mu}{\sigma}$$</p>
+        <ul>
+          <li>$X$: Valor observado o calificación bruta.</li>
+          <li>$\mu$: Media aritmética poblacional de la distribución original.</li>
+          <li>$\sigma$: Desviación estándar poblacional.</li>
+          <li>$Z$: Puntuación Z (o puntuación típica), que mide la distancia a la que se encuentra un valor individual $X$ respecto de la media $\mu$, expresada en unidades de desviación estándar.</li>
+        </ul>
+
+        <p><strong>1.2 Propiedades Fundamentales de la Campana de Gauss:</strong></p>
+        <ul>
+          <li><strong>Simetría y Coincidencia Axial:</strong> La gráfica es perfectamente simétrica respecto a su eje vertical en $Z = 0$. En este punto central coinciden la media, la mediana y la moda ($\mu = Me = Mo$).</li>
+          <li><strong>Área Bajo la Curva:</strong> El área total comprendida entre la curva y el eje horizontal equivale exactamente a la unidad ($A = 1.00$, es decir, el 100% de la probabilidad).</li>
+          <li><strong>Asíntota Horizontal:</strong> Las colas de la distribución se extienden indefinidamente hacia $+\infty$ y $-\infty$ de forma asintótica.</li>
+          <li><strong>Puntos de Inflexión:</strong> La curva cambia su concavidad exactamente a una desviación estándar de la media ($Z = \pm 1$).</li>
+          <li><strong>Regla Empírica (3-Sigma / 68-95-99.7):</strong>
+            <ul>
+              <li>El <strong>68.26%</strong> del área se ubica en $[\mu - 1\sigma, \mu + 1\sigma]$ ($Z \in [-1, 1]$).</li>
+              <li>El <strong>95.44%</strong> del área se ubica en $[\mu - 2\sigma, \mu + 2\sigma]$ ($Z \in [-2, 2]$).</li>
+              <li>El <strong>99.73%</strong> del área se ubica en $[\mu - 3\sigma, \mu + 3\sigma]$ ($Z \in [-3, 3]$).</li>
+            </ul>
+          </li>
+        </ul>
+      </section>
+
+      <section style="margin-top: 20px;">
+        <h4>2. Uso e Interpretación de la Tabla de Valores de la Distribución Normal Estándar</h4>
+        <p>La tabla de probabilidades Z proporciona el área acumulada bajo la curva desde $-\infty$ hasta una puntuación específica $z_0$, representando la probabilidad $P(Z \le z_0)$ o el percentil asociado al sujeto.</p>
+
+        <table class="tabla-academica">
+          <thead>
+            <tr>
+              <th>Caso de Estudio</th>
+              <th>Expresión Probabilística</th>
+              <th>Procedimiento con la Tabla Z</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Probabilidad a la izquierda / Menor que</strong></td>
+              <td>$P(Z \le z_0)$</td>
+              <td>Se busca directamente la intersección de la fila y columna del valor $z_0$ en la tabla.</td>
+            </tr>
+            <tr>
+              <td><strong>Probabilidad a la derecha / Mayor que</strong></td>
+              <td>$P(Z \ge z_0)$</td>
+              <td>Por la regla del complemento: $P(Z \ge z_0) = 1 - P(Z \le z_0)$.</td>
+            </tr>
+            <tr>
+              <td><strong>Probabilidad en un intervalo comprendido</strong></td>
+              <td>$P(z_1 \le Z \le z_2)$</td>
+              <td>Se resta la probabilidad acumulada inferior a la superior: $P(Z \le z_2) - P(Z \le z_1)$.</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section style="margin-top: 20px;">
+        <h4>3. Introducción e Implementación en IBM SPSS Statistics</h4>
+        <p>El software especializado IBM SPSS Statistics permite automatizar el procesamiento de datos cuantitativos, eliminando el margen de error del cálculo manual en muestras amplias.</p>
+        
+        <ul>
+          <li><strong>Entorno de Trabajo e Ingreso de Variables:</strong>
+            <ol>
+              <li><em>Vista de Variables:</em> Permite configurar atributos como Nombre, Tipo, Etiqueta, Valores categóricos y Escala de Medida (Escala, Ordinal, Nominal).</li>
+              <li><em>Vista de Datos:</em> Matriz estructurada donde cada fila es una observación (alumno) y cada columna una variable.</li>
+            </ol>
+          </li>
+          <li><strong>Cálculo de Estadísticos Descriptivos:</strong>
+            <ul>
+              <li><em>Ruta Frecuencias:</em> <code>Analizar -> Estadísticos Descriptivos -> Frecuencias...</code> (Permite seleccionar Media, Mediana, Moda, Desviación Estándar, Varianza, Cuartiles, Asimetría y Curtosis).</li>
+              <li><em>Ruta Descriptivos y Puntuaciones Z:</em> <code>Analizar -> Estadísticos Descriptivos -> Descriptivos...</code> (Permite marcar 'Guardar valores estandarizados como variables' para generar automáticamente las puntuaciones Z).</li>
+            </ul>
+          </li>
+          <li><strong>Generación y Exportación de Gráficos:</strong>
+            <ul>
+              <li><em>Histogramas con Curva Normal:</em> Desde el menú <code>Frecuencias -> Gráficos -> Seleccionar Histogramas y activar 'Mostrar curva normal'</code>.</li>
+              <li><em>Gráficos Q-Q de Normalidad:</em> <code>Analizar -> Estadísticos Descriptivos -> Gráficos Q-Q...</code></li>
+              <li><em>Exportación:</em> Los gráficos y tablas pueden copiarse directamente o exportarse a archivos Word (.docx), Excel (.xlsx) o PDF (.pdf).</li>
+            </ul>
+          </li>
+        </ul>
+
+        <div style="background: #fff8e1; border: 1px solid #ffe082; padding: 20px; border-radius: 8px; margin-top: 15px; text-align: center;">
+          <strong>Nota importante:</strong> La guía de ejercicios y el instalador del software SPSS también están disponibles para descarga directa en la parte superior de esta página.
+          <br><br>
+          
+          <!-- Contenedor adaptativo y elegante para el video -->
+          <div style="background: #1a1a1a; padding: 20px; border-radius: 8px; color: #fff; display: inline-block; width: 100%; max-width: 600px; box-sizing: border-box;">
+              <p style="margin: 0 0 10px 0; font-size: 1.1rem; font-weight: bold; color: #75D7F5;">Video-Clase Oficial SPSS</p>
+              <p style="margin: 0 0 15px 0; font-size: 0.9rem; color: #ccc;">Tutorial Completo de SPSS y Normalidad Z</p>
+              
+              <a href="https://www.youtube.com/watch?v=JYIpMpybiiY" target="_blank" style="display: inline-block; background-color: #0E25FF; color: #fff; padding: 10px 20px; border-radius: 5px; text-decoration: none; font-weight: bold; transition: background 0.3s;">
+                  Reproducir en YouTube
+              </a>
+          </div>
+        </div>
+      </section>
+    </article>
+
+    <hr style="border: 0; border-top: 1px solid var(--color-complementario, #ccc); margin: 30px 0;">
+
+    <!-- ==================== AUTOEVALUACIÓN INTEGRAL FASE 4 ==================== -->
+    <section class="quiz-container">
+      <h3 style="color: #0E25FF; margin-bottom: 10px;">Autoevaluación de Estadística Descriptiva en Educación (Fase 4)</h3>
+      <p style="font-size: 0.95rem; color: #555;">Carrera: Pedagogía y Administración Educativa | Temática: Nivel 1 y Nivel 2</p>
+
+      <form id="quizFase4Form" style="margin-top: 20px;">
+        <h4 style="color: #0E25FF; border-bottom: 1px solid #75D7F5; padding-bottom: 5px;">PARTE I: NIVEL 1 - Gráficos y Medidas de Forma</h4>
+        
+        <!-- P1 -->
+        <div class="pregunta-box">
+          <p>1. Caso Práctico (Recursos Didácticos): De los 40 estudiantes encuestados, 10 prefieren "Presentaciones digitales". ¿Cuál es su frecuencia relativa ($h_i$) y su porcentaje (%)?</p>
+          <ul class="opciones-list">
+            <li><label><input type="radio" name="f4_p1" value="a"> a) $h_i = 0.10$ y $10\%$</label></li>
+            <li><label><input type="radio" name="f4_p1" value="b"> b) $h_i = 0.25$ y $25\%$</label></li>
+            <li><label><input type="radio" name="f4_p1" value="c"> c) $h_i = 0.40$ y $40\%$</label></li>
+          </ul>
+        </div>
+
+        <!-- P2 -->
+        <div class="pregunta-box">
+          <p>2. ¿Qué tipo de gráfico es el más adecuado para la variable cualitativa "Preferencia de Recursos Didácticos" (5 categorías)?</p>
+          <ul class="opciones-list">
+            <li><label><input type="radio" name="f4_p2" value="a"> a) Histograma de frecuencias adosado</label></li>
+            <li><label><input type="radio" name="f4_p2" value="b"> b) Diagrama de barras o Gráfico circular (sectores)</label></li>
+            <li><label><input type="radio" name="f4_p2" value="c"> c) Polígono de frecuencias continuas</label></li>
+          </ul>
+        </div>
+
+        <!-- P3 -->
+        <div class="pregunta-box">
+          <p>3. Si una prueba diagnóstica arroja $\bar{X} = 78.5$, $Me = 80.0$, $Mo = 82.0$ y $S = 10.5$, ¿cuál es el Coeficiente de Asimetría de Pearson ($As$)?</p>
+          <ul class="opciones-list">
+            <li><label><input type="radio" name="f4_p3" value="a"> a) $As = +0.428$</label></li>
+            <li><label><input type="radio" name="f4_p3" value="b"> b) $As = -0.428$</label></li>
+            <li><label><input type="radio" name="f4_p3" value="c"> c) $As = 0.000$</label></li>
+          </ul>
+        </div>
+
+        <!-- P4 -->
+        <div class="pregunta-box">
+          <p>4. ¿Qué tipo de asimetría presenta la distribución anterior según la relación entre Media (78.5) &lt; Mediana (80.0) &lt; Moda (82.0)?</p>
+          <ul class="opciones-list">
+            <li><label><input type="radio" name="f4_p4" value="a"> a) Asimetría Positiva (sesgo a la derecha)</label></li>
+            <li><label><input type="radio" name="f4_p4" value="b"> b) Asimetría Negativa (sesgo a la izquierda)</label></li>
+            <li><label><input type="radio" name="f4_p4" value="c"> c) Distribución perfectamente simétrica</label></li>
+          </ul>
+        </div>
+
+        <!-- P5 -->
+        <div class="pregunta-box">
+          <p>5. ¿Qué significa pedagógicamente que una distribución de notas sea platicúrtica ($g_2 < 0$)?</p>
+          <ul class="opciones-list">
+            <li><label><input type="radio" name="f4_p5" value="a"> a) Que todos los alumnos obtuvieron la misma calificación exactamente.</label></li>
+            <li><label><input type="radio" name="f4_p5" value="b"> b) Que las notas están muy concentradas en un pico extremo alrededor de la media.</label></li>
+            <li><label><input type="radio" name="f4_p5" value="c"> c) Que las notas presentan una dispersión moderada o forma aplanada, distribuidas a lo largo del rango sin aglomerarse en un solo punto.</label></li>
+          </ul>
+        </div>
+
+        <h4 style="color: #0E25FF; border-bottom: 1px solid #75D7F5; padding-bottom: 5px; margin-top: 30px;">PARTE II: NIVEL 2 - Distribución Normal Estándar y SPSS</h4>
+
+        <!-- P6 -->
+        <div class="pregunta-box">
+          <p>6. En un examen con $\mu = 75$ y $\sigma = 10$, ¿cuál es la puntuación $Z$ tipificada de un estudiante que obtuvo $X = 85$ puntos?</p>
+          <ul class="opciones-list">
+            <li><label><input type="radio" name="f4_p6" value="a"> a) $Z = +1.0$</label></li>
+            <li><label><input type="radio" name="f4_p6" value="b"> b) $Z = -1.5$</label></li>
+            <li><label><input type="radio" name="f4_p6" value="c"> c) $Z = +0.85$</label></li>
+          </ul>
+        </div>
+
+        <!-- P7 -->
+        <div class="pregunta-box">
+          <p>7. En la misma evaluación ($\mu = 75$, $\sigma = 10$), ¿cuál es la puntuación $Z$ de un estudiante con $X = 60$ puntos?</p>
+          <ul class="opciones-list">
+            <li><label><input type="radio" name="f4_p7" value="a"> a) $Z = +1.5$</label></li>
+            <li><label><input type="radio" name="f4_p7" value="b"> b) $Z = -1.5$</label></li>
+            <li><label><input type="radio" name="f4_p7" value="c"> c) $Z = -0.60$</label></li>
+          </ul>
+        </div>
+
+        <!-- P8 -->
+        <div class="pregunta-box">
+          <p>8. ¿Cuál es la ruta en IBM SPSS Statistics para generar las medidas de tendencia central, asimetría y curtosis mediante frecuencias?</p>
+          <ul class="opciones-list">
+            <li><label><input type="radio" name="f4_p8" value="a"> a) Transformar -> Calcular variable</label></li>
+            <li><label><input type="radio" name="f4_p8" value="b"> b) Analizar -> Estadísticos Descriptivos -> Frecuencias...</label></li>
+            <li><label><input type="radio" name="f4_p8" value="c"> c) Gráficos -> Generador de gráficos</label></li>
+          </ul>
+        </div>
+
+        <!-- P9 -->
+        <div class="pregunta-box">
+          <p>9. ¿Cuál es la diferencia de función entre la 'Vista de Variables' y la 'Vista de Datos' en SPSS?</p>
+          <ul class="opciones-list">
+            <li><label><input type="radio" name="f4_p9" value="a"> a) La Vista de Variables define los atributos (nombre, tipo, escala), mientras que la Vista de Datos es la matriz donde se ingresan las observaciones individuales.</label></li>
+            <li><label><input type="radio" name="f4_p9" value="b"> b) La Vista de Variables sirve solo para hacer gráficos y la Vista de Datos para escribir la teoría.</label></li>
+            <li><label><input type="radio" name="f4_p9" value="c"> c) Son exactamente lo mismo y cumplen las mismas funciones sin distinción.</label></li>
+          </ul>
+        </div>
+
+        <!-- P10 -->
+        <div class="pregunta-box">
+          <p>10. ¿Qué opción se debe marcar en el menú 'Descriptivos' de SPSS para obtener automáticamente las puntuaciones Z de una variable?</p>
+          <ul class="opciones-list">
+            <li><label><input type="radio" name="f4_p10" value="a"> a) Excluir casos según lista</label></li>
+            <li><label><input type="radio" name="f4_p10" value="b"> b) Guardar valores estandarizados como variables</label></li>
+            <li><label><input type="radio" name="f4_p10" value="c"> c) Crear tabla de contingencia</label></li>
+          </ul>
+        </div>
+
+        <div style="display: flex; gap: 15px; flex-wrap: wrap; margin-top: 20px;">
+          <button type="button" class="btn-completar" onclick="calificarQuizFase4()" style="background-color: #0E25FF;">Calificar Autoevaluación</button>
+          <button type="button" class="btn-descargar" onclick="toggleSolucionarioFase4()" style="background-color: #173B59; color: #fff; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer;">Mostrar / Ocultar Clave de Respuestas (Solucionario)</button>
+        </div>
+      </form>
+
+      <div id="resultadoQuizFase4" style="margin-top: 15px; font-weight: bold; font-size: 1.1rem; text-align: center;"></div>
+
+      <!-- SOLUCIONARIO EXPLICATIVO -->
+      <div id="solucionarioBox" class="solucionario-box">
+        <h4 style="color: #0E25FF; margin-bottom: 10px;">CLAVE DE RESPUESTAS (SOLUCIONARIO DOCENTE / ESTUDIANTE)</h4>
+        
+        <p><strong>Parte I: Nivel 1</strong></p>
+        <ul>
+          <li><strong>1. b)</strong> $h_i = 10 / 40 = 0.25$; Porcentaje = $25\%$.</li>
+          <li><strong>2. b)</strong> Diagrama de barras o Gráfico circular (sectores). Es adecuado porque la variable es cualitativa con pocas categorías (5 categorías).</li>
+          <li><strong>3. b)</strong> $As = \frac{3 \cdot (78.5 - 80.0)}{10.5} = \frac{3 \cdot (-1.5)}{10.5} = \frac{-4.5}{10.5} = -0.428$.</li>
+          <li><strong>4. b)</strong> Asimetría Negativa o sesgo a la izquierda, ya que $As < 0$ y Media (78.5) &lt; Mediana (80.0) &lt; Moda (82.0).</li>
+          <li><strong>5. c)</strong> Significa que las notas presentan una dispersión moderada o forma aplanada, distribuidas a lo largo del rango sin aglomerarse en un solo punto.</li>
+        </ul>
+
+        <p><strong>Parte II: Nivel 2</strong></p>
+        <ul>
+          <li><strong>6. a)</strong> $Z = \frac{85 - 75}{10} = \frac{10}{10} = +1.0$ (El estudiante se ubica a 1 desviación estándar por encima de la media).</li>
+          <li><strong>7. b)</strong> $Z = \frac{60 - 75}{10} = \frac{-15}{10} = -1.5$ (El estudiante se ubica a 1.5 desviaciones estándar por debajo de la media).</li>
+          <li><strong>8. b)</strong> Analizar -> Estadísticos Descriptivos -> Frecuencias...</li>
+          <li><strong>9. a)</strong> La Vista de Variables define las propiedades (nombre, tipo, etiqueta, escala), mientras que la Vista de Datos es la matriz donde se ingresan los registros.</li>
+          <li><strong>10. b)</strong> Marcar la casilla "Guardar valores estandarizados como variables" (Save standardized values as variables).</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- SECCIÓN DE CIERRE Y ACCIONES -->
+    <section class="footer-section" style="text-align: center; margin: 40px 0;">
+      <button class="btn-descargar" onclick="descargarRecursos('Fase 4 - Visualizacion y Normalidad')" style="padding: 12px 25px; font-size: 1rem;">Descargar Recursos de la Fase 4</button>
       <br><br>
-      <button class="btn-completar" onclick="completarFase(4)">Completar Módulo y Desbloquear Fase 5</button>
+      <button class="btn-completar" onclick="completarFase(4)" style="padding: 15px 30px; font-size: 1.1rem; background-color: #0E25FF; color: white; border: none; border-radius: 8px; cursor: pointer;">Completar Módulo y Desbloquear Fase 5</button>
     </section>
   </main>
 
   <script src="js/main.js"></script>
+  <script src="js/preloader.js"></script>
+
+  <script>
+    // Mostrar u ocultar el Solucionario
+    function toggleSolucionarioFase4() {
+      const box = document.getElementById("solucionarioBox");
+      if (box.style.display === "block") {
+        box.style.display = "none";
+      } else {
+        box.style.display = "block";
+      }
+    }
+
+    // Calificación del Quiz de la Fase 4
+    function calificarQuizFase4() {
+      const respuestasCorrectas = {
+        f4_p1: "b", f4_p2: "b", f4_p3: "b", f4_p4: "b", f4_p5: "c",
+        f4_p6: "a", f4_p7: "b", f4_p8: "b", f4_p9: "a", f4_p10: "b"
+      };
+
+      let aciertos = 0;
+      let totalPreguntas = 10;
+      let respondidasTodas = true;
+
+      for (let i = 1; i <= totalPreguntas; i++) {
+        const seleccionada = document.querySelector(`input[name="f4_p${i}"]:checked`);
+        if (!seleccionada) {
+          respondidasTodas = false;
+          break;
+        }
+        if (seleccionada.value === respuestasCorrectas[`f4_p${i}`]) {
+          aciertos++;
+        }
+      }
+
+      const contenedorResultado = document.getElementById("resultadoQuizFase4");
+
+      if (!respondidasTodas) {
+        contenedorResultado.style.color = "#d97706";
+        contenedorResultado.innerHTML = "Por favor, responde las 10 preguntas antes de calificar la evaluación.";
+        return;
+      }
+
+      if (aciertos >= 8) {
+        contenedorResultado.style.color = "#0E25FF";
+        contenedorResultado.innerHTML = `¡Excelente! Has obtenido ${aciertos} de ${totalPreguntas} aciertos. Dominas la visualización gráfica, medidas de forma y la distribución normal.`;
+      } else {
+        contenedorResultado.style.color = "#173B59";
+        contenedorResultado.innerHTML = `Has obtenido ${aciertos} de ${totalPreguntas} aciertos. Te recomendamos revisar el solucionario y la teoría del módulo antes de avanzar a la Fase 5.`;
+      }
+    }
+  </script>
 </body>
 </html>
