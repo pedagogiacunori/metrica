@@ -3,8 +3,11 @@ document.addEventListener("DOMContentLoaded", () => {
     localStorage.setItem("faseMaxima", "1");
   }
   actualizarNavegacion();
+  actualizarBarraProgreso();
+  inicializarModoOscuro();
 });
 
+// --- RESTRICCIÓN Y NAVEGACIÓN ---
 function actualizarNavegacion() {
   const faseMaxima = parseInt(localStorage.getItem("faseMaxima") || "1");
   const navLinks = document.querySelectorAll(".nav-links a[data-fase]");
@@ -21,6 +24,19 @@ function actualizarNavegacion() {
   });
 }
 
+function actualizarBarraProgreso() {
+  const faseMaxima = parseInt(localStorage.getItem("faseMaxima") || "1");
+  const porcentaje = Math.min(Math.round(((faseMaxima - 1) / 4) * 100), 100);
+  
+  const fillElement = document.getElementById("progressFill");
+  const textElement = document.getElementById("progressText");
+  
+  if (fillElement && textElement) {
+    fillElement.style.width = `${porcentaje}%`;
+    textElement.textContent = `${porcentaje}% Completado`;
+  }
+}
+
 function completarFase(faseActual) {
   const siguienteFase = faseActual + 1;
   const faseMaxima = parseInt(localStorage.getItem("faseMaxima") || "1");
@@ -30,6 +46,7 @@ function completarFase(faseActual) {
   }
   
   actualizarNavegacion();
+  actualizarBarraProgreso();
 
   if (faseActual < 5) {
     window.location.href = `fase${siguienteFase}.html`;
@@ -38,8 +55,23 @@ function completarFase(faseActual) {
   }
 }
 
+// --- MODO OSCURO / LIGHT MODE ---
+function inicializarModoOscuro() {
+  const themeStored = localStorage.getItem("theme");
+  if (themeStored === "dark") {
+    document.body.classList.add("dark-mode");
+  }
+}
+
+function toggleDarkMode() {
+  document.body.classList.toggle("dark-mode");
+  const isDark = document.body.classList.contains("dark-mode");
+  localStorage.setItem("theme", isDark ? "dark" : "light");
+}
+
+// --- DESCARGAS Y DIPLOMA ---
 function descargarRecursos(nombreModulo) {
-  const contenido = `Universidad de San Carlos de Guatemala\nCentro Universitario de Oriente - CUNORI\nPlataforma MÉTRICA - Material y Recursos de la ${nombreModulo}.`;
+  const contenido = `Universidad de San Carlos de Guatemala\nCentro Universitario de Oriente - CUNORI\nPlataforma MÉTRICA - Recursos Educativos de la ${nombreModulo}.`;
   const blob = new Blob([contenido], { type: "text/plain;charset=utf-8" });
   const url = URL.createObjectURL(blob);
   const a = document.createElement("a");
@@ -77,6 +109,76 @@ function generarDiploma() {
       <p style="margin-top: 15px; font-size: 0.95rem;">Por haber completado y superado de manera satisfactoria los módulos de autoformación digital implementados para el curso de <strong>Estadística Descriptiva</strong>.</p>
       <br>
       <button onclick="window.print()" class="btn-completar">Imprimir / Guardar en PDF</button>
+    </div>
+  `;
+}
+
+// --- 💡 CALCULADORA ESTADÍSTICA INTERACTIVA EN VIVO ---
+function calcularEstadisticas() {
+  const inputData = document.getElementById("datosEstadisticos").value;
+  const arrayNumeros = inputData
+    .split(",")
+    .map(num => parseFloat(num.trim()))
+    .filter(num => !isNaN(num));
+
+  const contenedorResultados = document.getElementById("resultadosCalculadora");
+
+  if (arrayNumeros.length === 0) {
+    contenedorResultados.style.color = "#FEB501";
+    contenedorResultados.innerHTML = "⚠️ Ingresa números válidos separados por comas (Ej: 12, 15, 12, 18, 20).";
+    return;
+  }
+
+  // Ordenar números
+  arrayNumeros.sort((a, b) => a - b);
+  const n = arrayNumeros.length;
+
+  // 1. Media Aritmética
+  const suma = arrayNumeros.reduce((acc, val) => acc + val, 0);
+  const media = (suma / n).toFixed(2);
+
+  // 2. Mediana
+  let mediana;
+  const mitad = Math.floor(n / 2);
+  if (n % 2 === 0) {
+    mediana = ((arrayNumeros[mitad - 1] + arrayNumeros[mitad]) / 2).toFixed(2);
+  } else {
+    mediana = arrayNumeros[mitad].toFixed(2);
+  }
+
+  // 3. Moda
+  const frecuencia = {};
+  let maxFrec = 0;
+  arrayNumeros.forEach(num => {
+    frecuencia[num] = (frecuencia[num] || 0) + 1;
+    if (frecuencia[num] > maxFrec) maxFrec = frecuencia[num];
+  });
+
+  let modas = [];
+  for (const num in frecuencia) {
+    if (frecuencia[num] === maxFrec && maxFrec > 1) {
+      modas.push(num);
+    }
+  }
+
+  const textoModa = modas.length > 0 ? modas.join(", ") : "Sin moda (Amodal)";
+
+  // 4. Rango
+  const minimo = arrayNumeros[0];
+  const maximo = arrayNumeros[n - 1];
+  const rango = (maximo - minimo).toFixed(2);
+
+  // Desplegar Resultados
+  contenedorResultados.style.color = "var(--color-texto)";
+  contenedorResultados.innerHTML = `
+    <div style="background: var(--color-fondo); border: 2px solid var(--color-complementario); padding: 20px; border-radius: 8px; margin-top: 15px;">
+      <h4 style="color: var(--color-institucional); margin-bottom: 10px;">📊 Resultados Calculados:</h4>
+      <p><strong>Total de Datos (N):</strong> ${n}</p>
+      <p><strong>Datos Ordenados:</strong> ${arrayNumeros.join(", ")}</p>
+      <p><strong>Media Aritmética (X̄):</strong> ${media}</p>
+      <p><strong>Mediana (Me):</strong> ${mediana}</p>
+      <p><strong>Moda (Mo):</strong> ${textoModa}</p>
+      <p><strong>Rango (R):</strong> ${rango} (Mín: ${minimo}, Máx: ${maximo})</p>
     </div>
   `;
 }

@@ -251,3 +251,49 @@ p {
     width: auto !important;
   }
 }
+
+/* --- BARRA DE PROGRESO Y MODO OSCURO --- */
+.progress-container {
+  width: 100%;
+  background-color: var(--color-fondo);
+  height: 12px;
+  border-radius: 6px;
+  overflow: hidden;
+  margin-top: 8px;
+  border: 1px solid var(--color-complementario);
+}
+
+.progress-bar-fill {
+  height: 100%;
+  background-color: var(--color-institucional);
+  width: 0%;
+  transition: width 0.4s ease;
+}
+
+/* Modo Oscuro */
+body.dark-mode {
+  background-color: #0d1b2a;
+  color: #e0e1dd;
+}
+
+body.dark-mode main {
+  background-color: #1b263b;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+}
+
+body.dark-mode header {
+  background-color: #1b263b;
+  border-bottom: 3px solid var(--color-complementario);
+}
+
+body.dark-mode .nav-links a {
+  color: #e0e1dd;
+}
+
+body.dark-mode h1, body.dark-mode h2, body.dark-mode h3, body.dark-mode h4 {
+  color: var(--color-complementario);
+}
+
+body.dark-mode .welcome-text-box, body.dark-mode .quiz-container {
+  background-color: #0d1b2a;
+}
