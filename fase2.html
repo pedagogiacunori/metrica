@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>MÉTRICA - Fase 2: Investigación Descriptiva y Recolección</title>
+  <title>MÉTRICA - Fase 2: RECOPILACIÓN DE DATOS</title>
   <link rel="stylesheet" href="css/styles.css">
   <style>
     .quiz-container {
@@ -54,14 +54,70 @@
       border-radius: 0 8px 8px 0;
       margin: 20px 0;
     }
-    .caso-practico {
-      background-color: var(--color-fondo);
-      border: 2px dashed var(--color-institucional);
+    .ejercicio-box {
+      background-color: #ffffff;
+      border: 1px solid #75D7F5;
       padding: 20px;
-      border-radius: 10px;
+      border-radius: 8px;
       margin: 20px 0;
     }
+    .video-card {
+      border: 1px solid var(--color-complementario);
+      padding: 15px;
+      border-radius: 8px;
+      background: var(--color-fondo);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .btn-video {
+      display: inline-block;
+      background-color: #0E25FF;
+      color: #fff !important;
+      padding: 10px 18px;
+      border-radius: 6px;
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: bold;
+      text-align: center;
+      transition: background 0.3s ease;
+      margin-top: 10px;
+    }
+    .btn-video:hover {
+      background-color: #0012b3;
+    }
+    .solucionario-box {
+      display: none;
+      background-color: #eef9ff;
+      border: 2px solid #75D7F5;
+      padding: 20px;
+      border-radius: 8px;
+      margin-top: 20px;
+    }
+    .esquema-box {
+      background-color: #f8fafc;
+      border: 1px dashed var(--color-institucional);
+      padding: 15px;
+      border-radius: 6px;
+      font-family: monospace;
+      font-size: 0.85rem;
+      overflow-x: auto;
+      margin: 15px 0;
+      white-space: pre;
+    }
   </style>
+
+  <script>
+    // Validar al cargar la página si la fase está autorizada
+    document.addEventListener("DOMContentLoaded", function() {
+      const faseMaxima = parseInt(localStorage.getItem("faseMaxima") || "1");
+      
+      if (faseMaxima < 2) {
+        alert("⚠️ Esta fase se encuentra bloqueada. Debe ingresar el código autorizado por la Catedrática en la fase anterior.");
+        window.location.href = "fase1.html";
+      }
+    });
+  </script>
 </head>
 <body>
 
@@ -87,267 +143,485 @@
   </header>
 
   <main>
-    <h2>Fase 2: La Investigación Descriptiva en las Ciencias de la Educación</h2>
-    <p style="font-style: italic; color: var(--color-texto);">Fundamentos Metodológicos, Métodos de Observación In Situ y Aplicaciones Socioeducativas</p>
+    <h2>Fase 2: RECOPILACIÓN DE DATOS</h2>
+    <p style="font-style: italic; color: var(--color-texto);">Fundamentos Metodológicos, Método Científico, Instrumentos y Tipologías de Muestreo</p>
 
     <div class="resumen-ejecutivo">
-      <h3 style="color: var(--color-institucional); font-size: 1.1rem; margin-bottom: 5px;">SÍNTESIS DEL NIVEL 2</h3>
+      <h3 style="color: var(--color-institucional); font-size: 1.1rem; margin-bottom: 5px;">SÍNTESIS GENERAL DE LA FASE 2</h3>
       <p style="margin-bottom: 0;">
-        Este documento aborda de forma exclusiva los contenidos del Nivel 2: la definición, características, técnicas de recolección de datos no manipulativas y la utilidad práctica del método descriptivo para la identificación y resolución de problemáticas en el entorno escolar.
+        Este módulo integra los contenidos del Nivel 1 (conceptualización de la investigación educativa, el método científico y la validación de instrumentos) y del Nivel 2 (teoría del muestreo probabilístico, tipologías y criterios de selección muestral).
       </p>
-    </div>
-
-    <!-- Barra de progreso -->
-    <div style="margin: 15px 0;">
-      <span id="progressText" style="font-size: 0.85rem; font-weight: 600;"></span>
-      <div class="progress-container">
-        <div id="progressFill" class="progress-bar-fill"></div>
-      </div>
     </div>
 
     <hr style="border: 0; border-top: 1px solid var(--color-complementario); margin: 25px 0;">
 
+    <!-- ==================== NIVEL 1 ==================== -->
     <article class="nivel-container">
-      <h3 style="color: var(--color-institucional); font-size: 1.4rem;">
-        1. Definición y Características de la Investigación Descriptiva en Educación
+      <h3 style="color: var(--color-institucional); font-size: 1.4rem; margin-bottom: 15px;">
+        ▸ Nivel 1: La Investigación Científica en las Ciencias de la Educación
       </h3>
-      <p>
-        La investigación descriptiva en las ciencias de la educación es un enfoque de indagación científica no experimental cuyo propósito principal es precisar, caracterizar y sistematizar las propiedades, dinámicas, perfiles y condiciones de un fenómeno, comunidad pedagógica o proceso educativo tal como se presenta en su estado natural.
-      </p>
-      <p>
-        A diferencia de los estudios experimentales, este método no busca manipular deliberadamente variables ni establecer relaciones causales directas de causa-efecto, sino ofrecer una «fotografía fiel» y objetiva de la realidad escolar, respondiendo a interrogantes fundamentales como: ¿Qué ocurre?, ¿Quiénes intervienen?, ¿Dónde y cuándo se manifiesta el fenómeno?, y ¿Con qué frecuencia se presenta?
-      </p>
-      
-      <p><strong>Características Principales:</strong></p>
-      <ul style="margin-left: 25px; margin-bottom: 15px;">
-        <li style="margin-bottom: 6px;"><strong>Entorno Natural (In Situ):</strong> Se realiza en el contexto genuino donde suceden los hechos (aulas, comunidades escolares, centros educativos) sin alterar las dinámicas cotidianas.</li>
-        <li style="margin-bottom: 6px;"><strong>Ausencia de Manipulación de Variables:</strong> Las variables (rendimiento escolar, motivación, clima de aula, hábitos de estudio) se observan y miden en su estado habitual sin intervención o manipulación.</li>
-        <li style="margin-bottom: 6px;"><strong>Integración de Enfoques Cuantitativos y Cualitativos:</strong> Combina la medición cuantitativa (frecuencias, porcentajes, promedios) con la caracterización cualitativa (patrones de interacción, dinámicas sociales).</li>
-        <li style="margin-bottom: 6px;"><strong>Carácter Diagnóstico y Base para la Toma de Decisiones:</strong> Proporciona un diagnóstico sistemático que sirve como insumo indispensable para investigaciones correlacionales, explicativas o proyectos de investigación-acción.</li>
-      </ul>
-    </article>
+      <p style="font-style: italic; color: var(--color-texto);">Fundamentos Metodológicos, Método Científico y Estrategias para Recolección de Datos Primarios[cite: 5]</p>
 
-    <article class="nivel-container" style="margin-top: 25px;">
-      <h3 style="color: var(--color-institucional); font-size: 1.4rem;">
-        2. Métodos de Observación y Recolección de Hechos en el Entorno Escolar sin Manipular Variables
-      </h3>
-      <p>
-        Para estudiar los fenómenos pedagógicos respetando su desarrollo habitual, la investigación descriptiva recurre a métodos e instrumentos rigurosos de recolección de datos:
-      </p>
-      
-      <table class="tabla-academica">
-        <thead>
-          <tr>
-            <th>Técnica / Método</th>
-            <th>Descripción en el Entorno Escolar</th>
-            <th>Instrumentos y Herramientas</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td><strong>Observación Estructurada y Naturalista</strong></td>
-            <td>Registro sistemático de conductas habituales de docentes y estudiantes en el aula o patio sin intervención del investigador.</td>
-            <td>
-              • Listas de cotejo.<br>
-              • Escalas de estimación o apreciación.<br>
-              • Guías de observación de aula.
-            </td>
-          </tr>
-          <tr>
-            <td><strong>Encuestas y Cuestionarios Educativos</strong></td>
-            <td>Recopilación de información sobre opiniones, actitudes, percepción del clima escolar y factores socioeconómicos.</td>
-            <td>
-              • Cuestionarios de escala Likert.<br>
-              • Formularios estandarizados de opinión.
-            </td>
-          </tr>
-          <tr>
-            <td><strong>Entrevistas Diagnósticas y Cualitativas</strong></td>
-            <td>Diálogo directo con actores clave (estudiantes, docentes, directivos, padres) para profundizar en el contexto socioeducativo.</td>
-            <td>
-              • Guías de entrevista semiestructurada.<br>
-              • Protocolos de grupos focales.
-            </td>
-          </tr>
-          <tr>
-            <td><strong>Análisis Documental y Registro Institucional</strong></td>
-            <td>Examen de la producción escolar y documentación oficial sin perturbación del proceso de enseñanza.</td>
-            <td>
-              • Registros de calificaciones y asistencia.<br>
-              • Planes de clase, PEI y portafolios.
-            </td>
-          </tr>
-        </tbody>
-      </table>
-    </article>
+      <div style="margin-top: 15px;">
+        <h4 style="color: var(--color-institucional);">1. Conceptualización de la Investigación Científica en Educación</h4>
+        <p>
+          La investigación científica en ciencias de la educación se define como un proceso reflexivo, sistemático, controlado y crítico que busca descubrir, interpretar y transformar fenómenos y dinámicas del ámbito educativo. A diferencia del conocimiento empírico o intuitivo, emplea procedimientos metodológicos rigurosos para validar proposiciones sobre la enseñanza, el aprendizaje y la gestión institucional[cite: 5].
+        </p>
+        
+        <div class="esquema-box">【 ESQUEMA: DIMENSIONES DE LA INVESTIGACIÓN EDUCATIVA 】
+┌──────────────────────────────────────────────────────────┐
+│       INVESTIGACIÓN CIENTÍFICA EN EDUCACIÓN              │
+└────────────────────────────┬─────────────────────────────┘
+                             │      
+      ┌──────────────────────┼──────────────────────┐      
+      ▼                      ▼                      ▼      
+┌──────────────┐      ┌──────────────┐      ┌──────────────┐
+│  PEDAGÓGICA  │      │ PSICOSOCIAL  │      │ADMINISTRATIVA│
+│ Procesos de  │      │ Dinámicas de │      │ Gestión de   │
+│ Enseñanza y  │      │ Aula, Clima  │      │ Recurso y    │
+│ Aprendizaje  │      │ y Contexto   │      │ Planificación│
+└──────────────┘      └──────────────┘      └──────────────┘</div>
 
-    <article class="nivel-container" style="margin-top: 25px;">
-      <h3 style="color: var(--color-institucional); font-size: 1.4rem;">
-        3. Utilidad del Método Descriptivo para Identificar y Proponer Soluciones a Problemáticas Socioeducativas Reales
-      </h3>
-      <p>El método descriptivo actúa como un puente fundamental entre la recolección empírica de datos en la escuela y la transformación práctica de las políticas e intervenciones educativas:</p>
-      <ol style="margin-left: 25px; margin-bottom: 15px;">
-        <li style="margin-bottom: 8px;"><strong>Diagnóstico preciso de necesidades comunitarias y de aula:</strong> Permite visibilizar de forma objetiva rezagos en lectoescritura, brechas digitales, tasas de deserción escolar, acoso escolar (ciberbullying) y factores de riesgo psicoeducativo.</li>
-        <li style="margin-bottom: 8px;"><strong>Fundamentación empírica para el diseño de intervenciones:</strong> Proporciona evidencias objetivas para respaldar la formulación de Proyectos Educativos Institucionales (PEI), planes de tutoría adaptados y adecuaciones curriculares.</li>
-        <li style="margin-bottom: 8px;"><strong>Optimización en la asignación de recursos socioeducativos:</strong> Ayuda a autoridades y directivos a dirigir partidas presupuestarias, material didáctico, becas y apoyo psicopedagógico hacia los sectores con mayores necesidades identificadas.</li>
-        <li style="margin-bottom: 8px;"><strong>Establecimiento de líneas de base y seguimiento institucional:</strong> Registra el estado inicial de una comunidad escolar, permitiendo medir con precisión en el futuro el impacto real de las reformas pedagógicas e intervenciones aplicadas.</li>
-      </ol>
+        <p><strong>Características Fundamentales:</strong>[cite: 5]</p>
+        <ul style="margin-left: 25px; margin-bottom: 15px;">
+          <li style="margin-bottom: 6px;"><strong>Naturaleza Multidimensional:</strong> Integra dimensiones pedagógicas, psicológicas, sociológicas y administrativas que interactúan simultáneamente en la comunidad escolar[cite: 5].</li>
+          <li style="margin-bottom: 6px;"><strong>Orientación a la Praxis y Transformación:</strong> Los resultados no solo buscan describir realidades, sino fundamentar intervenciones dirigidas a mejorar los procesos didácticos e institucionales[cite: 5].</li>
+          <li style="margin-bottom: 6px;"><strong>Complejidad del Objeto de Estudio:</strong> Enfrenta la variabilidad humana y del entorno social, requiriendo un tratamiento metodológico riguroso[cite: 5].</li>
+        </ul>
+      </div>
 
-      <div class="caso-practico">
-        <h4 style="color: var(--color-institucional); margin-bottom: 8px;">📌 Aplicación Práctica en la Gestión Escolar: Caso Práctico Ilustrativo</h4>
+      <div style="margin-top: 20px;">
+        <h4 style="color: var(--color-institucional);">2. El Método Científico Aplicado a la Solución de Problemas</h4>
+        <p>
+          La aplicación del método científico permite abordar de manera estructurada tanto las problemáticas del aula como las deficiencias organizacionales del entorno escolar[cite: 5].
+        </p>
+
+        <div class="esquema-box">【 ESQUEMA: FLUJO DEL MÉTODO CIENTÍFICO EN INVESTIGACIÓN EDUCATIVA 】
+[Observación e Identificación de la Problemática Escolar]
+                           │
+                           ▼
+    [Formulación Clara del Problema e Interrogantes]
+                           │
+                           ▼
+   [Planteamiento de Hipótesis o Proposiciones Guía]
+                           │
+                           ▼
+ [Diseño Metodológico y Recolección de Datos de Campo]
+                           │
+                           ▼
+    [Análisis de Resultados e Inferencia de Conclusiones]
+                           │
+                           ▼
+  [Propuesta de Solución, Transformación o Intervención]</div>
+
+        <table class="tabla-academica">
+          <thead>
+            <tr>
+              <th>Etapa del Método Científico</th>
+              <th>Aplicación en el Ámbito Pedagógico</th>
+              <th>Aplicación en la Gestión Administrativa</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>1. Observación e Identificación</strong></td>
+              <td>Detección de dificultades de comprensión lectora en estudiantes de primaria[cite: 5].</td>
+              <td>Identificación de demoras recurrentes en el trámite de matriculación de alumnos[cite: 5].</td>
+            </tr>
+            <tr>
+              <td><strong>2. Formulación del Problema</strong></td>
+              <td>¿De qué manera el uso de estrategias visuales mejora la comprensión lectora?[cite: 5]</td>
+              <td>¿Qué factores organizacionales generan cuellos de botella en la matriculación?[cite: 5]</td>
+            </tr>
+            <tr>
+              <td><strong>3. Planteamiento de Hipótesis</strong></td>
+              <td>El uso de organizadores gráficos incrementará significativamente el nivel de comprensión[cite: 5].</td>
+              <td>La automatización del registro digital reducirá el tiempo de trámite en un 40%[cite: 5].</td>
+            </tr>
+            <tr>
+              <td><strong>4. Experimentación / Recolección</strong></td>
+              <td>Aplicación de pre-test, secuencia didáctica innovadora y post-test en aulas piloto[cite: 5].</td>
+              <td>Medición de tiempos de atención y encuestas de satisfacción a usuarios del proceso[cite: 5].</td>
+            </tr>
+            <tr>
+              <td><strong>5. Análisis e Inferencia</strong></td>
+              <td>Comparación estadística de medias antes y después de la intervención didáctica[cite: 5].</td>
+              <td>Evaluación de costos, tiempos de procesamiento y nivel de satisfacción post-reforma[cite: 5].</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div style="margin-top: 20px;">
+        <h4 style="color: var(--color-institucional);">3. Importancia de la Formulación de Preguntas Guía Claras y Precisas</h4>
+        <p>
+          Las preguntas de investigación son el eje articulador de todo estudio científico. Una pregunta guía bien formulada define el alcance, orienta los objetivos y determina los instrumentos requeridos[cite: 5].
+        </p>
+
+        <div class="esquema-box">【 ESQUEMA: MATRIZ DE CONSISTENCIA Y ALINEACIÓN DE LA PREGUNTA GUÍA 】
+┌─────────────────────────────────────────────────────────┐
+│              PREGUNTA DE INVESTIGACIÓN                  │
+│  (¿De qué manera X influye en Y en el contexto Z?)     │
+└────────────────────────────┬────────────────────────────┘
+                             │      
+      ┌──────────────────────┴──────────────────────┐      
+      ▼                                             ▼      
+┌────────────────────────────┐       ┌────────────────────────────┐
+│     OBJETIVO GENERAL       │       │    DISEÑO DEL INSTRUMENTO  │
+│ (Determinar el efecto de X │ <===> │ (Items del cuestionario /  │
+│    en Y en el contexto Z)  │       │  preguntas de entrevista)  │
+└────────────────────────────┘       └────────────────────────────┘</div>
+
+        <ul style="margin-left: 25px; margin-bottom: 15px;">
+          <li style="margin-bottom: 6px;"><strong>Delimitación y Claridad:</strong> Evitan ambigüedades. Por ejemplo, precisar: «¿Cuál es el nivel de logro académico en matemáticas de los estudiantes de quinto grado?»[cite: 5]</li>
+          <li style="margin-bottom: 6px;"><strong>Factibilidad Empírica:</strong> Deben responder a variables observables y medibles empíricamente en el contexto escolar real[cite: 5].</li>
+          <li style="margin-bottom: 6px;"><strong>Guía para la Matriz de Consistencia:</strong> Evitan el extravío metodológico durante la fase de recolección y análisis[cite: 5].</li>
+        </ul>
+      </div>
+
+      <div style="margin-top: 20px;">
+        <h4 style="color: var(--color-institucional);">4. Estrategias Metodológicas para Instrumentos de Datos Primarios</h4>
+        <p>La recolección de datos primarios requiere un diseño riguroso para asegurar la validez y confiabilidad:</p>
+
+        <div class="esquema-box">【 ESQUEMA: FASES DE VALIDACIÓN Y CONFIABILIDAD DEL INSTRUMENTO 】
+  [Construcción del Instrumento (Reactivos / Preguntas)]
+                           │
+                           ▼
+ [Validez de Contenido: Juicio de Expertos (3 a 5 evaluadores)]
+                           │
+                           ▼
+   [Prueba Piloto: Aplicación a Muestra Equivalente]
+                           │
+                           ▼
+  [Cálculo de Confiabilidad: Alfa de Cronbach (α ≥ 0.80)]
+                           │
+                           ▼
+ [Aplicación Definitiva en la Muestra de Estudio]</div>
+
+        <p><strong>A. Diseño y Validez de Cuestionarios:</strong>[cite: 5]</p>
+        <ul style="margin-left: 25px; margin-bottom: 10px;">
+          <li>Uso de escalas estandarizadas (ej. Escala Likert de 5 puntos)[cite: 5].</li>
+          <li>Validez de Contenido mediante juicio de 3 a 5 expertos pedagógicos[cite: 5].</li>
+          <li>Confiabilidad calculada mediante el coeficiente Alfa de Cronbach ($\alpha \ge 0.80$)[cite: 5].</li>
+        </ul>
+
+        <p><strong>B. Diseño de Guías de Entrevista:</strong>[cite: 5]</p>
+        <ul style="margin-left: 25px; margin-bottom: 15px;">
+          <li>Estructuración modular semiestructurada por dimensiones analíticas[cite: 5].</li>
+          <li>Creación de un ambiente de confianza (rapport) para evitar sesgos[cite: 5].</li>
+        </ul>
+      </div>
+
+      <!-- EJERCICIO NIVEL 1 -->
+      <div class="ejercicio-box" style="margin-top: 20px;">
+        <h4 style="color: var(--color-institucional); margin-bottom: 8px;">✏️ Ejercicio Práctico - Nivel 1</h4>
         <p style="margin-bottom: 0;">
-          Un estudio sobre el <em>'Uso de dispositivos móviles y niveles de atención en aulas de secundaria'</em> no prohíbe ni altera el uso de teléfonos en el centro escolar. En su lugar, mide las frecuencias de uso y tiempos de concentración mediante listas de cotejo y encuestas. A partir de los datos reales recopilados, la institución diseña un protocolo de uso normado de la tecnología en el aula respaldado en evidencia empírica.
+          Diseña un mini-cuestionario piloto de 3 preguntas enfocado en evaluar la percepción del clima de aula en el nivel primario, preprimario y diversificado[cite: 5].
         </p>
       </div>
-    </article>
 
-    <!-- ANEXO: MODELO DE GUÍA DE OBSERVACIÓN -->
-    <article class="nivel-container" style="margin-top: 25px;">
-      <h3 style="color: var(--color-institucional); font-size: 1.4rem;">
-        Anexo: Modelo de Guía de Observación Estructurada y Lista de Cotejo
-      </h3>
-      <p>Modelo práctico de instrumento institucional diseñado para evaluar el clima de aula en el nivel secundario sin alterar la dinámica de clase:</p>
-      
-      <div style="background: var(--color-fondo); border: 1px solid var(--color-complementario); padding: 15px; border-radius: 8px; margin-bottom: 15px; font-size: 0.95rem;">
-        <p><strong>I. DATOS GENERALES Y DE CONTEXTO</strong></p>
-        <p>• Institución Educativa: _______________________ • Grado/Sección: _________ • Asignatura: ___________________</p>
-        <p>• Fecha: ____/____/________ • Nº Estudiantes: ____ • Observador/a: ____________________________________</p>
-      </div>
-
-      <h4 style="margin-top: 10px;">II. Matriz de Evaluación del Clima de Aula</h4>
-      <table class="tabla-academica">
-        <thead>
-          <tr>
-            <th>Dimensión / Indicadores de Observación</th>
-            <th>Cumplimiento (Sí / Parcial / No)</th>
-            <th>Valoración (1 a 4)</th>
-            <th>Observaciones / Evidencias Cualitativas</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td colspan="4" style="background-color: var(--color-complementario); font-weight: bold;">1. Relaciones Interpersonales y Respeto Mutuo</td>
-          </tr>
-          <tr>
-            <td>1.1 El docente se dirige con lenguaje respetuoso, empático y libre de sarcasmo.</td>
-            <td></td><td></td><td></td>
-          </tr>
-          <tr>
-            <td>1.2 Los estudiantes se tratan con respeto, evitando apodos despectivos o burlas.</td>
-            <td></td><td></td><td></td>
-          </tr>
-          <tr>
-            <td colspan="4" style="background-color: var(--color-complementario); font-weight: bold;">2. Gestión de la Normativa y Convivencia Escolar</td>
-          </tr>
-          <tr>
-            <td>2.1 Las normas de convivencia del aula están visibles o se recuerdan al inicio.</td>
-            <td></td><td></td><td></td>
-          </tr>
-          <tr>
-            <td>2.2 El docente aborda comportamientos disruptivos de forma oportuna y privada.</td>
-            <td></td><td></td><td></td>
-          </tr>
-          <tr>
-            <td colspan="4" style="background-color: var(--color-complementario); font-weight: bold;">3. Motivación, Participación y Ambiente de Aprendizaje</td>
-          </tr>
-          <tr>
-            <td>3.1 El docente refuerza positivamente las participaciones y logros de los alumnos.</td>
-            <td></td><td></td><td></td>
-          </tr>
-          <tr>
-            <td>3.2 Los estudiantes muestran confianza para formular dudas o hacer preguntas.</td>
-            <td></td><td></td><td></td>
-          </tr>
-        </tbody>
-      </table>
-    </article>
-
-    <!-- RECURSOS AUDIOVISUALES (UNAM) -->
-    <article class="nivel-container" style="background-color: var(--color-fondo); border: 1px solid var(--color-complementario); padding: 25px; border-radius: 10px; margin: 30px 0;">
-      <h3 style="color: var(--color-institucional); font-size: 1.3rem; margin-bottom: 15px;">
-        📺 Recursos Audiovisuales de Apoyo (Facultad de Ciencias, UNAM)
-      </h3>
-      <p style="margin-bottom: 20px;">
-        Complementa tu comprensión metodológica visualizando estas video-cápsulas académicas sobre población, muestras y levantamiento de datos:
-      </p>
-
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px;">
-        <div style="border: 1px solid var(--color-complementario); padding: 15px; border-radius: 8px; background: var(--color-fondo);">
-          <h4 style="color: var(--color-institucional); font-size: 1.05rem; margin-bottom: 8px;">Población y muestra</h4>
-          <p style="font-size: 0.9rem; margin-bottom: 12px;">Conceptos fundamentales para la delimitación del universo de estudio en investigación.</p>
-          <a href="https://www.youtube.com/watch?v=Fnizl_WKsCA" target="_blank" style="display: inline-block; background-color: var(--color-institucional); color: #fff; padding: 8px 15px; border-radius: 5px; text-decoration: none; font-size: 0.9rem; font-weight: 600;">Ver Video en YouTube ▶</a>
-        </div>
-
-        <div style="border: 1px solid var(--color-complementario); padding: 15px; border-radius: 8px; background: var(--color-fondo);">
-          <h4 style="color: var(--color-institucional); font-size: 1.05rem; margin-bottom: 8px;">Agrupamiento de datos</h4>
-          <p style="font-size: 0.9rem; margin-bottom: 12px;">Estrategias prácticas para tabular y organizar la información obtenida en campo.</p>
-          <a href="https://www.youtube.com/watch?v=RUtGbNSngGg" target="_blank" style="display: inline-block; background-color: var(--color-institucional); color: #fff; padding: 8px 15px; border-radius: 5px; text-decoration: none; font-size: 0.9rem; font-weight: 600;">Ver Video en YouTube ▶</a>
+      <!-- VIDEOS NIVEL 1 -->
+      <div style="margin-top: 20px;">
+        <h4 style="color: var(--color-institucional); font-size: 1.1rem; margin-bottom: 10px;">📺 Recursos Audiovisuales de Apoyo (Nivel 1)</h4>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 15px;">
+          <div class="video-card">
+            <p style="font-weight: bold; margin-bottom: 8px;">Recurso institucional UNAM</p>
+            <a href="https://canal.uned.es/video/6ad1f70d8e59be26cb0c0621?utm_source=chatgpt.com" target="_blank" class="btn-video">Ver Recurso 1 ▶</a>
+          </div>
+          <div class="video-card">
+            <p style="font-weight: bold; margin-bottom: 8px;">Video explicativo complementario</p>
+            <a href="https://www.youtube.com/watch?v=imLMqyc0yv4" target="_blank" class="btn-video">Ver Recurso 2 ▶</a>
+          </div>
         </div>
       </div>
     </article>
 
     <hr style="border: 0; border-top: 1px solid var(--color-complementario); margin: 30px 0;">
 
-    <!-- QUIZ AUTOCALIFICABLE DE LA FASE 2 -->
+    <!-- ==================== NIVEL 2 ==================== -->
+    <article class="nivel-container" style="margin-top: 30px;">
+      <h3 style="color: var(--color-institucional); font-size: 1.4rem; margin-bottom: 15px;">
+        ▸ Nivel 2: Métodos de Muestreo Probabilístico en la Investigación Educativa
+      </h3>
+      <p style="font-style: italic; color: var(--color-texto);">Conceptos Clave, Tipologías de Muestreo y Criterios de Selección Metodológica[cite: 5]</p>
+
+      <div style="margin-top: 15px;">
+        <h4 style="color: var(--color-institucional);">1. Conceptos Clave de la Teoría del Muestreo</h4>
+        <p>
+          El muestreo constituye el pilar fundamental de la inferencia estadística, permitiendo extrapolar hallazgos observados en un subconjunto hacia la totalidad de la población bajo márgenes de error cuantificables[cite: 5].
+        </p>
+
+        <div class="esquema-box">【 ESQUEMA: RELACIÓN ENTRE POBLACIÓN, MUESTRA, PARÁMETRO Y ESTADÍSTICO 】
+┌──────────────────────────────────────────────────────────┐
+│             POBLACIÓN (N) [Parámetros: μ, σ]             │
+│ (Conjunto total de elementos del sistema educativo)      │
+└────────────────────────────┬─────────────────────────────┘
+                             │                
+                Muestreo Probabilístico (P(x) > 0)
+                             │                             
+                             ▼
+┌──────────────────────────────────────────────────────────┐
+│              MUESTRA (n) [Estadísticos: x̄, s]            │
+│ (Subconjunto representativo de elementos seleccionados)  │
+└────────────────────────────┬─────────────────────────────┘
+                             │                 
+                 Inferencia Estadística
+                             └──────────────────────────────► (Población)</div>
+
+        <ul style="margin-left: 25px; margin-bottom: 15px;">
+          <li style="margin-bottom: 6px;"><strong>Población (N):</strong> Conjunto completo de elementos que poseen características comunes de interés[cite: 5].</li>
+          <li style="margin-bottom: 6px;"><strong>Muestra (n):</strong> Subconjunto representativo de la población sobre el cual se recolectan datos primarios[cite: 5].</li>
+          <li style="margin-bottom: 6px;"><strong>Parámetro:</strong> Valor numérico fijo que describe una propiedad cuantitativa de la población total ($\mu$ o $\sigma$)[cite: 5].</li>
+          <li style="margin-bottom: 6px;"><strong>Estadístico:</strong> Medida cuantitativa calculada a partir de los datos de la muestra ($\bar{x}$ o $s$)[cite: 5].</li>
+        </ul>
+      </div>
+
+      <div style="margin-top: 20px;">
+        <h4 style="color: var(--color-institucional);">2. Clasificación de Métodos de Muestreo Probabilístico</h4>
+        <p>
+          En el muestreo probabilístico, todos los elementos de la población tienen una probabilidad conocida y distinta de cero de ser seleccionados, eliminando el sesgo[cite: 5]:
+        </p>
+
+        <div class="esquema-box">【 ESQUEMA: TIPOLOGÍAS DEL MUESTREO PROBABILÍSTICO 】
+┌──────────────────────────────────────────────────────────┐
+│               MUESTREO PROBABILÍSTICO                    │
+└────────────────────────────┬─────────────────────────────┘
+                             │      
+      ┌──────────────────────┼──────────────────────┐      
+      ▼                      ▼                      ▼      
+┌──────────────┐      ┌──────────────┐      ┌──────────────┐
+│  ALEATORIO   │      │ ESTRATIFICADO│      │ CONGLOMERADOS│
+│    SIMPLE    │      │ (Homogéneo   │      │ (Heterogéneo │
+│(Azar/Sorteo) │      │  intragrupo) │      │  intragrupo) │
+└──────────────┘      └──────────────┘      └──────────────┘
+                             │                             
+                             ▼                      
+                      ┌──────────────┐                      
+                      │ SISTEMÁTICO  │                      
+                      │  (Intervalo  │                      
+                      │   k = N/n)   │                      
+                      └──────────────┘</div>
+
+        <table class="tabla-academica">
+          <thead>
+            <tr>
+              <th>Método de Muestreo</th>
+              <th>Mecánica de Selección</th>
+              <th>Ejemplo en el Entorno Educativo</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Aleatorio Simple (MAS)</strong></td>
+              <td>Cada sujeto se elige estrictamente al azar mediante números aleatorios o sorteo[cite: 5].</td>
+              <td>Selección aleatoria de 50 alumnos de una lista oficial de 500 matriculados[cite: 5].</td>
+            </tr>
+            <tr>
+              <td><strong>Estratificado</strong></td>
+              <td>Se divide la población en estratos homogéneos (grados, género, zona) y se muestrea en cada uno[cite: 5].</td>
+              <td>Selección proporcional de estudiantes por grado (1º a 5º de secundaria)[cite: 5].</td>
+            </tr>
+            <tr>
+              <td><strong>Sistemático</strong></td>
+              <td>Se elige un punto de inicio aleatorio y se selecciona cada k-ésimo elemento ($k = N/n$)[cite: 5].</td>
+              <td>Selección de cada 10º estudiante que ingresa al plantel educativo[cite: 5].</td>
+            </tr>
+            <tr>
+              <td><strong>Por Conglomerados</strong></td>
+              <td>Se seleccionan grupos heterogéneos naturales (aulas, escuelas) en lugar de individuos[cite: 5].</td>
+              <td>Selección aleatoria de 5 escuelas completas dentro de un municipio[cite: 5].</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div style="margin-top: 20px;">
+        <h4 style="color: var(--color-institucional);">3. Criterios para la Selección del Tipo de Muestra</h4>
+        <p>La elección del diseño muestral depende de los recursos, el marco muestral y la heterogeneidad[cite: 5]:</p>
+
+        <div class="esquema-box">¿Se dispone de marco muestral completo (lista N)?
+                ┌───────────────┴───────────────┐
+                ▼ SÍ                            ▼ NO / Disperso
+    ¿La población es heterogénea        [Muestreo por Conglomerados
+    por subgrupos relevantes?           o Multietápico por Aulas]
+                │       
+       ┌────────┴────────┐       
+       ▼ SÍ              ▼ NO
+[Muestreo          [Muestreo Aleatorio Estratificado]
+Simple o Sistemático]</div>
+
+        <ul style="margin-left: 25px; margin-bottom: 15px;">
+          <li style="margin-bottom: 6px;"><strong>Disponibilidad y Heterogeneidad:</strong> Si existen subgrupos diferenciados (urbanas vs. rurales), el muestreo estratificado reduce la varianza[cite: 5].</li>
+          <li style="margin-bottom: 6px;"><strong>Recursos y Logística:</strong> Cuando los recursos de campo son limitados, el conglomerado optimiza el costo geográfico[cite: 5].</li>
+          <li style="margin-bottom: 6px;"><strong>Objetivos de Inferencia:</strong> Para alta precisión regional o nacional, se prefieren diseños estratificados con error $\le 5\%$[cite: 5].</li>
+        </ul>
+      </div>
+
+      <!-- EJERCICIO NIVEL 2 -->
+      <div class="ejercicio-box" style="margin-top: 20px;">
+        <h4 style="color: var(--color-institucional); margin-bottom: 8px;">✏️ Ejercicio Práctico - Nivel 2</h4>
+        <p style="margin-bottom: 0;">
+          Imagina que tienes una población total de 200 docentes distribuidos en 4 escuelas diferentes y necesitas seleccionar una muestra representativa de 40 docentes utilizando muestreo estratificado. Explica brevemente cómo lo harías[cite: 5].
+        </p>
+      </div>
+
+      <!-- VIDEOS NIVEL 2 -->
+      <div style="margin-top: 20px;">
+        <h4 style="color: var(--color-institucional); font-size: 1.1rem; margin-bottom: 10px;">📺 Recursos Audiovisuales de Apoyo (Nivel 2)</h4>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 15px;">
+          <div class="video-card">
+            <p style="font-weight: bold; margin-bottom: 8px;">Video de muestreo probabilístico (Parte 1)</p>
+            <a href="https://www.youtube.com/watch?v=BBfiwkbtm0M" target="_blank" class="btn-video">Ver Recurso 1 ▶</a>
+          </div>
+          <div class="video-card">
+            <p style="font-weight: bold; margin-bottom: 8px;">Video de muestreo probabilístico (Parte 2)</p>
+            <a href="https://www.youtube.com/watch?v=3rP9wC0cbXU" target="_blank" class="btn-video">Ver Recurso 2 ▶</a>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <hr style="border: 0; border-top: 1px solid var(--color-complementario); margin: 30px 0;">
+
+    <!-- ==================== QUIZ AUTOCALIFICABLE DE 10 PREGUNTAS ==================== -->
     <section class="quiz-container">
-      <h3 style="color: var(--color-institucional); margin-bottom: 15px;">Autoevaluación de la Fase 2</h3>
-      <p>Comprueba tus conocimientos respondiendo las siguientes 5 preguntas:</p>
+      <h3 style="color: var(--color-institucional); margin-bottom: 15px;">Autoevaluación: Investigación Científica y Muestreo Probabilístico (Fase 2)</h3>
+      <p>Comprueba tus conocimientos respondiendo las siguientes 10 preguntas[cite: 5]:</p>
 
       <form id="quizForm" style="margin-top: 20px;">
-        <div class="pregunta-box">
-          <p>1. ¿Cuál es el propósito principal de la investigación descriptiva en las ciencias de la educación?</p>
+        <h4 style="color: var(--color-institucional); font-size: 1.1rem; border-bottom: 1px solid #75D7F5; padding-bottom: 4px;">PARTE 1: Nivel 1 - Investigación Científica y Datos Primarios</h4>
+        
+        <div class="pregunta-box" style="margin-top: 15px;">
+          <p>1. ¿Cuál es la diferencia fundamental entre la investigación científica en educación y el conocimiento empírico o intuitivo?</p>
           <ul class="opciones-list">
-            <li><label><input type="radio" name="p1" value="a"> a) Manipular variables experimentales en laboratorios escolares.</label></li>
-            <li><label><input type="radio" name="p1" value="b"> b) Precisar, caracterizar y sistematizar las propiedades de un fenómeno en su estado natural.</label></li>
-            <li><label><input type="radio" name="p1" value="c"> c) Establecer relaciones causales irreversibles entre docentes y alumnos.</label></li>
+            <li><label><input type="radio" name="p1" value="a"> a) La investigación científica se realiza únicamente en laboratorios fuera del entorno escolar[cite: 5].</label></li>
+            <li><label><input type="radio" name="p1" value="b"> b) Emplea procedimientos metodológicos rigurosos, reflexivos y controlados para descubrir, interpretar y transformar fenómenos educativos[cite: 5].</label></li>
+            <li><label><input type="radio" name="p1" value="c"> c) El conocimiento empírico requiere obligatoriamente un análisis estadístico avanzado en IBM SPSS[cite: 5].</label></li>
+            <li><label><input type="radio" name="p1" value="d"> d) La investigación científica sólo se enfoca en la gestión presupuestaria administrativa[cite: 5].</label></li>
           </ul>
         </div>
 
         <div class="pregunta-box">
-          <p>2. ¿Qué caracteriza principalmente al enfoque de investigación "In Situ"?</p>
+          <p>2. En el flujo del método científico aplicado a la educación, ¿cuál es el paso que sigue inmediatamente después de la Formulación Clara del Problema e Interrogantes?</p>
           <ul class="opciones-list">
-            <li><label><input type="radio" name="p2" value="a"> a) Se realiza en el contexto genuino donde suceden los hechos sin alterar la dinámica cotidiana.</label></li>
-            <li><label><input type="radio" name="p2" value="b"> b) Requiere aislar a los estudiantes en cubículos cerrados.</label></li>
-            <li><label><input type="radio" name="p2" value="c"> c) Excluye por completo el uso de registros cuantitativos.</label></li>
+            <li><label><input type="radio" name="p2" value="a"> a) Análisis de Resultados e Inferencia de Conclusiones[cite: 5].</label></li>
+            <li><label><input type="radio" name="p2" value="b"> b) Propuesta de Solución, Transformación o Intervención[cite: 5].</label></li>
+            <li><label><input type="radio" name="p2" value="c"> c) Planteamiento de Hipótesis o Proposiciones Guía[cite: 5].</label></li>
+            <li><label><input type="radio" name="p2" value="d"> d) Aplicación del instrumento en la muestra definitiva[cite: 5].</label></li>
           </ul>
         </div>
 
         <div class="pregunta-box">
-          <p>3. ¿Qué instrumento es idóneo para la observación estructurada y naturalista del aula?</p>
+          <p>3. ¿Qué propiedad debe cumplir una Pregunta Guía de investigación para asegurar la factibilidad empírica?</p>
           <ul class="opciones-list">
-            <li><label><input type="radio" name="p3" value="a"> a) Listas de cotejo y guías de observación de aula.</label></li>
-            <li><label><input type="radio" name="p3" value="b"> b) Pruebas de hipótesis ANOVA de dos vías.</label></li>
-            <li><label><input type="radio" name="p3" value="c"> c) Algoritmos de Machine Learning.</label></li>
+            <li><label><input type="radio" name="p3" value="a"> a) Responder a variables observables y medibles empíricamente en el contexto escolar real[cite: 5].</label></li>
+            <li><label><input type="radio" name="p3" value="b"> b) Ser redactada de forma abstracta e indefinida para abarcar múltiples temas[cite: 5].</label></li>
+            <li><label><input type="radio" name="p3" value="c"> c) Evaluar la totalidad del sistema educativo nacional sin delimitar la población[cite: 5].</label></li>
+            <li><label><input type="radio" name="p3" value="d"> d) Eliminar la necesidad de construir una matriz de consistencia[cite: 5].</label></li>
           </ul>
         </div>
 
         <div class="pregunta-box">
-          <p>4. ¿Cómo actúa el método descriptivo frente a las problemáticas socioeducativas reales?</p>
+          <p>4. Durante el proceso de diseño de un cuestionario, ¿en qué consiste la fase de "Validez de Contenido"?</p>
           <ul class="opciones-list">
-            <li><label><input type="radio" name="p4" value="a"> a) Como un puente entre la recolección empírica de datos y la transformación práctica institucional.</label></li>
-            <li><label><input type="radio" name="p4" value="b"> b) Como una norma punitiva para sancionar a los alumnos.</label></li>
-            <li><label><input type="radio" name="p4" value="c"> c) Como un método para suprimir el uso de cuestionarios Likert.</label></li>
+            <li><label><input type="radio" name="p4" value="a"> a) En el cálculo del coeficiente Alfa de Cronbach mediante un paquete estadístico[cite: 5].</label></li>
+            <li><label><input type="radio" name="p4" value="b"> b) En la aplicación directa del cuestionario a la muestra definitiva de estudio[cite: 5].</label></li>
+            <li><label><input type="radio" name="p4" value="c"> c) En el sometimiento del instrumento al juicio de 3 a 5 expertos pedagógicos para evaluar pertinencia, claridad y suficiencia[cite: 5].</label></li>
+            <li><label><input type="radio" name="p4" value="d"> d) En la selección aleatoria de los estudiantes que participarán en el estudio[cite: 5].</label></li>
           </ul>
         </div>
 
         <div class="pregunta-box">
-          <p>5. En el caso práctico ilustrativo sobre dispositivos móviles, ¿cómo procedió la investigación?</p>
+          <p>5. ¿Qué coeficiente estadístico se utiliza habitualmente durante la prueba piloto para medir la confiabilidad de un cuestionario de escala Likert (requiriendo un valor $\alpha \ge 0.80$)?</p>
           <ul class="opciones-list">
-            <li><label><input type="radio" name="p5" value="a"> b) Prohibió de inmediato los teléfonos celulares en todo el país.</label></li>
-            <li><label><input type="radio" name="p5" value="b"> a) Misa las frecuencias de uso y tiempos de concentración para diseñar un protocolo normado basado en evidencia.</label></li>
-            <li><label><input type="radio" name="p5" value="c"> c) Modificó experimentalmente las calificaciones de los alumnos.</label></li>
+            <li><label><input type="radio" name="p5" value="a"> a) Coeficiente de correlación de Pearson[cite: 5].</label></li>
+            <li><label><input type="radio" name="p5" value="b"> b) Alfa de Cronbach[cite: 5].</label></li>
+            <li><label><input type="radio" name="p5" value="c"> c) Prueba t de Student[cite: 5].</label></li>
+            <li><label><input type="radio" name="p5" value="d"> d) Chi-cuadrado[cite: 5].</label></li>
           </ul>
         </div>
 
-        <button type="button" class="btn-descargar" onclick="calificarQuiz()" style="background-color: var(--color-institucional); margin-top: 10px;">Calificar Autoevaluación</button>
+        <h4 style="color: var(--color-institucional); font-size: 1.1rem; border-bottom: 1px solid #75D7F5; padding-bottom: 4px; margin-top: 25px;">PARTE 2: Nivel 2 - Métodos de Muestreo Probabilístico</h4>
+
+        <div class="pregunta-box" style="margin-top: 15px;">
+          <p>6. ¿Cómo se define formalmente el concepto de "Estadístico" en la teoría del muestreo?</p>
+          <ul class="opciones-list">
+            <li><label><input type="radio" name="p6" value="a"> a) Es un valor numérico fijo que describe una propiedad de la población total (como $\mu$ o $\sigma$)[cite: 5].</label></li>
+            <li><label><input type="radio" name="p6" value="b"> b) Es el subconjunto total de elementos del sistema educativo nacional[cite: 5].</label></li>
+            <li><label><input type="radio" name="p6" value="c"> c) Es una medida cuantitativa calculada a partir de los datos de la muestra (como $\bar{x}$ o $s$), utilizada para estimar el parámetro poblacional[cite: 5].</label></li>
+            <li><label><input type="radio" name="p6" value="d"> d) Es el listado oficial o censo de todos los sujetos matriculados[cite: 5].</label></li>
+          </ul>
+        </div>
+
+        <div class="pregunta-box">
+          <p>7. ¿Cuál es la condición indispensable que define a un método de muestreo como Probabilístico?</p>
+          <ul class="opciones-list">
+            <li><label><input type="radio" name="p7" value="a"> a) Que la muestra sea seleccionada según el criterio o conveniencia del investigador[cite: 5].</label></li>
+            <li><label><input type="radio" name="p7" value="b"> b) Que todos los elementos de la población tengan una probabilidad conocida y distinta de cero de ser seleccionados[cite: 5].</label></li>
+            <li><label><input type="radio" name="p7" value="c"> c) Que no se requiera un marco muestral o lista previa de la población[cite: 5].</label></li>
+            <li><label><input type="radio" name="p7" value="d"> d) Que la recolección de datos se realice exclusivamente mediante entrevistas cualitativas[cite: 5].</label></li>
+          </ul>
+        </div>
+
+        <div class="pregunta-box">
+          <p>8. Un investigador desea estudiar a 500 alumnos y decide seleccionar a un estudiante de una lista oficial cada k-ésimo intervalo ($k = N/n$) comenzando desde un punto aleatorio. ¿Qué tipo de muestreo probabilístico está aplicando?</p>
+          <ul class="opciones-list">
+            <li><label><input type="radio" name="p8" value="a"> a) Muestreo Aleatorio Simple (MAS)[cite: 5].</label></li>
+            <li><label><input type="radio" name="p8" value="b"> b) Muestreo Estratificado[cite: 5].</label></li>
+            <li><label><input type="radio" name="p8" value="c"> c) Muestreo Sistemático[cite: 5].</label></li>
+            <li><label><input type="radio" name="p8" value="d"> d) Muestreo por Conglomerados[cite: 5].</label></li>
+          </ul>
+        </div>
+
+        <div class="pregunta-box">
+          <p>9. Si la población escolar presenta subgrupos con características claramente diferenciadas y homogéneas en su interior (por ejemplo: por grados escolares o zona urbana vs. rural), ¿qué método de muestreo es el más recomendado para reducir la varianza?</p>
+          <ul class="opciones-list">
+            <li><label><input type="radio" name="p9" value="a"> a) Muestreo por Conglomerados[cite: 5].</label></li>
+            <li><label><input type="radio" name="p9" value="b"> b) Muestreo Estratificado[cite: 5].</label></li>
+            <li><label><input type="radio" name="p9" value="c"> c) Muestreo Intencional o Por Cuotas[cite: 5].</label></li>
+            <li><label><input type="radio" name="p9" value="d"> d) Muestreo Sistemático[cite: 5].</label></li>
+          </ul>
+        </div>
+
+        <div class="pregunta-box">
+          <p>10. ¿Cuándo es aconsejable utilizar un Muestreo por Conglomerados en lugar de un Muestreo Aleatorio Simple en investigaciones educativas?</p>
+          <ul class="opciones-list">
+            <li><label><input type="radio" name="p10" value="a"> a) Cuando no se cuenta con un marco muestral de individuos y los recursos/logística dificultan desplazarse a múltiples centros, seleccionando aulas o escuelas completas[cite: 5].</label></li>
+            <li><label><input type="radio" name="p10" value="b"> b) Cuando se requiere que cada estudiante de la nación tenga exactamente la misma probabilidad individual directa sin agrupamiento[cite: 5].</label></li>
+            <li><label><input type="radio" name="p10" value="c"> c) Cuando la población es muy pequeña y homogénea[cite: 5].</label></li>
+            <li><label><input type="radio" name="p10" value="d"> d) Cuando se busca validar el coeficiente Alfa de Cronbach en un juicio de expertos[cite: 5].</label></li>
+          </ul>
+        </div>
+
+        <div style="display: flex; gap: 15px; flex-wrap: wrap; margin-top: 20px;">
+          <button type="button" class="btn-descargar" onclick="calificarQuiz()" style="background-color: var(--color-institucional); margin-top: 10px;">Calificar Autoevaluación</button>
+          <button type="button" class="btn-descargar" onclick="toggleSolucionario()" style="background-color: #173B59; color: #fff; margin-top: 10px; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer;">Mostrar / Ocultar Solucionario</button>
+        </div>
       </form>
 
       <div id="resultadoQuiz"></div>
+
+      <!-- SOLUCIONARIO EXPLICATIVO -->
+      <div id="solucionarioBox" class="solucionario-box">
+        <h4 style="color: var(--color-institucional); margin-bottom: 10px;">CLAVE DE RESPUESTAS Y ARGUMENTACIÓN TEÓRICA[cite: 5]</h4>
+        <ul>
+          <li><strong>1. b) Emplea procedimientos metodológicos rigurosos...:</strong> Proceso reflexivo y sistemático para validar proposiciones educativas[cite: 5].</li>
+          <li><strong>2. c) Planteamiento de Hipótesis o Proposiciones Guía:</strong> Paso inmediato tras formular el problema en el flujo del método científico[cite: 5].</li>
+          <li><strong>3. a) Responder a variables observables y medibles empíricamente...:</strong> Condición indispensable de factibilidad empírica[cite: 5].</li>
+          <li><strong>4. c) En el sometimiento del instrumento al juicio de 3 a 5 expertos...:</strong> Evaluación de pertinencia, suficiencia y claridad[cite: 5].</li>
+          <li><strong>5. b) Alfa de Cronbach:</strong> Medida estándar de consistencia interna para escalas Likert ($\alpha \ge 0.80$)[cite: 5].</li>
+          <li><strong>6. c) Es una medida cuantitativa calculada a partir de la muestra...:</strong> Estadístico ($\bar{x}, s$) estimador del parámetro poblacional[cite: 5].</li>
+          <li><strong>7. b) Que todos los elementos tengan una probabilidad conocida...:</strong> Criterio definitorio que elimina el sesgo[cite: 5].</li>
+          <li><strong>8. c) Muestreo Sistemático:</strong> Selección mediante intervalo constante $k = N/n$[cite: 5].</li>
+          <li><strong>9. b) Muestreo Estratificado:</strong> Divide la población en subgrupos homogéneos internos para reducir la varianza[cite: 5].</li>
+          <li><strong>10. a) Cuando no se cuenta con un marco muestral de individuos...:</strong> Optimiza costos logísticos agrupando por escuelas o aulas[cite: 5].</li>
+        </ul>
+      </div>
     </section>
 
     <!-- SECCIÓN DE CIERRE Y ACCIONES -->
     <section class="footer-section">
-      <button class="btn-descargar" onclick="descargarRecursos('Fase 2 - Investigación Descriptiva')">Descargar Recursos de la Fase 2</button>
+      <button class="btn-descargar" onclick="descargarRecursos('Fase 2 - Investigación Científica y Muestreo')">Descargar Recursos de la Fase 2</button>
       <br><br>
       <button class="btn-completar" onclick="completarFase(2)">Completar Módulo y Desbloquear Fase 3</button>
     </section>
@@ -355,10 +629,19 @@
 
   <script src="js/main.js"></script>
   <script>
+    function toggleSolucionario() {
+      const box = document.getElementById("solucionarioBox");
+      if (box.style.display === "block") {
+        box.style.display = "none";
+      } else {
+        box.style.display = "block";
+      }
+    }
+
     function calificarQuiz() {
-      const respuestasCorrectas = { p1: "b", p2: "a", p3: "a", p4: "a", p5: "b" };
+      const respuestasCorrectas = { p1: "b", p2: "c", p3: "a", p4: "c", p5: "b", p6: "c", p7: "b", p8: "c", p9: "b", p10: "a" };
       let aciertos = 0;
-      let totalPreguntas = 5;
+      let totalPreguntas = 10;
       let respondidasTodas = true;
 
       for (let i = 1; i <= totalPreguntas; i++) {
@@ -380,12 +663,12 @@
         return;
       }
 
-      if (aciertos >= 4) {
+      if (aciertos >= 8) {
         contenedorResultado.style.color = "#0E25FF";
-        contenedorResultado.innerHTML = `¡Excelente trabajo! Has obtenido ${aciertos} de ${totalPreguntas} aciertos. Has comprendido los fundamentos de la investigación descriptiva educativa.`;
+        contenedorResultado.innerHTML = `¡Excelente trabajo! Has obtenido ${aciertos} de ${totalPreguntas} aciertos. Dominas los fundamentos de la investigación científica y el muestreo educativo.`;
       } else {
         contenedorResultado.style.color = "#173B59";
-        contenedorResultado.innerHTML = `Has obtenido ${aciertos} de ${totalPreguntas} aciertos. Te sugerimos repasar los apartados teóricos de arriba antes de continuar.`;
+        contenedorResultado.innerHTML = `Has obtenido ${aciertos} de ${totalPreguntas} aciertos. Te sugerimos repasar los apartados metodológicos y esquemas antes de continuar.`;
       }
     }
   </script>

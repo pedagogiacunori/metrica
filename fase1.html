@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>MÉTRICA - Fase 1: Fundamentos Históricos y Teóricos</title>
+  <title>MÉTRICA - Fase 1: EXPLORACIÓN Y MOTIVACIÓN</title>
   <link rel="stylesheet" href="css/styles.css">
   <style>
     .quiz-container {
@@ -54,7 +54,58 @@
       border-radius: 0 8px 8px 0;
       margin: 20px 0;
     }
+    .ejercicio-box {
+      background-color: #ffffff;
+      border: 1px solid #75D7F5;
+      padding: 20px;
+      border-radius: 8px;
+      margin: 20px 0;
+    }
+    .video-card {
+      border: 1px solid var(--color-complementario);
+      padding: 15px;
+      border-radius: 8px;
+      background: var(--color-fondo);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .btn-video {
+      display: inline-block;
+      background-color: #0E25FF;
+      color: #fff !important;
+      padding: 10px 18px;
+      border-radius: 6px;
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: bold;
+      text-align: center;
+      transition: background 0.3s ease;
+      margin-top: 10px;
+    }
+    .btn-video:hover {
+      background-color: #0012b3;
+    }
+    /* Solucionario Toggle */
+    .solucionario-box {
+      display: none;
+      background-color: #eef9ff;
+      border: 2px solid #75D7F5;
+      padding: 20px;
+      border-radius: 8px;
+      margin-top: 20px;
+    }
   </style>
+
+  <!-- Configuración de seguridad para validar el acceso inicial a la Fase 1 -->
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      const faseMaxima = parseInt(localStorage.getItem("faseMaxima") || "1");
+      if (faseMaxima < 1) {
+        localStorage.setItem("faseMaxima", "1");
+      }
+    });
+  </script>
 </head>
 <body>
 
@@ -80,256 +131,516 @@
   </header>
 
   <main>
-    <h2>Fase 1: Fundamentos Históricos y Teóricos de la Estadística</h2>
+    <h2>Fase 1: EXPLORACIÓN Y MOTIVACIÓN</h2>
     <p style="font-style: italic; color: var(--color-texto);">De la Aritmética Política a la Inferencia Científica y la Toma de Decisiones en la Era Moderna</p>
 
     <div class="resumen-ejecutivo">
       <h3 style="color: var(--color-institucional); font-size: 1.1rem; margin-bottom: 5px;">RESUMEN EJECUTIVO</h3>
       <p style="margin-bottom: 0;">
-        Este documento presenta un análisis académico integral sobre la evolución de la estadística: desde sus raíces etimológicas vinculadas a la administración del Estado, pasando por el desarrollo probabilístico y su estructuración formal, hasta sus ramas fundamentales y aplicaciones estratégicas en la sociedad contemporánea.
+        Este documento presenta un análisis académico integral sobre la evolución de la estadística: desde sus raíces etimológicas vinculadas a la administración del Estado, pasando por el desarrollo probabilístico y su estructuración formal, hasta sus ramas fundamentales y aplicaciones estratégicas en la sociedad contemporánea y el ámbito educativo.
       </p>
     </div>
 
     <hr style="border: 0; border-top: 1px solid var(--color-complementario); margin: 25px 0;">
 
+    <!-- ==================== NIVEL 1 ==================== -->
     <article class="nivel-container">
-      <h3 style="color: var(--color-institucional); font-size: 1.4rem;">
-        1. Origen Etimológico de la Palabra "Estadística"
+      <h3 style="color: var(--color-institucional); font-size: 1.4rem; margin-bottom: 15px;">
+        ▸ Nivel 1: Evolución Histórica, Teórica y Conceptual de la Estadística
       </h3>
-      <p>
-        El concepto de estadística hunde sus raíces en el ámbito político y gubernamental. Etimológicamente, proviene de la raíz latina <em>status</em>, que remite a las nociones de «Estado», «situación» o «condición política». A lo largo de los siglos, la palabra evolucionó formalmente para describir las herramientas dedicadas a la medición y análisis de la sociedad:
-      </p>
-      <ul style="margin-left: 25px; margin-bottom: 15px;">
-        <li style="margin-bottom: 6px;"><strong>Hermann Conring (1606–1681):</strong> Utilizada en las universidades alemanas del siglo XVII para referirse a la materia <em>Notitia Rerum Publicarum</em> («Noticia de las cosas del Estado»), dedicada a la descripción cualitativa y sistemática de los países.</li>
-        <li style="margin-bottom: 6px;"><strong>Gottfried Achenwall (1719–1772):</strong> Profesor de la Universidad de Gotinga, acuñó formalmente el vocablo alemán <em>Statistik</em> en 1749 para nombrar la «ciencia del Estado» (<em>Staatswissenschaft</em>). En su concepción original, la estadística era predominantemente descriptiva.</li>
-        <li style="margin-bottom: 6px;"><strong>Sir John Sinclair (1754–1835):</strong> Introdujo y popularizó el término en el mundo anglosajón (<em>statistics</em>) en su monumental obra <em>Statistical Account of Scotland</em> (1791–1799), desplazando la disciplina hacia la recolección cuantitativa de datos empíricos.</li>
-      </ul>
-    </article>
 
-    <article class="nivel-container" style="margin-top: 25px;">
-      <h3 style="color: var(--color-institucional); font-size: 1.4rem;">
-        2. La Era Pre-Estadística: Registros y Censos en la Antigüedad
-      </h3>
-      <p>
-        Mucho antes de su formalización teórica, las grandes civilizaciones desarrollaron prácticas cuantitativas empíricas impulsadas por necesidades administrativas, tributarias y militares:
-      </p>
-      <ul style="margin-left: 25px; margin-bottom: 15px;">
-        <li style="margin-bottom: 6px;"><strong>Antiguo Egipto:</strong> Hacia el 3050 a.C., los faraones llevaban registros detallados de la población, tierras agrícolas y recursos económicos.</li>
-        <li style="margin-bottom: 6px;"><strong>Mesopotamia y Babilonia:</strong> Registro en tablillas de arcilla (c. 3000 a.C.) sobre intercambios comerciales, producción agrícola y cosechas.</li>
-        <li style="margin-bottom: 6px;"><strong>China Imperial:</strong> Documentación de censos poblacionales y de producción agrícola desde el año 2200 a.C.</li>
-        <li style="margin-bottom: 6px;"><strong>Grecia y Roma:</strong> La institución del censor realizaba un empadronamiento quinquenal obligatorio para catalogar a los ciudadanos, propiedades, esclavos y recursos para el ejército.</li>
-        <li style="margin-bottom: 6px;"><strong>Edad Media:</strong> Elaboración del <em>Domesday Book</em> (1086) bajo el reinado de Guillermo I, primer catastro completo de propiedades y tierras en Inglaterra.</li>
-      </ul>
-    </article>
+      <section style="margin-top: 15px;">
+        <h4 style="color: var(--color-institucional);">1. Origen Etimológico de la Palabra "Estadística"</h4>
+        <p>
+          El concepto de estadística hunde sus raíces en el ámbito político y gubernamental. Etimológicamente, proviene de la raíz latina <em>status</em>, que remite a las nociones de «Estado», «situación» o «condición política». A lo largo de los siglos, la palabra evolucionó formalmente para describir las herramientas dedicadas a la medición y análisis de la sociedad:
+        </p>
+        <ul style="margin-left: 25px; margin-bottom: 15px;">
+          <li style="margin-bottom: 6px;"><strong>Hermann Conring (1606–1681):</strong> Utilizada en las universidades alemanas del siglo XVII para referirse a la materia <em>Notitia Rerum Publicarum</em> («Noticia de las cosas del Estado»), dedicada a la descripción cualitativa y sistemática de los países.</li>
+          <li style="margin-bottom: 6px;"><strong>Gottfried Achenwall (1719–1772):</strong> Profesor de la Universidad de Gotinga, acuñó formalmente el vocablo alemán <em>Statistik</em> en 1749 para nombrar la «ciencia del Estado» (<em>Staatswissenschaft</em>). En su concepción original, la estadística era predominantemente descriptiva.</li>
+          <li style="margin-bottom: 6px;"><strong>Sir John Sinclair (1754–1835):</strong> Introdujo y popularizó el término en el mundo anglosajón (<em>statistics</em>) en su monumental obra <em>Statistical Account of Scotland</em> (1791–1799), desplazando la disciplina hacia la recolección cuantitativa de datos empíricos.</li>
+        </ul>
+      </section>
 
-    <article class="nivel-container" style="margin-top: 25px;">
-      <h3 style="color: var(--color-institucional); font-size: 1.4rem;">
-        3. La Aritmética Política (Siglo XVII)
-      </h3>
-      <p>
-        A mediados del siglo XVII, en Inglaterra se produjo una profunda transformación metodológica: el paso de la descripción puramente cualitativa del Estado hacia el recuento numérico y la identificación de patrones cuantitativos empíricos.
-      </p>
-      <table class="tabla-academica">
-        <thead>
-          <tr>
-            <th>Autor</th>
-            <th>Contribución Clave y Significado Histórico</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td><strong>John Graunt</strong><br>(1620–1674)</td>
-            <td>Publicó <em>Natural and Political Observations Made upon the Bills of Mortality</em> (1662). Construyó las primeras tablas de vida empíricas y descubrió regularidades demográficas, como la razón de sexos al nacer.</td>
-          </tr>
-          <tr>
-            <td><strong>William Petty</strong><br>(1623–1687)</td>
-            <td>Acuñó el término <em>Political Arithmetick</em> (1690). Postuló que las decisiones políticas deben fundamentarse en números, pesos y medidas, introduciendo el pensamiento cuantitativo en las ciencias sociales.</td>
-          </tr>
-          <tr>
-            <td><strong>Edmund Halley</strong><br>(1656–1742)</td>
-            <td>Diseñó en 1693 la tabla de mortalidad de la ciudad de Breslau, estableciendo las bases matemáticas para el cálculo actuarial de las primas de seguros de vida.</td>
-          </tr>
-        </tbody>
-      </table>
-    </article>
+      <section style="margin-top: 20px;">
+        <h4 style="color: var(--color-institucional);">2. La Era Pre-Estadística: Registros y Censos en la Antigüedad</h4>
+        <p>
+          Mucho antes de su formalización teórica, las grandes civilizaciones desarrollaron prácticas cuantitativas empíricas impulsadas por necesidades administrativas, tributarias y militares:
+        </p>
+        <ul style="margin-left: 25px; margin-bottom: 15px;">
+          <li style="margin-bottom: 6px;"><strong>Antiguo Egipto:</strong> Hacia el 3050 a.C., los faraones llevaban registros detallados de la población, tierras agrícolas y recursos económicos.</li>
+          <li style="margin-bottom: 6px;"><strong>Mesopotamia y Babilonia:</strong> Registro en tablillas de arcilla (c. 3000 a.C.) sobre intercambios comerciales, producción agrícola y cosechas.</li>
+          <li style="margin-bottom: 6px;"><strong>China Imperial:</strong> Documentación de censos poblacionales y de producción agrícola desde el año 2200 a.C.</li>
+          <li style="margin-bottom: 6px;"><strong>Grecia y Roma:</strong> La institución del censor realizaba un empadronamiento quinquenal obligatorio para catalogar a los ciudadanos, propiedades, esclavos y recursos para el ejército.</li>
+          <li style="margin-bottom: 6px;"><strong>Edad Media:</strong> Elaboración del <em>Domesday Book</em> (1086) bajo el reinado de Guillermo I, primer catastro completo de propiedades y tierras en Inglaterra.</li>
+        </ul>
+      </section>
 
-    <article class="nivel-container" style="margin-top: 25px;">
-      <h3 style="color: var(--color-institucional); font-size: 1.4rem;">
-        4. Desarrollo del Cálculo de Probabilidades (Siglos XVII–XVIII)
-      </h3>
-      <p>
-        De forma paralela al análisis demográfico del Estado, las matemáticas de la incertidumbre se desarrollaron inicialmente a partir del análisis de los juegos de azar:
-      </p>
-      <ul style="margin-left: 25px; margin-bottom: 15px;">
-        <li style="margin-bottom: 6px;"><strong>Blaise Pascal y Pierre de Fermat:</strong> Su correspondencia de 1654 sobre el problema del reparto de apuestas (<em>problème des partis</em>) sentó las bases de la combinatoria probabilística moderna.</li>
-        <li style="margin-bottom: 6px;"><strong>Christiaan Huygens:</strong> Publicó <em>De Ratiociniis in Ludo Aleae</em> (1657), el primer tratado formalmente estructurado sobre probabilidad.</li>
-        <li style="margin-bottom: 6px;"><strong>Jakob Bernoulli:</strong> En <em>Ars Conjectandi</em> (1713), formuló la Ley de los Grandes Números, demostrando teóricamente la convergencia entre las frecuencias relativas empíricas y las probabilidades teóricas.</li>
-        <li style="margin-bottom: 6px;"><strong>Abraham de Moivre:</strong> En su obra <em>The Doctrine of Chances</em> (1718), derivó la aproximación normal a la distribución binomial, anticipando la Campana de Gauss.</li>
-        <li style="margin-bottom: 6px;"><strong>Thomas Bayes:</strong> Formuló en 1763 el célebre Teorema de Bayes, introduciendo los fundamentos del razonamiento probabilístico condicional e inductivo.</li>
-      </ul>
-    </article>
+      <section style="margin-top: 20px;">
+        <h4 style="color: var(--color-institucional);">3. La Aritmética Política (Siglo XVII)</h4>
+        <p>
+          A mediados del siglo XVII, en Inglaterra se produjo una profunda transformación metodológica: el paso de la descripción puramente cualitativa del Estado hacia el recuento numérico y la identificación de patrones cuantitativos empíricos.
+        </p>
+        <table class="tabla-academica">
+          <thead>
+            <tr>
+              <th>Autor</th>
+              <th>Contribución Clave y Significado Histórico</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>John Graunt</strong><br>(1620–1674)</td>
+              <td>Publicó <em>Natural and Political Observations Made upon the Bills of Mortality</em> (1662). Construyó las primeras tablas de vida empíricas y descubrió regularidades demográficas, como la razón de sexos al nacer.</td>
+            </tr>
+            <tr>
+              <td><strong>William Petty</strong><br>(1623–1687)</td>
+              <td>Acuñó el término <em>Political Arithmetick</em> (1690). Postuló que las decisiones políticas deben fundamentarse en números, pesos y medidas, introduciendo el pensamiento cuantitativo en las ciencias sociales.</td>
+            </tr>
+            <tr>
+              <td><strong>Edmund Halley</strong><br>(1656–1742)</td>
+              <td>Diseñó en 1693 la tabla de mortalidad de la ciudad de Breslau, estableciendo las bases matemáticas para el cálculo actuarial de las primas de seguros de vida.</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
 
-    <article class="nivel-container" style="margin-top: 25px;">
-      <h3 style="color: var(--color-institucional); font-size: 1.4rem;">
-        5. La Síntesis: De la Recopilación al Cálculo Formal de Probabilidades
-      </h3>
-      <p>
-        Durante los siglos XIX y XX, el análisis de datos del Estado y la teoría de la probabilidad se fusionaron, consolidando la estadística como una ciencia matemática rigurosa de alcance universal:
-      </p>
-      <ul style="margin-left: 25px; margin-bottom: 15px;">
-        <li style="margin-bottom: 6px;"><strong>Gauss y Legendre (1805–1809):</strong> Desarrollaron el método de mínimos cuadrados. Gauss formalizó la Distribución Normal para el tratamiento de errores de medición en física y astronomía.</li>
-        <li style="margin-bottom: 6px;"><strong>Pierre-Simon Laplace:</strong> Publicó <em>Théorie Analytique des Probabilités</em> (1812), donde consolidó la probabilidad clásica y demostró el Teorema del Límite Central.</li>
-        <li style="margin-bottom: 6px;"><strong>Adolphe Quetelet:</strong> Aplicó en 1835 la curva normal a variables antropométricas y sociológicas, introduciendo la noción del «hombre promedio» (<em>l'homme moyen</em>) y la «Física Social».</li>
-        <li style="margin-bottom: 6px;"><strong>Francis Galton y Karl Pearson:</strong> Introdujeron los conceptos de regresión, correlación y la prueba de Chi-cuadrada, fundando la Biometría y la inferencia matemática.</li>
-        <li style="margin-bottom: 6px;"><strong>Andrey Kolmogorov:</strong> En <em>Grundbegriffe der Wahrscheinlichkeitsrechnung</em> (1933), fundamentó la probabilidad en la Teoría de la Medida, dándole rigor formal definitivo.</li>
-      </ul>
-    </article>
+      <section style="margin-top: 20px;">
+        <h4 style="color: var(--color-institucional);">4. Desarrollo del Cálculo de Probabilidades (Siglos XVII–XVIII)</h4>
+        <p>
+          De forma paralela al análisis demográfico del Estado, las matemáticas de la incertidumbre se desarrollaron inicialmente a partir del análisis de los juegos de azar:
+        </p>
+        <ul style="margin-left: 25px; margin-bottom: 15px;">
+          <li style="margin-bottom: 6px;"><strong>Blaise Pascal y Pierre de Fermat:</strong> Su correspondencia de 1654 sobre el problema del reparto de apuestas (<em>problème des partis</em>) sentó las bases de la combinatoria probabilística moderna.</li>
+          <li style="margin-bottom: 6px;"><strong>Christiaan Huygens:</strong> Publicó <em>De Ratiociniis in Ludo Aleae</em> (1657), el primer tratado formalmente estructurado sobre probabilidad.</li>
+          <li style="margin-bottom: 6px;"><strong>Jakob Bernoulli:</strong> En <em>Ars Conjectandi</em> (1713), formuló la Ley de los Grandes Números, demostrando teóricamente la convergencia entre las frecuencias relativas empíricas y las probabilidades teóricas.</li>
+          <li style="margin-bottom: 6px;"><strong>Abraham de Moivre:</strong> En su obra <em>The Doctrine of Chances</em> (1718), derivó la aproximación normal a la distribución binomial, anticipando la Campana de Gauss.</li>
+          <li style="margin-bottom: 6px;"><strong>Thomas Bayes:</strong> Formuló en 1763 el célebre Teorema de Bayes, introduciendo los fundamentos del razonamiento probabilístico condicional e inductivo.</li>
+        </ul>
+      </section>
 
-    <article class="nivel-container" style="margin-top: 25px;">
-      <h3 style="color: var(--color-institucional); font-size: 1.4rem;">
-        6. División Fundamental de la Estadística
-      </h3>
-      <p>La estadística moderna se divide conceptualmente en dos grandes ramas interconectadas:</p>
-      <table class="tabla-academica">
-        <thead>
-          <tr>
-            <th>Rama</th>
-            <th>Definición y Alcance</th>
-            <th>Herramientas y Métodos Prácticos</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td><strong>Estadística Descriptiva</strong></td>
-            <td>Se encarga de recolectar, organizar, resumir, tabular y presentar visualmente los datos de un conjunto u observación sin extrapolar conclusiones.</td>
-            <td>
-              • Medidas de tendencia central (media, mediana, moda).<br>
-              • Medidas de dispersión (varianza, desviación estándar).<br>
-              • Tablas de frecuencia, histogramas, diagramas de caja.
-            </td>
-          </tr>
-          <tr>
-            <td><strong>Estadística Inferencial</strong></td>
-            <td>Comprende los métodos que permiten deducir, generalizar o hacer predicciones sobre una población entera a partir de una muestra representativa.</td>
-            <td>
-              • Pruebas de hipótesis (t de Student, ANOVA, Chi²).<br>
-              • Intervalos de confianza y estimación paramétrica.<br>
-              • Regresión lineal, logística y modelos econométricos.
-            </td>
-          </tr>
-        </tbody>
-      </table>
-    </article>
+      <section style="margin-top: 20px;">
+        <h4 style="color: var(--color-institucional);">5. La Síntesis: De la Recopilación al Cálculo Formal de Probabilidades</h4>
+        <p>
+          Durante los siglos XIX y XX, el análisis de datos del Estado y la teoría de la probabilidad se fusionaron, consolidando la estadística como una ciencia matemática rigurosa de alcance universal:
+        </p>
+        <ul style="margin-left: 25px; margin-bottom: 15px;">
+          <li style="margin-bottom: 6px;"><strong>Gauss y Legendre (1805–1809):</strong> Desarrollaron el método de mínimos cuadrados. Gauss formalizó la Distribución Normal para el tratamiento de errores de medición en física y astronomía.</li>
+          <li style="margin-bottom: 6px;"><strong>Pierre-Simon Laplace:</strong> Publicó <em>Théorie Analytique des Probabilités</em> (1812), donde consolidó la probabilidad clásica y demostró el Teorema del Límite Central.</li>
+          <li style="margin-bottom: 6px;"><strong>Adolphe Quetelet:</strong> Aplicó en 1835 la curva normal a variables antropométricas y sociológicas, introduciendo la noción del «hombre promedio» (<em>l'homme moyen</em>) y la «Física Social».</li>
+          <li style="margin-bottom: 6px;"><strong>Francis Galton y Karl Pearson:</strong> Introdujeron los conceptos de regresión, correlación y la prueba de Chi-cuadrada, fundando la Biometría y la inferencia matemática.</li>
+          <li style="margin-bottom: 6px;"><strong>Andrey Kolmogorov:</strong> En <em>Grundbegriffe der Wahrscheinlichkeitsrechnung</em> (1933), fundamentó la probabilidad en la Teoría de la Medida, dándole rigor formal definitivo.</li>
+        </ul>
+      </section>
 
-    <article class="nivel-container" style="margin-top: 25px;">
-      <h3 style="color: var(--color-institucional); font-size: 1.4rem;">
-        7. Relevancia y Aplicaciones Prácticas en el Mundo Actual y Educativo
-      </h3>
-      <p>En la era contemporánea, marcada por la abundancia de datos (<em>Big Data</em>) e Inteligencia Artificial, la estadística constituye un pilar imprescindible para la toma de decisiones informadas:</p>
-      
-      <h4 style="margin-top: 15px;">A. Aplicaciones en el Mundo Actual (Entorno Socioeconómico y Tecnológico)</h4>
-      <ul style="margin-left: 25px; margin-bottom: 15px;">
-        <li style="margin-bottom: 6px;"><strong>Economía y Finanzas:</strong> Modelos econométricos para proyección de inflación, análisis de riesgos de crédito y algoritmos de trading de alta frecuencia.</li>
-        <li style="margin-bottom: 6px;"><strong>Medicina y Salud Pública:</strong> Ensayos clínicos aleatorizados para validación de fármacos, estudios epidemiológicos de control de pandemias e genómica computacional.</li>
-        <li style="margin-bottom: 6px;"><strong>Tecnología e Inteligencia Artificial:</strong> Los algoritmos de Machine Learning y aprendizaje profundo se construyen sobre la probabilidad, la regresión y el cálculo matricial.</li>
-        <li style="margin-bottom: 6px;"><strong>Políticas Públicas:</strong> Medición del impacto de políticas sociales, diseño de presupuestos públicos y censos de población.</li>
-      </ul>
+      <section style="margin-top: 20px;">
+        <h4 style="color: var(--color-institucional);">6. División Fundamental de la Estadística</h4>
+        <p>La estadística moderna se divide conceptualmente en dos grandes ramas interconectadas:</p>
+        <table class="tabla-academica">
+          <thead>
+            <tr>
+              <th>Rama</th>
+              <th>Definición y Alcance</th>
+              <th>Herramientas y Métodos Prácticos</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Estadística Descriptiva</strong></td>
+              <td>Se encarga de recolectar, organizar, resumir, tabular y presentar visualmente los datos de un conjunto u observación sin extrapolar conclusiones.</td>
+              <td>
+                • Medidas de tendencia central (media, mediana, moda).<br>
+                • Medidas de dispersión (varianza, desviación estándar).<br>
+                • Tablas de frecuencia, histogramas, diagramas de caja.
+              </td>
+            </tr>
+            <tr>
+              <td><strong>Estadística Inferencial</strong></td>
+              <td>Comprende los métodos que permiten deducir, generalizar o hacer predicciones sobre una población entera a partir de una muestra representativa.</td>
+              <td>
+                • Pruebas de hipótesis (t de Student, ANOVA, Chi²).<br>
+                • Intervalos de confianza y estimación paramétrica.<br>
+                • Regresión lineal, logística y modelos econométricos.
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
 
-      <h4 style="margin-top: 15px;">B. Aplicaciones en el Ámbito Educativo</h4>
-      <ul style="margin-left: 25px; margin-bottom: 15px;">
-        <li style="margin-bottom: 6px;"><strong>Analítica del Aprendizaje (Learning Analytics):</strong> Monitoreo interactivo del rendimiento de los estudiantes para detectar de forma temprana el riesgo de deserción y personalizar la enseñanza.</li>
-        <li style="margin-bottom: 6px;"><strong>Evaluación Psicométrica Estandarizada:</strong> Uso de la Teoría de Respuesta al Ítem (TRI) para calibrar exámenes de alta escala (e.g., PISA, SAT, pruebas nacionales).</li>
-        <li style="margin-bottom: 6px;"><strong>Gestión y Planificación Universitaria:</strong> Proyección de matrículas universitarias, optimización de infraestructura y asignación presupuestaria por facultad.</li>
-        <li style="margin-bottom: 6px;"><strong>Alfabetización Estadística y Pensamiento Crítico:</strong> Desarrolla en los estudiantes la capacidad de interpretar datos de forma objetiva, combatir la desinformación y evaluar evidencias científicas.</li>
-      </ul>
-    </article>
+      <section style="margin-top: 20px;">
+        <h4 style="color: var(--color-institucional);">7. Relevancia y Aplicaciones Prácticas en el Mundo Actual y Educativo</h4>
+        <p>En la era contemporánea, marcada por la abundancia de datos (<em>Big Data</em>) e Inteligencia Artificial, la estadística constituye un pilar imprescindible para la toma de decisiones informadas:</p>
+        
+        <h5 style="margin-top: 12px; color: var(--color-institucional);">A. Aplicaciones en el Mundo Actual (Entorno Socioeconómico y Tecnológico)</h5>
+        <ul style="margin-left: 25px; margin-bottom: 15px;">
+          <li style="margin-bottom: 6px;"><strong>Economía y Finanzas:</strong> Modelos econométricos para proyección de inflación, análisis de riesgos de crédito y algoritmos de trading de alta frecuencia.</li>
+          <li style="margin-bottom: 6px;"><strong>Medicina y Salud Pública:</strong> Ensayos clínicos aleatorizados para validación de fármacos, estudios epidemiológicos de control de pandemias y genómica computacional.</li>
+          <li style="margin-bottom: 6px;"><strong>Tecnología e Inteligencia Artificial:</strong> Los algoritmos de Machine Learning y aprendizaje profundo se construyen sobre la probabilidad, la regresión y el cálculo matricial.</li>
+          <li style="margin-bottom: 6px;"><strong>Políticas Públicas:</strong> Medición del impacto de políticas sociales, diseño de presupuestos públicos y censos de población.</li>
+        </ul>
 
-    <hr style="border: 0; border-top: 1px solid var(--color-complementario); margin: 30px 0;">
+        <h5 style="margin-top: 12px; color: var(--color-institucional);">B. Aplicaciones en el Ámbito Educativo</h5>
+        <ul style="margin-left: 25px; margin-bottom: 15px;">
+          <li style="margin-bottom: 6px;"><strong>Analítica del Aprendizaje (Learning Analytics):</strong> Monitoreo interactivo del rendimiento de los estudiantes para detectar de forma temprana el riesgo de deserción y personalizar la enseñanza.</li>
+          <li style="margin-bottom: 6px;"><strong>Evaluación Psicométrica Estandarizada:</strong> Uso de la Teoría de Respuesta al Ítem (TRI) para calibrar exámenes de alta escala (e.g., PISA, SAT, pruebas nacionales).</li>
+          <li style="margin-bottom: 6px;"><strong>Gestión y Planificación Universitaria:</strong> Proyección de matrículas universitarias, optimización de infraestructura y asignación presupuestaria por facultad.</li>
+          <li style="margin-bottom: 6px;"><strong>Alfabetización Estadística y Pensamiento Crítico:</strong> Desarrolla en los estudiantes la capacidad de interpretar datos de forma objetiva, combatir la desinformación y evaluar evidencias científicas.</li>
+        </ul>
+      </section>
 
-    <hr style="border: 0; border-top: 1px solid var(--color-complementario); margin: 30px 0;">
+      <!-- EJERCICIOS Y VIDEO NIVEL 1 -->
+      <div class="ejercicio-box" style="margin-top: 25px;">
+        <h4 style="color: var(--color-institucional); margin-bottom: 10px;">✏️ Ejercicios Prácticos - Nivel 1</h4>
+        <p>Clasifica las siguientes situaciones indicando si pertenecen a la estadística descriptiva o a la inferencial:</p>
+        <ol style="margin-left: 20px; margin-bottom: 15px;">
+          <li>Calcular el promedio de notas de los 30 alumnos de un salón de clases.</li>
+          <li>Estimar el porcentaje de aprobación de todos los estudiantes universitarios del país basándose en una muestra de 500 alumnos.</li>
+        </ol>
+      </div>
 
-    <!-- SECCIÓN DE VIDEOS RECOMENDADOS (UNAM - CUNORI) -->
-    <article class="nivel-container" style="background-color: var(--color-fondo); border: 1px solid var(--color-complementario); padding: 25px; border-radius: 10px; margin: 30px 0;">
-      <h3 style="color: var(--color-institucional); font-size: 1.3rem; margin-bottom: 15px;">
-        📺 Recursos Audiovisuales de Apoyo (Facultad de Ciencias, UNAM)
-      </h3>
-      <p style="margin-bottom: 20px;">
-        Te invitamos a complementar tu lectura teórica visualizando los siguientes video-cápsulas académicas recomendadas para afianzar los conceptos introductorios de la estadística descriptiva:
-      </p>
-
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px;">
-        <!-- Video 1 -->
-        <div style="border: 1px solid var(--color-complementario); padding: 15px; border-radius: 8px; background: var(--color-fondo);">
-          <h4 style="color: var(--color-institucional); font-size: 1.05rem; margin-bottom: 8px;">¿Qué es la estadística descriptiva?</h4>
-          <p style="font-size: 0.9rem; margin-bottom: 12px;">Introducción conceptual a los propósitos del análisis de datos en la ciencia.</p>
-          <a href="https://www.youtube.com/watch?v=buKDQZG5phM" target="_blank" style="display: inline-block; background-color: var(--color-institucional); color: #fff; padding: 8px 15px; border-radius: 5px; text-decoration: none; font-size: 0.9rem; font-weight: 600;">Ver Video en YouTube ▶</a>
-        </div>
-
-        <!-- Video 2 -->
-        <div style="border: 1px solid var(--color-complementario); padding: 15px; border-radius: 8px; background: var(--color-fondo);">
-          <h4 style="color: var(--color-institucional); font-size: 1.05rem; margin-bottom: 8px;">Variables y su clasificación</h4>
-          <p style="font-size: 0.9rem; margin-bottom: 12px;">Distinción analítica entre las variables cuantitativas y cualitativas en la investigación.</p>
-          <a href="https://www.youtube.com/watch?v=IbWI6RTd3k4" target="_blank" style="display: inline-block; background-color: var(--color-institucional); color: #fff; padding: 8px 15px; border-radius: 5px; text-decoration: none; font-size: 0.9rem; font-weight: 600;">Ver Video en YouTube ▶</a>
+      <!-- VIDEO NIVEL 1 -->
+      <div style="margin-top: 20px;">
+        <h4 style="color: var(--color-institucional); font-size: 1.1rem; margin-bottom: 10px;">📺 Recurso Audiovisual (Nivel 1)</h4>
+        <div class="video-card" style="max-width: 400px;">
+          <p style="font-weight: bold; margin-bottom: 8px;">Video explicativo de introducción conceptual</p>
+          <a href="https://www.youtube.com/watch?v=z7EivPfkkn0" target="_blank" class="btn-video">Ver Video en YouTube ▶</a>
         </div>
       </div>
     </article>
 
+    <hr style="border: 0; border-top: 1px solid var(--color-complementario); margin: 30px 0;">
 
-    <!-- QUIZ AUTOCALIFICABLE DE 5 PREGUNTAS -->
+    <!-- ==================== NIVEL 2 ==================== -->
+    <article class="nivel-container" style="margin-top: 30px;">
+      <h3 style="color: var(--color-institucional); font-size: 1.4rem; margin-bottom: 15px;">
+        ▸ Nivel 2: La Investigación Descriptiva en las Ciencias de la Educación
+      </h3>
+      <p style="font-style: italic; color: var(--color-texto);">Fundamentos Metodológicos, Métodos de Observación In Situ y Aplicaciones Socioeducativas</p>
+
+      <div class="resumen-ejecutivo" style="margin-top: 15px;">
+        <h4 style="color: var(--color-institucional); font-size: 1.05rem; margin-bottom: 5px;">SÍNTESIS DEL NIVEL 2</h4>
+        <p style="margin-bottom: 0;">
+          Este apartado aborda de forma exclusiva los contenidos del Nivel 2: la definición, características, técnicas de recolección de datos no manipulativas y la utilidad práctica del método descriptivo para la identificación y resolución de problemáticas en el entorno escolar.
+        </p>
+      </div>
+
+      <section style="margin-top: 20px;">
+        <h4 style="color: var(--color-institucional);">1. Definición y Características de la Investigación Descriptiva en Educación</h4>
+        <p>
+          La investigación descriptiva en las ciencias de la educación es un enfoque de indagación científica no experimental cuyo propósito principal es precisar, caracterizar y sistematizar las propiedades, dinámicas, perfiles y condiciones de un fenómeno, comunidad pedagógica o proceso educativo tal como se presenta en su estado natural.
+        </p>
+        <p>
+          A diferencia de los estudios experimentales, este método no busca manipular deliberadamente variables ni establecer relaciones causales directas de causa-efecto, sino ofrecer una «fotografía fiel» y objetiva de la realidad escolar, respondiendo a interrogantes fundamentales como: ¿Qué ocurre?, ¿Quiénes intervienen?, ¿Dónde y cuándo se manifiesta el fenómeno?, y ¿Con qué frecuencia se presenta?
+        </p>
+        <p><strong>Características Principales:</strong></p>
+        <ul style="margin-left: 25px; margin-bottom: 15px;">
+          <li style="margin-bottom: 6px;"><strong>Entorno Natural (In Situ):</strong> Se realiza en el contexto genuino donde suceden los hechos (aulas, comunidades escolares, centros educativos) sin alterar las dinámicas cotidianas.</li>
+          <li style="margin-bottom: 6px;"><strong>Ausencia de Manipulación de Variables:</strong> Las variables (rendimiento escolar, motivación, clima de aula, hábitos de estudio) se observan y miden en su estado habitual sin intervención o manipulación.</li>
+          <li style="margin-bottom: 6px;"><strong>Integración de Enfoques Cuantitativos y Cualitativos:</strong> Combina la medición cuantitativa (frecuencias, porcentajes, promedios) con la caracterización cualitativa (patrones de interacción, dinámicas sociales).</li>
+          <li style="margin-bottom: 6px;"><strong>Carácter Diagnóstico y Base para la Toma de Decisiones:</strong> Proporciona un diagnóstico sistemático que sirve como insumo indispensable para investigaciones correlacionales, explicativas o proyectos de investigación-acción.</li>
+        </ul>
+      </section>
+
+      <section style="margin-top: 20px;">
+        <h4 style="color: var(--color-institucional);">2. Métodos de Observación y Recolección de Hechos en el Entorno Escolar sin Manipular Variables</h4>
+        <p>Para estudiar los fenómenos pedagógicos respetando su desarrollo habitual, la investigación descriptiva recurre a métodos e instrumentos rigurosos de recolección de datos:</p>
+        
+        <table class="tabla-academica">
+          <thead>
+            <tr>
+              <th>Técnica / Método</th>
+              <th>Descripción en el Entorno Escolar</th>
+              <th>Instrumentos y Herramientas</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Observación Estructurada y Naturalista</strong></td>
+              <td>Registro sistemático de conductas habituales de docentes y estudiantes en el aula o patio sin intervención del investigador.</td>
+              <td>
+                • Listas de cotejo.<br>
+                • Escalas de estimación o apreciación.<br>
+                • Guías de observación de aula.
+              </td>
+            </tr>
+            <tr>
+              <td><strong>Encuestas y Cuestionarios Educativos</strong></td>
+              <td>Recopilación de información sobre opiniones, actitudes, percepción del clima escolar y factores socioeconómicos.</td>
+              <td>
+                • Cuestionarios de escala Likert.<br>
+                • Formularios estandarizados de opinión.
+              </td>
+            </tr>
+            <tr>
+              <td><strong>Entrevistas Diagnósticas y Cualitativas</strong></td>
+              <td>Diálogo directo con actores clave (estudiantes, docentes, directivos, padres) para profundizar en el contexto socioeducativo.</td>
+              <td>
+                • Guías de entrevista semiestructurada.<br>
+                • Protocolos de grupos focales.
+              </td>
+            </tr>
+            <tr>
+              <td><strong>Análisis Documental y Registro Institucional</strong></td>
+              <td>Examen de la producción escolar y documentación oficial sin perturbación del proceso de enseñanza.</td>
+              <td>
+                • Registros de calificaciones y asistencia.<br>
+                • Planes de clase, PEI y portafolios.
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section style="margin-top: 20px;">
+        <h4 style="color: var(--color-institucional);">3. Utilidad del Método Descriptivo para Identificar y Proponer Soluciones a Problemáticas Socioeducativas Reales</h4>
+        <p>El método descriptivo actúa como un puente fundamental entre la recolección empírica de datos en la escuela y la transformación práctica de las políticas e intervenciones educativas:</p>
+        <ol style="margin-left: 25px; margin-bottom: 15px;">
+          <li style="margin-bottom: 6px;"><strong>Diagnóstico preciso de necesidades comunitarias y de aula:</strong> Permite visibilizar de forma objetiva rezagos en lectoescritura, brechas digitales, tasas de deserción escolar, acoso escolar (ciberbullying) y factores de riesgo psicoeducativo.</li>
+          <li style="margin-bottom: 6px;"><strong>Fundamentación empírica para el diseño de intervenciones:</strong> Proporciona evidencias objetivas para respaldar la formulación de Proyectos Educativos Institucionales (PEI), planes de tutoría adaptados y adecuaciones curriculares.</li>
+          <li style="margin-bottom: 6px;"><strong>Optimización en la asignación de recursos socioeducativos:</strong> Ayuda a autoridades y directivos a dirigir partidas presupuestarias, material didáctico, becas y apoyo psicopedagógico hacia los sectores con mayores necesidades identificadas.</li>
+          <li style="margin-bottom: 6px;"><strong>Establecimiento de líneas de base y seguimiento institucional:</strong> Registra el estado inicial de una comunidad escolar, permitiendo medir con precisión en el futuro el impacto real de las reformas pedagógicas e intervenciones aplicadas.</li>
+        </ol>
+
+        <!-- CASO PRÁCTICO ILUSTRATIVO -->
+        <div class="ejercicio-box">
+          <h5 style="color: var(--color-institucional); margin-bottom: 8px;">Caso Práctico Ilustrativo en la Gestión Escolar</h5>
+          <p style="margin-bottom: 0;">
+            Un estudio sobre el <em>'Uso de dispositivos móviles y niveles de atención en aulas de secundaria'</em> no prohíbe ni altera el uso de teléfonos en el centro escolar. En su lugar, mide las frecuencias de uso y tiempos de concentración mediante listas de cotejo y encuestas. A partir de los datos reales recopilados, la institución diseña un protocolo de uso normado de la tecnología en el aula respaldado en evidencia empírica.
+          </p>
+        </div>
+
+        <!-- ANEXO: GUÍA DE OBSERVACIÓN -->
+        <div style="background-color: #f8fafc; border: 1px solid var(--color-complementario); padding: 20px; border-radius: 8px; margin-top: 20px;">
+          <h5 style="color: var(--color-institucional); margin-bottom: 10px;">ANEXO: Modelo de Guía de Observación Estructurada y Lista de Cotejo</h5>
+          <p style="font-size: 0.95rem; margin-bottom: 12px;">Instrumento institucional diseñado para evaluar el clima de aula en el nivel secundario sin alterar la dinámica de clase:</p>
+          
+          <p style="font-size: 0.9rem; margin-bottom: 10px;">
+            <strong>I. DATOS GENERALES Y DE CONTEXTO</strong><br>
+            • Institución Educativa: _______________________________________ | Grado/Sección: ____________<br>
+            • Asignatura: ________________________ | Fecha: ____/____/________ | Nº Estudiantes: ____<br>
+            • Observador/a: __________________________________________________________________
+          </p>
+
+          <p style="font-size: 0.9rem; font-weight: bold; margin-top: 10px;">II. MATRIZ DE EVALUACIÓN DEL CLIMA DE AULA</p>
+          <table class="tabla-academica" style="font-size: 0.9rem;">
+            <thead>
+              <tr>
+                <th>Dimensión / Indicadores de Observación</th>
+                <th>Cumplimiento (Sí / Parcial / No)</th>
+                <th>Valoración (1 a 4)</th>
+                <th>Observaciones / Evidencias Cualitativas</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td colspan="4" style="background-color: #e2e8f0; font-weight: bold;">1. Relaciones Interpersonales y Respeto Mutuo</td>
+              </tr>
+              <tr>
+                <td>1.1 El docente se dirige con lenguaje respetuoso, empático y libre de sarcasmo.</td>
+                <td>[ &nbsp; ] Sí &nbsp; [ &nbsp; ] Parcial &nbsp; [ &nbsp; ] No</td>
+                <td>_____</td>
+                <td>___________________________</td>
+              </tr>
+              <tr>
+                <td>1.2 Los estudiantes se tratan con respeto, evitando apodos despectivos o burlas.</td>
+                <td>[ &nbsp; ] Sí &nbsp; [ &nbsp; ] Parcial &nbsp; [ &nbsp; ] No</td>
+                <td>_____</td>
+                <td>___________________________</td>
+              </tr>
+              <tr>
+                <td colspan="4" style="background-color: #e2e8f0; font-weight: bold;">2. Gestión de la Normativa y Convivencia Escolar</td>
+              </tr>
+              <tr>
+                <td>2.1 Las normas de convivencia del aula están visibles o se recuerdan al inicio.</td>
+                <td>[ &nbsp; ] Sí &nbsp; [ &nbsp; ] Parcial &nbsp; [ &nbsp; ] No</td>
+                <td>_____</td>
+                <td>___________________________</td>
+              </tr>
+              <tr>
+                <td>2.2 El docente aborda comportamientos disruptivos de forma oportuna y privada.</td>
+                <td>[ &nbsp; ] Sí &nbsp; [ &nbsp; ] Parcial &nbsp; [ &nbsp; ] No</td>
+                <td>_____</td>
+                <td>___________________________</td>
+              </tr>
+              <tr>
+                <td colspan="4" style="background-color: #e2e8f0; font-weight: bold;">3. Motivación, Participación y Ambiente de Aprendizaje</td>
+              </tr>
+              <tr>
+                <td>3.1 El docente refuerza positivamente las participaciones y logros de los alumnos.</td>
+                <td>[ &nbsp; ] Sí &nbsp; [ &nbsp; ] Parcial &nbsp; [ &nbsp; ] No</td>
+                <td>_____</td>
+                <td>___________________________</td>
+              </tr>
+              <tr>
+                <td>3.2 Los estudiantes muestran confianza para formular dudas o hacer preguntas.</td>
+                <td>[ &nbsp; ] Sí &nbsp; [ &nbsp; ] Parcial &nbsp; [ &nbsp; ] No</td>
+                <td>_____</td>
+                <td>___________________________</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- EJERCICIO PRÁCTICO NIVEL 2 -->
+      <div class="ejercicio-box" style="margin-top: 25px;">
+        <h4 style="color: var(--color-institucional); margin-bottom: 10px;">✏️ Ejercicio Práctico - Nivel 2</h4>
+        <p style="margin-bottom: 0;">
+          Redacta el planteamiento de un problema socioeducativo de tu comunidad escolar que pueda ser abordado utilizando una metodología de tipo descriptivo.
+        </p>
+      </div>
+
+      <!-- VIDEOS NIVEL 2 -->
+      <div style="margin-top: 20px;">
+        <h4 style="color: var(--color-institucional); font-size: 1.1rem; margin-bottom: 10px;">📺 Recursos Audiovisuales de Apoyo (Nivel 2)</h4>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 15px;">
+          <div class="video-card">
+            <p style="font-weight: bold; margin-bottom: 8px;">Video institucional UNAM (Parte 1)</p>
+            <a href="https://canal.uned.es/video/5a6f5462b1111f24408b62e9?utm_source=chatgpt.com" target="_blank" class="btn-video">Ver Recurso 1 ▶</a>
+          </div>
+          <div class="video-card">
+            <p style="font-weight: bold; margin-bottom: 8px;">Video institucional UNAM (Parte 2)</p>
+            <a href="https://canal.uned.es/video/5a6f9fb0b1111f73628b4574?utm_source=chatgpt.com" target="_blank" class="btn-video">Ver Recurso 2 ▶</a>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <hr style="border: 0; border-top: 1px solid var(--color-complementario); margin: 30px 0;">
+
+    <!-- QUIZ AUTOCALIFICABLE DE 10 PREGUNTAS -->
     <section class="quiz-container">
-      <h3 style="color: var(--color-institucional); margin-bottom: 15px;">Autoevaluación de la Fase 1</h3>
-      <p>Comprueba tus conocimientos respondiendo las siguientes 5 preguntas:</p>
+      <h3 style="color: var(--color-institucional); margin-bottom: 15px;">Autoevaluación: Fundamentos de la Estadística e Investigación Descriptiva (Fase 1)</h3>
+      <p>Comprueba tus conocimientos respondiendo las siguientes 10 preguntas:</p>
 
       <form id="quizForm" style="margin-top: 20px;">
-        <div class="pregunta-box">
-          <p>1. ¿Quién acuñó formalmente el vocablo alemán <em>Statistik</em> en 1749 como la «ciencia del Estado»?</p>
+        <h4 style="color: var(--color-institucional); font-size: 1.1rem; border-bottom: 1px solid #75D7F5; padding-bottom: 4px;">PARTE 1: Nivel 1 - Fundamentos Históricos y Teóricos</h4>
+        
+        <div class="pregunta-box" style="margin-top: 15px;">
+          <p>1. ¿Qué autor acuñó formalmente el término <em>Statistik</em> en 1749 para nombrar la «ciencia del Estado»?</p>
           <ul class="opciones-list">
             <li><label><input type="radio" name="p1" value="a"> a) Hermann Conring</label></li>
             <li><label><input type="radio" name="p1" value="b"> b) Gottfried Achenwall</label></li>
             <li><label><input type="radio" name="p1" value="c"> c) Sir John Sinclair</label></li>
+            <li><label><input type="radio" name="p1" value="d"> d) William Petty</label></li>
           </ul>
         </div>
 
         <div class="pregunta-box">
-          <p>2. ¿Qué economista acuñó el término <em>Political Arithmetick</em> (1690) fundamentando la política en números, pesos y medidas?</p>
+          <p>2. ¿Cuál fue el aporte pionero de John Graunt en su obra de 1662 (<em>Natural and Political Observations Made upon the Bills of Mortality</em>) a la Aritmética Política?</p>
           <ul class="opciones-list">
-            <li><label><input type="radio" name="p2" value="a"> a) John Graunt</label></li>
-            <li><label><input type="radio" name="p2" value="b"> b) Edmund Halley</label></li>
-            <li><label><input type="radio" name="p2" value="c"> c) William Petty</label></li>
+            <li><label><input type="radio" name="p2" value="a"> a) La formulación del método de mínimos cuadrados.</label></li>
+            <li><label><input type="radio" name="p2" value="b"> b) La creación del primer catastro completo de propiedades en Inglaterra.</label></li>
+            <li><label><input type="radio" name="p2" value="c"> c) La construcción de las primeras tablas de vida empíricas y el descubrimiento de regularidades demográficas.</label></li>
+            <li><label><input type="radio" name="p2" value="d"> d) El desarrollo de la aproximación normal a la distribución binomial.</label></li>
           </ul>
         </div>
 
         <div class="pregunta-box">
-          <p>3. ¿Qué matemático formuló en 1713 la Ley de los Grandes Números en su obra <em>Ars Conjectandi</em>?</p>
+          <p>3. ¿Qué matemático formuló la Ley de los Grandes Números en su obra <em>Ars Conjectandi</em> (1713)?</p>
           <ul class="opciones-list">
-            <li><label><input type="radio" name="p3" value="a"> a) Jakob Bernoulli</label></li>
-            <li><label><input type="radio" name="p3" value="b"> b) Thomas Bayes</label></li>
-            <li><label><input type="radio" name="p3" value="c"> c) Christiaan Huygens</label></li>
+            <li><label><input type="radio" name="p3" value="a"> a) Abraham de Moivre</label></li>
+            <li><label><input type="radio" name="p3" value="b"> b) Pierre-Simon Laplace</label></li>
+            <li><label><input type="radio" name="p3" value="c"> c) Thomas Bayes</label></li>
+            <li><label><input type="radio" name="p3" value="d"> d) Jakob Bernoulli</label></li>
           </ul>
         </div>
 
         <div class="pregunta-box">
-          <p>4. ¿Cuál rama de la estadística permite extrapolar conclusiones o hacer predicciones sobre una población entera a partir de una muestra representativa?</p>
+          <p>4. ¿Cuál es la rama de la estadística que deduce, generaliza o realiza predicciones sobre una población entera a partir de los datos de una muestra representativa?</p>
           <ul class="opciones-list">
             <li><label><input type="radio" name="p4" value="a"> a) Estadística Descriptiva</label></li>
-            <li><label><input type="radio" name="p4" value="b"> b) Estadística Inferencial</label></li>
-            <li><label><input type="radio" name="p4" value="c"> c) Aritmética Política</label></li>
+            <li><label><input type="radio" name="p4" value="b"> b) Aritmética Política</label></li>
+            <li><label><input type="radio" name="p4" value="c"> c) Estadística Inferencial</label></li>
+            <li><label><input type="radio" name="p4" value="d"> d) Física Social</label></li>
           </ul>
         </div>
 
         <div class="pregunta-box">
-          <p>5. En el ámbito educativo, ¿qué aplicación permite monitorear de forma temprana el riesgo de deserción y personalizar la enseñanza?</p>
+          <p>5. En el ámbito educativo contemporáneo, ¿cuál es el uso principal de la Teoría de Respuesta al Ítem (TRI)?</p>
           <ul class="opciones-list">
-            <li><label><input type="radio" name="p5" value="a"> a) Analítica del Aprendizaje (Learning Analytics)</label></li>
-            <li><label><input type="radio" name="p5" value="b"> b) Teoría de Respuesta al Ítem</label></li>
-            <li><label><input type="radio" name="p5" value="c"> c) Censos quinquenales de censores</label></li>
+            <li><label><input type="radio" name="p5" value="a"> a) Proyectar la matriculación universitaria y la asignación de infraestructura.</label></li>
+            <li><label><input type="radio" name="p5" value="b"> b) Monitorear el riesgo temprano de deserción escolar.</label></li>
+            <li><label><input type="radio" name="p5" value="c"> c) Calibrar evaluaciones psicométricas estandarizadas a gran escala (como PISA o SAT).</label></li>
+            <li><label><input type="radio" name="p5" value="d"> d) Construir algoritmos de aprendizaje profundo en machine learning.</label></li>
           </ul>
         </div>
 
-        <button type="button" class="btn-descargar" onclick="calificarQuiz()" style="background-color: var(--color-institucional); margin-top: 10px;">Calificar Autoevaluación</button>
+        <h4 style="color: var(--color-institucional); font-size: 1.1rem; border-bottom: 1px solid #75D7F5; padding-bottom: 4px; margin-top: 25px;">PARTE 2: Nivel 2 - La Investigación Descriptiva en Educación</h4>
+
+        <div class="pregunta-box" style="margin-top: 15px;">
+          <p>6. ¿Cuál es la característica metodológica central de la investigación descriptiva en educación?</p>
+          <ul class="opciones-list">
+            <li><label><input type="radio" name="p6" value="a"> a) La manipulación deliberada de variables independientes para medir relaciones de causa-efecto.</label></li>
+            <li><label><input type="radio" name="p6" value="b"> b) La observación y medición del fenómeno en su entorno natural (in situ) sin alterar ni manipular variables.</label></li>
+            <li><label><input type="radio" name="p6" value="c"> c) La aplicación exclusiva de herramientas cualitativas sin recolección de datos numéricos.</label></li>
+            <li><label><input type="radio" name="p6" value="d"> d) La formulación obligatoria de modelos econométricos y ensayos aleatorizados.</label></li>
+          </ul>
+        </div>
+
+        <div class="pregunta-box">
+          <p>7. Si un investigador requiere aplicar una técnica de «Observación Estructurada y Naturalista» en el aula sin intervenir en la dinámica, ¿cuál de los siguientes instrumentos es el adecuado?</p>
+          <ul class="opciones-list">
+            <li><label><input type="radio" name="p7" value="a"> a) Guía de entrevista semiestructurada</label></li>
+            <li><label><input type="radio" name="p7" value="b"> b) Cuestionarios estandarizados de escala Likert</label></li>
+            <li><label><input type="radio" name="p7" value="c"> c) Listas de cotejo y escalas de apreciación</label></li>
+            <li><label><input type="radio" name="p7" value="d"> d) Registros de calificaciones y análisis de planes de clase</label></li>
+          </ul>
+        </div>
+
+        <div class="pregunta-box">
+          <p>8. En el marco de la gestión escolar, ¿qué función cumple el establecimiento de una «línea de base» mediante el método descriptivo?</p>
+          <ul class="opciones-list">
+            <li><label><input type="radio" name="p8" value="a"> a) Modificar directamente el rendimiento académico de los estudiantes al inicio del curso.</label></li>
+            <li><label><input type="radio" name="p8" value="b"> b) Registrar el estado inicial de una comunidad escolar para medir en el futuro el impacto real de las intervenciones aplicadas.</label></li>
+            <li><label><input type="radio" name="p8" value="c"> c) Prohibir el uso de tecnología y dispositivos dentro de las instalaciones escolares.</label></li>
+            <li><label><input type="radio" name="p8" value="d"> d) Sustituir la necesidad de elaborar Proyectos Educativos Institucionales (PEI).</label></li>
+          </ul>
+        </div>
+
+        <div class="pregunta-box">
+          <p>9. ¿De qué manera la investigación descriptiva aporta directamente a la optimización de la gestión de recursos socioeducativos?</p>
+          <ul class="opciones-list">
+            <li><label><input type="radio" name="p9" value="a"> a) Demostrando relaciones causales de laboratorio entre nutrición y rendimiento.</label></li>
+            <li><label><input type="radio" name="p9" value="b"> b) Creando pruebas psicométricas automatizadas mediante inteligencia artificial.</label></li>
+            <li><label><input type="radio" name="p9" value="c"> c) Visibilizando objetivamente necesidades y rezagos para dirigir partidas presupuestarias y apoyos a los sectores prioritarios.</label></li>
+            <li><label><input type="radio" name="p9" value="d"> d) Permitiendo manipular la conducta del docente mediante intervenciones a ciegas.</label></li>
+          </ul>
+        </div>
+
+        <div class="pregunta-box">
+          <p>10. En el caso práctico ilustrativo del uso de dispositivos móviles y atención en secundaria, ¿cuál fue el procedimiento del enfoque descriptivo?</p>
+          <ul class="opciones-list">
+            <li><label><input type="radio" name="p10" value="a"> a) Prohibir el uso de teléfonos en el centro escolar para evaluar el cambio en el promedio de calificaciones.</label></li>
+            <li><label><input type="radio" name="p10" value="b"> b) Medir las frecuencias de uso y tiempos de concentración en su estado natural para fundamentar un protocolo normado de uso.</label></li>
+            <li><label><input type="radio" name="p10" value="c"> c) Asignar aleatoriamente teléfonos a la mitad de los estudiantes y comparar su rendimiento frente al grupo de control.</label></li>
+            <li><label><input type="radio" name="p10" value="d"> d) Entrevistar a los fabricantes de dispositivos sobre los efectos de la tecnología en jóvenes.</label></li>
+          </ul>
+        </div>
+
+        <div style="display: flex; gap: 15px; flex-wrap: wrap; margin-top: 20px;">
+          <button type="button" class="btn-descargar" onclick="calificarQuiz()" style="background-color: var(--color-institucional); margin-top: 10px;">Calificar Autoevaluación</button>
+          <button type="button" class="btn-descargar" onclick="toggleSolucionario()" style="background-color: #173B59; color: #fff; margin-top: 10px; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer;">Mostrar / Ocultar Solucionario</button>
+        </div>
       </form>
 
       <div id="resultadoQuiz"></div>
+
+      <!-- SOLUCIONARIO EXPLICATIVO -->
+      <div id="solucionarioBox" class="solucionario-box">
+        <h4 style="color: var(--color-institucional); margin-bottom: 10px;">CLAVE DE RESPUESTAS Y ARGUMENTACIÓN TEÓRICA</h4>
+        <ul>
+          <li><strong>1. b) Gottfried Achenwall:</strong> Acuñó el vocablo <em>Statistik</em> en 1749 para nombrar la «ciencia del Estado».</li>
+          <li><strong>2. c) La construcción de las primeras tablas de vida empíricas...:</strong> En 1662, John Graunt analizó las Listas de Mortalidad (<em>Bills of Mortality</em>) descubriendo regularidades demográficas.</li>
+          <li><strong>3. d) Jakob Bernoulli:</strong> Formuló en <em>Ars Conjectandi</em> (1713) la Ley de los Grandes Números.</li>
+          <li><strong>4. c) Estadística Inferencial:</strong> Permite deducir, generalizar o hacer predicciones sobre poblaciones a partir de muestras.</li>
+          <li><strong>5. c) Calibrar evaluaciones psicométricas estandarizadas...:</strong> Uso específico de la Teoría de Respuesta al Ítem (TRI) en pruebas de gran escala.</li>
+          <li><strong>6. b) La observación y medición del fenómeno en su entorno natural...:</strong> Enfoque no experimental in situ sin manipulación de variables.</li>
+          <li><strong>7. c) Listas de cotejo y escalas de apreciación:</strong> Instrumentos indicados para la observación estructurada y naturalista.</li>
+          <li><strong>8. b) Registrar el estado inicial de una comunidad escolar...:</strong> Función analítica de la línea de base descriptiva.</li>
+          <li><strong>9. c) Visibilizando objetivamente necesidades y rezagos...:</strong> Orienta la asignación de recursos y partidas presupuestarias con evidencia empírica.</li>
+          <li><strong>10. b) Medir las frecuencias de uso y tiempos de concentración...:</strong> Resumen exacto del procedimiento no manipulativo del caso ilustrativo.</li>
+        </ul>
+      </div>
     </section>
 
     <!-- SECCIÓN DE CIERRE Y ACCIONES -->
@@ -342,10 +653,19 @@
 
   <script src="js/main.js"></script>
   <script>
+    function toggleSolucionario() {
+      const box = document.getElementById("solucionarioBox");
+      if (box.style.display === "block") {
+        box.style.display = "none";
+      } else {
+        box.style.display = "block";
+      }
+    }
+
     function calificarQuiz() {
-      const respuestasCorrectas = { p1: "b", p2: "c", p3: "a", p4: "b", p5: "a" };
+      const respuestasCorrectas = { p1: "b", p2: "c", p3: "d", p4: "c", p5: "c", p6: "b", p7: "c", p8: "b", p9: "c", p10: "b" };
       let aciertos = 0;
-      let totalPreguntas = 5;
+      let totalPreguntas = 10;
       let respondidasTodas = true;
 
       for (let i = 1; i <= totalPreguntas; i++) {
@@ -367,12 +687,12 @@
         return;
       }
 
-      if (aciertos >= 4) {
+      if (aciertos >= 8) {
         contenedorResultado.style.color = "#0E25FF";
-        contenedorResultado.innerHTML = `¡Excelente trabajo! Has obtenido ${aciertos} de ${totalPreguntas} aciertos. Has comprendido perfectamente el trasfondo histórico y teórico.`;
+        contenedorResultado.innerHTML = `¡Excelente trabajo! Has obtenido ${aciertos} de ${totalPreguntas} aciertos. Dominas los fundamentos históricos y la investigación descriptiva.`;
       } else {
         contenedorResultado.style.color = "#173B59";
-        contenedorResultado.innerHTML = `Has obtenido ${aciertos} de ${totalPreguntas} aciertos. Te sugerimos repasar las tablas y secciones históricas antes de continuar.`;
+        contenedorResultado.innerHTML = `Has obtenido ${aciertos} de ${totalPreguntas} aciertos. Te sugerimos repasar los apartados teóricos y metodológicos antes de continuar.`;
       }
     }
   </script>

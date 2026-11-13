@@ -7,6 +7,14 @@ document.addEventListener("DOMContentLoaded", () => {
   inicializarModoOscuro();
 });
 
+// --- CÓDIGOS DE ACCESO DE 6 DÍGITOS PARA CADA FASE ---
+const CODIGOS_FASES = {
+  1: "482915", // Código para desbloquear la Fase 2 desde la Fase 1
+  2: "739024", // Código para desbloquear la Fase 3 desde la Fase 2
+  3: "158496", // Código para desbloquear la Fase 4 desde la Fase 3
+  4: "926310"  // Código para desbloquear la Fase 5 desde la Fase 4
+};
+ 
 // --- RESTRICCIÓN Y NAVEGACIÓN ---
 function actualizarNavegacion() {
   const faseMaxima = parseInt(localStorage.getItem("faseMaxima") || "1");
@@ -41,17 +49,42 @@ function completarFase(faseActual) {
   const siguienteFase = faseActual + 1;
   const faseMaxima = parseInt(localStorage.getItem("faseMaxima") || "1");
 
-  if (siguienteFase > faseMaxima) {
-    localStorage.setItem("faseMaxima", siguienteFase.toString());
+  if (faseActual >= 5) {
+    alert("¡Has finalizado exitosamente todos los módulos!");
+    return;
   }
-  
-  actualizarNavegacion();
-  actualizarBarraProgreso();
 
-  if (faseActual < 5) {
+  // Solicitar el código exclusivo de 6 dígitos autorizado a la Catedrática
+  const codigoIngresado = prompt(
+    `🔒 ACCESO RESTRINGIDO\n\n` +
+    `Para desbloquear la Fase ${siguienteFase}, ingrese el código de 6 dígitos autorizado por la Catedrática en el Manual de Usuario:`
+  );
+
+  if (codigoIngresado === null) {
+    return; // Si el usuario presiona cancelar
+  }
+
+  // Validar que sean exactamente 6 dígitos numéricos
+  const esSoloNumeros = /^\d{6}$/.test(codigoIngresado);
+
+  if (!esSoloNumeros) {
+    alert("❌ Error: El código debe contener únicamente 6 dígitos numéricos.");
+    return;
+  }
+
+  // Verificar si el código coincide con el asignado a la fase actual
+  if (codigoIngresado === CODIGOS_FASES[faseActual]) {
+    if (siguienteFase > faseMaxima) {
+      localStorage.setItem("faseMaxima", siguienteFase.toString());
+    }
+    
+    actualizarNavegacion();
+    actualizarBarraProgreso();
+
+    alert(`¡Código correcto! Fase ${siguienteFase} desbloqueada con éxito.`);
     window.location.href = `fase${siguienteFase}.html`;
   } else {
-    alert("¡Has finalizado exitosamente todos los módulos!");
+    alert("❌ Código incorrecto. Verifique el Código proporcionado a la Catedrática.");
   }
 }
 
